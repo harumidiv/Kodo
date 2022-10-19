@@ -12,6 +12,7 @@ struct KodoListView: View {
     @State var isTapped: Bool = false
 
     var body: some View {
+        Color.black
         Button(action: {
             isTapped = true
             //人間
