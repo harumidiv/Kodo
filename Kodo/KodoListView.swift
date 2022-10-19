@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  KodoListView.swift
 //  Kodo
 //
 //  Created by 佐川 晴海 on 2022/10/19.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct KodoListView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -19,8 +19,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct KodoListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        KodoListView()
     }
 }

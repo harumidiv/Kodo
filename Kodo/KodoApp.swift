@@ -11,7 +11,7 @@ import SwiftUI
 struct KodoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            KodoListView()
         }
     }
 }
