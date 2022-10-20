@@ -9,17 +9,82 @@ import SwiftUI
 import UIKit
 
 struct KodoListView: View {
+    struct Creature: Identifiable {
+        let id: UUID = UUID()
+        let name: String
+        let images: [UIImage]
+        let heartbeat: Double
+    }
+
     @State var timer :Timer?
     @State var isTapped: Bool = false
 
+    let creatures: [Creature] = [
+        .init(name: "人間",
+              images: [UIImage(named: "human_1")!,
+                       UIImage(named: "human_2")!,
+                       UIImage(named: "human_3")!,
+                       UIImage(named: "human_4")!],
+              heartbeat: 0.85),
+        .init(name: "人間",
+              images: [UIImage(named: "human_1")!,
+                       UIImage(named: "human_2")!,
+                       UIImage(named: "human_3")!,
+                       UIImage(named: "human_4")!],
+              heartbeat: 0.85),
+        .init(name: "人間",
+              images: [UIImage(named: "human_1")!,
+                       UIImage(named: "human_2")!,
+                       UIImage(named: "human_3")!,
+                       UIImage(named: "human_4")!],
+              heartbeat: 0.85),
+        .init(name: "人間",
+              images: [UIImage(named: "human_1")!,
+                       UIImage(named: "human_2")!,
+                       UIImage(named: "human_3")!,
+                       UIImage(named: "human_4")!],
+              heartbeat: 0.85),
+        .init(name: "人間",
+              images: [UIImage(named: "human_1")!,
+                       UIImage(named: "human_2")!,
+                       UIImage(named: "human_3")!,
+                       UIImage(named: "human_4")!],
+              heartbeat: 0.85),
+        .init(name: "人間",
+              images: [UIImage(named: "human_1")!,
+                       UIImage(named: "human_2")!,
+                       UIImage(named: "human_3")!,
+                       UIImage(named: "human_4")!],
+              heartbeat: 0.85),
+        .init(name: "人間",
+              images: [UIImage(named: "human_1")!,
+                       UIImage(named: "human_2")!,
+                       UIImage(named: "human_3")!,
+                       UIImage(named: "human_4")!],
+              heartbeat: 0.85),
+        .init(name: "人間",
+              images: [UIImage(named: "human_1")!,
+                       UIImage(named: "human_2")!,
+                       UIImage(named: "human_3")!,
+                       UIImage(named: "human_4")!],
+              heartbeat: 0.85)
+    ]
+
     var body: some View {
-        ZStack {
-            Color.black
-            ParaparaAnimationView(duration: 0.85, images: [UIImage(named: "human_1")!,
-                                                           UIImage(named: "human_2")!,
-                                                           UIImage(named: "human_3")!,
-                                                           UIImage(named: "human_4")!])
-            .frame(width: 200, height: 200)
+        GeometryReader { geometry in
+            let length = min(geometry.size.width, geometry.size.height) / 3
+            ZStack {
+                Color.black.ignoresSafeArea()
+                VStack {
+                    LazyVGrid(columns: [GridItem(),GridItem(), GridItem()]) {
+                        ForEach(creatures) { creature in
+                            ParaparaAnimationView(duration: creature.heartbeat, images: creature.images)
+                                .frame(width: length, height: length)
+                        }
+                    }
+                    Spacer()
+                }
+            }
         }
     }
 }
