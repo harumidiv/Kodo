@@ -85,7 +85,6 @@ struct KodoListView: View {
                                     .foregroundColor(.red)
                                     .frame(width: length, height: length)
                                     .blinkEffect(interval: creature.heartbeat / 2)
-                                Spacer()
                             } else {
                                 ParaparaAnimationView(duration: creature.heartbeat, images: creature.images)
                                     .frame(width: length, height: length)
@@ -109,10 +108,10 @@ struct KodoListView: View {
                                             }
                                         }
                                     }
-                                Spacer()
                             }
                         }
                     }
+                    Spacer()
                 }
             }
         }
