@@ -80,6 +80,27 @@ struct KodoListView: View {
                         ForEach(creatures) { creature in
                             ParaparaAnimationView(duration: creature.heartbeat, images: creature.images)
                                 .frame(width: length, height: length)
+                                .onTapGesture{
+                                    if isTapped {
+                                        isTapped = false
+                                        timer?.invalidate()
+                                        timer = nil
+                                    } else {
+                                        isTapped = true
+                                        //人間
+                                        timer = Timer.scheduledTimer(withTimeInterval: 0.85, repeats: true) { _ in
+                                            Task {
+                                                let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                                                impactHeavy.prepare()
+                                                impactHeavy.impactOccurred()
+                                                try await Task.sleep(nanoseconds: 400_000_000)
+                                                let impactSoft = UIImpactFeedbackGenerator(style: .soft)
+                                                impactSoft.prepare()
+                                                impactSoft.impactOccurred()
+                                            }
+                                        }
+                                    }
+                                }
                         }
                     }
                     Spacer()
