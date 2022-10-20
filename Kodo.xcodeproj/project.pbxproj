@@ -15,6 +15,35 @@
 		49FCB6C02900DC140076B47B /* ParaparaAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6BF2900DC140076B47B /* ParaparaAnimationView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		49FCB6C12900FDD40076B47B /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.ci.air";
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+				"$(METAL_LIBRARY_OUTPUT_DIR)/$(INPUT_FILE_BASE).metallib",
+			);
+			script = "xcrun metallib -cikernel “${INPUT_FILE_PATH}” -o “${SCRIPT_OUTPUT_FILE_0}”\n\n";
+		};
+		49FCB6C22900FDF80076B47B /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.ci.metal";
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE).air",
+			);
+			script = "xcrun metal -c $MTL_HEADER_SEARCH_PATHS -fcikernel “${INPUT_FILE_PATH}” -o “${SCRIPT_OUTPUT_FILE_0}”\n\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
 		49FCB6AB290039DF0076B47B /* Kodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FCB6AE290039DF0076B47B /* KodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodoApp.swift; sourceTree = "<group>"; };
@@ -93,6 +122,8 @@
 				49FCB6A9290039DF0076B47B /* Resources */,
 			);
 			buildRules = (
+				49FCB6C12900FDD40076B47B /* PBXBuildRule */,
+				49FCB6C22900FDF80076B47B /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
