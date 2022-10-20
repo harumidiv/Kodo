@@ -71,34 +71,15 @@ struct KodoListView: View {
             ZStack {
                 Color.black.ignoresSafeArea()
                 VStack {
-                    LazyVGrid(columns: [GridItem(),GridItem(), GridItem()]) {
+                    LazyVGrid(columns: [GridItem(), GridItem(), GridItem()]) {
                         ForEach(creatures) { creature in
                             if isText {
                                 CreatureTextView(creature: creature, length: length)
                             } else {
-                                ParaparaAnimationView(duration: creature.heartbeat,
-                                                      images: creature.images)
-                                    .frame(width: length, height: length)
-                                    .onTapGesture{
-                                        if isTapped {
-                                            isTapped = false
-                                            timer?.invalidate()
-                                            timer = nil
-                                        } else {
-                                            isTapped = true
-                                            timer = Timer.scheduledTimer(withTimeInterval: creature.heartbeat, repeats: true) { _ in
-                                                Task {
-                                                    let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
-                                                    impactHeavy.prepare()
-                                                    impactHeavy.impactOccurred()
-                                                    try await Task.sleep(seconds: creature.heartbeat / 2)
-                                                    let impactSoft = UIImpactFeedbackGenerator(style: .soft)
-                                                    impactSoft.prepare()
-                                                    impactSoft.impactOccurred()
-                                                }
-                                            }
-                                        }
-                                    }
+                                CreatureImageView(creature: creature,
+                                                  length: length,
+                                                  timer: $timer,
+                                                  isTapped: $isTapped)
                             }
                         }
                     }
