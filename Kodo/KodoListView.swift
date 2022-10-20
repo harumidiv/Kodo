@@ -11,13 +11,6 @@ import UIKit
 struct KodoListView: View {
     @Binding var isText: Bool
 
-    struct Creature: Identifiable {
-        let id: UUID = UUID()
-        let name: String
-        let images: [UIImage]
-        let heartbeat: Double
-    }
-
     @State var timer :Timer?
     @State var isTapped: Bool = false
 
@@ -81,12 +74,10 @@ struct KodoListView: View {
                     LazyVGrid(columns: [GridItem(),GridItem(), GridItem()]) {
                         ForEach(creatures) { creature in
                             if isText {
-                                Text(creature.name)
-                                    .foregroundColor(.red)
-                                    .frame(width: length, height: length)
-                                    .blinkEffect(interval: creature.heartbeat / 2)
+                                CreatureTextView(creature: creature, length: length)
                             } else {
-                                ParaparaAnimationView(duration: creature.heartbeat, images: creature.images)
+                                ParaparaAnimationView(duration: creature.heartbeat,
+                                                      images: creature.images)
                                     .frame(width: length, height: length)
                                     .onTapGesture{
                                         if isTapped {

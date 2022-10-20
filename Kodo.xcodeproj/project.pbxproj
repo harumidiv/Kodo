@@ -16,6 +16,8 @@
 		49FCB6C5290101890076B47B /* Kernel.ci.metal in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6C4290101890076B47B /* Kernel.ci.metal */; };
 		49FCB6C7290102010076B47B /* HartbeatFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6C6290102010076B47B /* HartbeatFilter.swift */; };
 		49FCB6CA290124FC0076B47B /* Task+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6C9290124FC0076B47B /* Task+Addition.swift */; };
+		49FCB6CC29014C5A0076B47B /* CreatureTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6CB29014C5A0076B47B /* CreatureTextView.swift */; };
+		49FCB6CE29014D250076B47B /* Creature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6CD29014D250076B47B /* Creature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -58,6 +60,8 @@
 		49FCB6C4290101890076B47B /* Kernel.ci.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Kernel.ci.metal; sourceTree = "<group>"; };
 		49FCB6C6290102010076B47B /* HartbeatFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HartbeatFilter.swift; sourceTree = "<group>"; };
 		49FCB6C9290124FC0076B47B /* Task+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Addition.swift"; sourceTree = "<group>"; };
+		49FCB6CB29014C5A0076B47B /* CreatureTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureTextView.swift; sourceTree = "<group>"; };
+		49FCB6CD29014D250076B47B /* Creature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,8 @@
 				49FCB6BC29003AE80076B47B /* Modifier */,
 				49FCB6AE290039DF0076B47B /* KodoApp.swift */,
 				49FCB6B0290039DF0076B47B /* KodoListView.swift */,
+				49FCB6CD29014D250076B47B /* Creature.swift */,
+				49FCB6CB29014C5A0076B47B /* CreatureTextView.swift */,
 				49FCB6BF2900DC140076B47B /* ParaparaAnimationView.swift */,
 				49FCB6B2290039E10076B47B /* Assets.xcassets */,
 				49FCB6B4290039E10076B47B /* Preview Content */,
@@ -209,8 +215,10 @@
 			files = (
 				49FCB6C7290102010076B47B /* HartbeatFilter.swift in Sources */,
 				49FCB6B1290039DF0076B47B /* KodoListView.swift in Sources */,
+				49FCB6CE29014D250076B47B /* Creature.swift in Sources */,
 				49FCB6C02900DC140076B47B /* ParaparaAnimationView.swift in Sources */,
 				49FCB6AF290039DF0076B47B /* KodoApp.swift in Sources */,
+				49FCB6CC29014C5A0076B47B /* CreatureTextView.swift in Sources */,
 				49FCB6C5290101890076B47B /* Kernel.ci.metal in Sources */,
 				49FCB6CA290124FC0076B47B /* Task+Addition.swift in Sources */,
 				49FCB6BE29003AFB0076B47B /* BlinkEffect.swift in Sources */,
