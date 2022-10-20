@@ -12,6 +12,7 @@
 		49FCB6B3290039E10076B47B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49FCB6B2290039E10076B47B /* Assets.xcassets */; };
 		49FCB6B6290039E10076B47B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49FCB6B5290039E10076B47B /* Preview Assets.xcassets */; };
 		49FCB6BE29003AFB0076B47B /* BlinkEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6BD29003AFB0076B47B /* BlinkEffect.swift */; };
+		49FCB6C02900DC140076B47B /* ParaparaAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6BF2900DC140076B47B /* ParaparaAnimationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		49FCB6B2290039E10076B47B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49FCB6B5290039E10076B47B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		49FCB6BD29003AFB0076B47B /* BlinkEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkEffect.swift; sourceTree = "<group>"; };
+		49FCB6BF2900DC140076B47B /* ParaparaAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParaparaAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				49FCB6BC29003AE80076B47B /* Modifier */,
 				49FCB6AE290039DF0076B47B /* KodoApp.swift */,
 				49FCB6B0290039DF0076B47B /* KodoListView.swift */,
+				49FCB6BF2900DC140076B47B /* ParaparaAnimationView.swift */,
 				49FCB6B2290039E10076B47B /* Assets.xcassets */,
 				49FCB6B4290039E10076B47B /* Preview Content */,
 			);
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49FCB6B1290039DF0076B47B /* KodoListView.swift in Sources */,
+				49FCB6C02900DC140076B47B /* ParaparaAnimationView.swift in Sources */,
 				49FCB6AF290039DF0076B47B /* KodoApp.swift in Sources */,
 				49FCB6BE29003AFB0076B47B /* BlinkEffect.swift in Sources */,
 			);
