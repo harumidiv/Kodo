@@ -13,6 +13,9 @@
 		49FCB6B6290039E10076B47B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49FCB6B5290039E10076B47B /* Preview Assets.xcassets */; };
 		49FCB6BE29003AFB0076B47B /* BlinkEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6BD29003AFB0076B47B /* BlinkEffect.swift */; };
 		49FCB6C02900DC140076B47B /* ParaparaAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6BF2900DC140076B47B /* ParaparaAnimationView.swift */; };
+		49FCB6C5290101890076B47B /* Kernel.ci.metal in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6C4290101890076B47B /* Kernel.ci.metal */; };
+		49FCB6C7290102010076B47B /* HartbeatFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6C6290102010076B47B /* HartbeatFilter.swift */; };
+		49FCB6CA290124FC0076B47B /* Task+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6C9290124FC0076B47B /* Task+Addition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -27,7 +30,7 @@
 			outputFiles = (
 				"$(METAL_LIBRARY_OUTPUT_DIR)/$(INPUT_FILE_BASE).metallib",
 			);
-			script = "xcrun metallib -cikernel “${INPUT_FILE_PATH}” -o “${SCRIPT_OUTPUT_FILE_0}”\n\n";
+			script = "xcrun metallib -cikernel \"${INPUT_FILE_PATH}\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 		};
 		49FCB6C22900FDF80076B47B /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -40,7 +43,7 @@
 			outputFiles = (
 				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_BASE).air",
 			);
-			script = "xcrun metal -c $MTL_HEADER_SEARCH_PATHS -fcikernel “${INPUT_FILE_PATH}” -o “${SCRIPT_OUTPUT_FILE_0}”\n\n";
+			script = "xcrun metal -c $MTL_HEADER_SEARCH_PATHS -fcikernel \"${INPUT_FILE_PATH}\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 		};
 /* End PBXBuildRule section */
 
@@ -52,6 +55,9 @@
 		49FCB6B5290039E10076B47B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		49FCB6BD29003AFB0076B47B /* BlinkEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkEffect.swift; sourceTree = "<group>"; };
 		49FCB6BF2900DC140076B47B /* ParaparaAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParaparaAnimationView.swift; sourceTree = "<group>"; };
+		49FCB6C4290101890076B47B /* Kernel.ci.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Kernel.ci.metal; sourceTree = "<group>"; };
+		49FCB6C6290102010076B47B /* HartbeatFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HartbeatFilter.swift; sourceTree = "<group>"; };
+		49FCB6C9290124FC0076B47B /* Task+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Addition.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,8 @@
 		49FCB6AD290039DF0076B47B /* Kodo */ = {
 			isa = PBXGroup;
 			children = (
+				49FCB6C8290124E70076B47B /* Extension */,
+				49FCB6C3290101740076B47B /* Metal */,
 				49FCB6BC29003AE80076B47B /* Modifier */,
 				49FCB6AE290039DF0076B47B /* KodoApp.swift */,
 				49FCB6B0290039DF0076B47B /* KodoListView.swift */,
@@ -108,6 +116,23 @@
 				49FCB6BD29003AFB0076B47B /* BlinkEffect.swift */,
 			);
 			path = Modifier;
+			sourceTree = "<group>";
+		};
+		49FCB6C3290101740076B47B /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				49FCB6C4290101890076B47B /* Kernel.ci.metal */,
+				49FCB6C6290102010076B47B /* HartbeatFilter.swift */,
+			);
+			path = Metal;
+			sourceTree = "<group>";
+		};
+		49FCB6C8290124E70076B47B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				49FCB6C9290124FC0076B47B /* Task+Addition.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,9 +207,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FCB6C7290102010076B47B /* HartbeatFilter.swift in Sources */,
 				49FCB6B1290039DF0076B47B /* KodoListView.swift in Sources */,
 				49FCB6C02900DC140076B47B /* ParaparaAnimationView.swift in Sources */,
 				49FCB6AF290039DF0076B47B /* KodoApp.swift in Sources */,
+				49FCB6C5290101890076B47B /* Kernel.ci.metal in Sources */,
+				49FCB6CA290124FC0076B47B /* Task+Addition.swift in Sources */,
 				49FCB6BE29003AFB0076B47B /* BlinkEffect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

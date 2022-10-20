@@ -11,7 +11,16 @@ import SwiftUI
 struct KodoApp: App {
     var body: some Scene {
         WindowGroup {
-            KodoListView()
+            NavigationView {
+                KodoListView()
+            }
+            .toolbar {
+                Button(action: {
+                    // TODO Action
+                }) {
+                    Image(systemName: "textformat.abc.dottedunderline")
+                }
+            }
         }
     }
 }
