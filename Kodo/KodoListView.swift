@@ -67,11 +67,12 @@ struct KodoListView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            let length = min(geometry.size.width, geometry.size.height) / 3
+            let spacing: CGFloat = 10
+            let length = min(geometry.size.width, geometry.size.height) / 3 - spacing
             ZStack {
                 Color.black.ignoresSafeArea()
                 VStack {
-                    LazyVGrid(columns: [GridItem(), GridItem(), GridItem()]) {
+                    LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], spacing: spacing) {
                         ForEach(creatures) { creature in
                             if isText {
                                 CreatureTextView(creature: creature, length: length)
@@ -80,8 +81,15 @@ struct KodoListView: View {
                                                   length: length,
                                                   timer: $timer,
                                                   isTapped: $isTapped)
+
                             }
                         }
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.red, lineWidth: 4)
+                        )
+
+
                     }
                     Spacer()
                 }
