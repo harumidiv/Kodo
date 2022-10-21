@@ -83,7 +83,8 @@ struct KodoListView: View {
                                 CreatureImageView(creature: creature,
                                                   length: length,
                                                   timer: $timer,
-                                                  isTapped: $isTapped)
+                                                  isTapped: $isTapped,
+                                                  isMove: $isMove)
 
                             }
                         }

@@ -12,35 +12,44 @@ struct CreatureImageView: View {
     let length: Double
     @Binding var timer: Timer?
     @Binding var isTapped: Bool
+    @Binding var isMove: Bool
 
     var body: some View {
-        ParaparaAnimationView(duration: creature.heartbeat,
-                              images: creature.images)
-        .frame(width: length, height: length)
-        .onTapGesture{
-            if isTapped {
-                isTapped = false
-                timer?.invalidate()
-                timer = nil
-            } else {
-                isTapped = true
-                timer = Timer.scheduledTimer(withTimeInterval: creature.heartbeat, repeats: true) { _ in
-                    Task {
-                        let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
-                        impactHeavy.prepare()
-                        impactHeavy.impactOccurred()
-                        try await Task.sleep(seconds: creature.heartbeat / 2)
-                        let impactSoft = UIImpactFeedbackGenerator(style: .soft)
-                        impactSoft.prepare()
-                        impactSoft.impactOccurred()
+        if isMove {
+            ParaparaAnimationView(duration: creature.heartbeat,
+                                  images: creature.images)
+            .frame(width: length, height: length)
+            .onTapGesture{
+                if isTapped {
+                    isTapped = false
+                    timer?.invalidate()
+                    timer = nil
+                } else {
+                    isTapped = true
+                    timer = Timer.scheduledTimer(withTimeInterval: creature.heartbeat, repeats: true) { _ in
+                        Task {
+                            let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                            impactHeavy.prepare()
+                            impactHeavy.impactOccurred()
+                            try await Task.sleep(seconds: creature.heartbeat / 2)
+                            let impactSoft = UIImpactFeedbackGenerator(style: .soft)
+                            impactSoft.prepare()
+                            impactSoft.impactOccurred()
+                        }
                     }
                 }
             }
+            .onDisappear{
+                timer?.invalidate()
+                timer = nil
+            }
+        } else {
+            Image(uiImage: creature.images.last!)
+                .resizable()
+                .scaledToFit()
+                .frame(width: length, height: length)
         }
-        .onDisappear{
-            timer?.invalidate()
-            timer = nil
-        }
+
     }
 }
 
@@ -49,6 +58,7 @@ struct CreatureImageView_Previews: PreviewProvider {
         CreatureImageView(creature: Creature.sampleData[0],
                           length: 100,
                           timer: .constant(nil),
-                          isTapped: .constant(false))
+                          isTapped: .constant(false),
+                          isMove: .constant(false))
     }
 }
