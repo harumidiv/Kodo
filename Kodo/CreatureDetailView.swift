@@ -16,25 +16,25 @@ struct CreatureDetailView: View {
                 Color.black.ignoresSafeArea()
                 let length = min(geometry.size.width, geometry.size.height)
                 VStack {
-                    HStack {
-                        Button(action: {
-                            isShowDetail.toggle()
-                        }, label: {
-                            Image(systemName: "xmark")
-                                .font(Font.system(size: 28, weight: .regular))
-                                .padding()
-                        })
-                        Spacer()
-                    }
-
+                    closeButton
                     ImageSliderView()
-                        .background(.red)
+                        .frame(width: length, height: length)
+                        .background(.red) // TODO 検証ようなので不要になったら削除
                 }
-
-//                Image("human_1")
-//                    .resizable()
-//                    .frame(width: length, height: length)
             }
+        }
+    }
+
+    private var closeButton: some View {
+        HStack {
+            Button(action: {
+                isShowDetail.toggle()
+            }, label: {
+                Image(systemName: "xmark")
+                    .font(Font.system(size: 28, weight: .regular))
+                    .padding()
+            })
+            Spacer()
         }
     }
 }
