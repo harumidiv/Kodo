@@ -12,7 +12,6 @@ struct ImageSliderView: View {
 
     @State private var index: Int = 0
     @State private var offset: CGFloat = 0
-    
 
     var body: some View {
         GeometryReader { geometry in
@@ -20,7 +19,7 @@ struct ImageSliderView: View {
                 let length = min(geometry.size.width, geometry.size.height)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 0) {
-                        ForEach(0..<self.imageNames.count) {
+                        ForEach(0..<imageNames.count) {
                             Image(self.imageNames[$0])
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -57,7 +56,7 @@ struct ImageSliderView: View {
                             .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
                             .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
                     }
-                    .disabled(index == 0)
+                    .opacity(index == 0 ? 0.0 : 1.0)
 
                     Rectangle()
                         .frame(width: length - ConstantValue.buttonWidth * 2)
@@ -73,9 +72,9 @@ struct ImageSliderView: View {
                             .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
                             .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
                     }
-                    .disabled(index == imageNames.count)
+                    .opacity(index == imageNames.count - 1 ? 0.0 : 1.0)
 
-                    Spacer() // ScrollViewがいて横幅がでかいのでSpacerで左寄せにする
+                    Spacer() // 横幅がでかいのでSpacerで左寄せにする
                 }
             }
         }
