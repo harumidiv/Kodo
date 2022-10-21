@@ -14,6 +14,7 @@ struct KodoListView: View {
 
     @State var timer :Timer?
     @State var isTapped: Bool = false
+    @State var isShowDetail: Bool = false
 
     let creatures: [Creature] = [
         .init(name: "人間",
@@ -79,21 +80,28 @@ struct KodoListView: View {
                                 CreatureTextView(isMove: $isMove,
                                                  creature: creature,
                                                  length: length)
+                                .onTapGesture{
+                                    var transaction = Transaction()
+                                    transaction.disablesAnimations = true
+                                    withTransaction(transaction) {
+                                        isShowDetail.toggle()
+                                    }
+                                }
                             } else {
                                 CreatureImageView(creature: creature,
                                                   length: length,
                                                   timer: $timer,
                                                   isTapped: $isTapped,
                                                   isMove: $isMove)
-
                             }
                         }
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color.red, lineWidth: 4)
                         )
-
-
+                        .fullScreenCover(isPresented: $isShowDetail) {
+                            CreatureDetailView(isShowDetail: $isShowDetail)
+                        }
                     }
                     Spacer()
                 }

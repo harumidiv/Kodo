@@ -19,6 +19,8 @@
 		49FCB6CC29014C5A0076B47B /* CreatureTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6CB29014C5A0076B47B /* CreatureTextView.swift */; };
 		49FCB6CE29014D250076B47B /* Creature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6CD29014D250076B47B /* Creature.swift */; };
 		49FCB6D029014F120076B47B /* CreatureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6CF29014F120076B47B /* CreatureImageView.swift */; };
+		49FCB6D229028AEE0076B47B /* CreatureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6D129028AEE0076B47B /* CreatureDetailView.swift */; };
+		49FCB6D429028EDE0076B47B /* ImageSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6D329028EDE0076B47B /* ImageSliderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -64,6 +66,8 @@
 		49FCB6CB29014C5A0076B47B /* CreatureTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureTextView.swift; sourceTree = "<group>"; };
 		49FCB6CD29014D250076B47B /* Creature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creature.swift; sourceTree = "<group>"; };
 		49FCB6CF29014F120076B47B /* CreatureImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureImageView.swift; sourceTree = "<group>"; };
+		49FCB6D129028AEE0076B47B /* CreatureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureDetailView.swift; sourceTree = "<group>"; };
+		49FCB6D329028EDE0076B47B /* ImageSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				49FCB6CD29014D250076B47B /* Creature.swift */,
 				49FCB6CB29014C5A0076B47B /* CreatureTextView.swift */,
 				49FCB6CF29014F120076B47B /* CreatureImageView.swift */,
+				49FCB6D129028AEE0076B47B /* CreatureDetailView.swift */,
+				49FCB6D329028EDE0076B47B /* ImageSliderView.swift */,
 				49FCB6BF2900DC140076B47B /* ParaparaAnimationView.swift */,
 				49FCB6B2290039E10076B47B /* Assets.xcassets */,
 				49FCB6B4290039E10076B47B /* Preview Content */,
@@ -225,7 +231,9 @@
 				49FCB6C5290101890076B47B /* Kernel.ci.metal in Sources */,
 				49FCB6CA290124FC0076B47B /* Task+Addition.swift in Sources */,
 				49FCB6BE29003AFB0076B47B /* BlinkEffect.swift in Sources */,
+				49FCB6D429028EDE0076B47B /* ImageSliderView.swift in Sources */,
 				49FCB6D029014F120076B47B /* CreatureImageView.swift in Sources */,
+				49FCB6D229028AEE0076B47B /* CreatureDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
