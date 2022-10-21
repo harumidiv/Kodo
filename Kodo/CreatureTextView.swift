@@ -8,19 +8,27 @@
 import SwiftUI
 
 struct CreatureTextView: View {
+    @Binding var isMove: Bool
     let creature: Creature
     let length: Double
     var body: some View {
-        Text(creature.name)
-            .foregroundColor(.red)
-            .frame(width: length, height: length)
-            .blinkEffect(interval: creature.heartbeat / 2)
+        if isMove {
+            Text(creature.name)
+                .foregroundColor(.red)
+                .frame(width: length, height: length)
+                .blinkEffect(interval: creature.heartbeat / 2)
+        } else {
+            Text(creature.name)
+                .foregroundColor(.red)
+                .frame(width: length, height: length)
+        }
     }
 }
 
 struct CreatureTextView_Previews: PreviewProvider {
     static var previews: some View {
-        CreatureTextView(creature: Creature.sampleData[0],
+        CreatureTextView(isMove: .constant(true),
+                         creature: Creature.sampleData[0],
                          length: 100)
     }
 }

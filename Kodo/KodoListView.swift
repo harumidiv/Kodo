@@ -76,7 +76,9 @@ struct KodoListView: View {
                     LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], spacing: spacing) {
                         ForEach(creatures) { creature in
                             if isText {
-                                CreatureTextView(creature: creature, length: length)
+                                CreatureTextView(isMove: $isMove,
+                                                 creature: creature,
+                                                 length: length)
                             } else {
                                 CreatureImageView(creature: creature,
                                                   length: length,
