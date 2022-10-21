@@ -10,13 +10,21 @@ import SwiftUI
 @main
 struct KodoApp: App {
     @State private var isText: Bool = false
+    @State private var isMove: Bool = false
 
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                KodoListView(isText: $isText)
+                KodoListView(isText: $isText, isMove: $isMove)
                     .toolbar
                 {
+                    ToolbarItem(placement: .navigationBarLeading){
+                        Button(action: {
+                            isMove.toggle()
+                        }) {
+                            Image(systemName: isMove ? "figure.stand" : "figure.walk")
+                        }
+                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
                             isText.toggle()

@@ -10,6 +10,7 @@ import UIKit
 
 struct KodoListView: View {
     @Binding var isText: Bool
+    @Binding var isMove: Bool
 
     @State var timer :Timer?
     @State var isTapped: Bool = false
@@ -100,6 +101,6 @@ struct KodoListView: View {
 
 struct KodoListView_Previews: PreviewProvider {
     static var previews: some View {
-        KodoListView(isText: .constant(true))
+        KodoListView(isText: .constant(true), isMove: .constant(true))
     }
 }
