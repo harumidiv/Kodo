@@ -9,12 +9,8 @@ import SwiftUI
 import UIKit
 
 struct KodoListView: View {
-    struct Creature: Identifiable {
-        let id: UUID = UUID()
-        let name: String
-        let images: [UIImage]
-        let heartbeat: Double
-    }
+    @Binding var isText: Bool
+    @Binding var isMove: Bool
 
     @State var timer :Timer?
     @State var isTapped: Bool = false
@@ -72,36 +68,32 @@ struct KodoListView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            let length = min(geometry.size.width, geometry.size.height) / 3
+            let spacing: CGFloat = 10
+            let length = min(geometry.size.width, geometry.size.height) / 3 - spacing
             ZStack {
                 Color.black.ignoresSafeArea()
                 VStack {
-                    LazyVGrid(columns: [GridItem(),GridItem(), GridItem()]) {
+                    LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], spacing: spacing) {
                         ForEach(creatures) { creature in
-                            ParaparaAnimationView(duration: creature.heartbeat, images: creature.images)
-                                .frame(width: length, height: length)
-                                .onTapGesture{
-                                    if isTapped {
-                                        isTapped = false
-                                        timer?.invalidate()
-                                        timer = nil
-                                    } else {
-                                        isTapped = true
-                                        //人間
-                                        timer = Timer.scheduledTimer(withTimeInterval: 0.85, repeats: true) { _ in
-                                            Task {
-                                                let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
-                                                impactHeavy.prepare()
-                                                impactHeavy.impactOccurred()
-                                                try await Task.sleep(nanoseconds: 400_000_000)
-                                                let impactSoft = UIImpactFeedbackGenerator(style: .soft)
-                                                impactSoft.prepare()
-                                                impactSoft.impactOccurred()
-                                            }
-                                        }
-                                    }
-                                }
+                            if isText {
+                                CreatureTextView(isMove: $isMove,
+                                                 creature: creature,
+                                                 length: length)
+                            } else {
+                                CreatureImageView(creature: creature,
+                                                  length: length,
+                                                  timer: $timer,
+                                                  isTapped: $isTapped,
+                                                  isMove: $isMove)
+
+                            }
                         }
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.red, lineWidth: 4)
+                        )
+
+
                     }
                     Spacer()
                 }
@@ -112,36 +104,6 @@ struct KodoListView: View {
 
 struct KodoListView_Previews: PreviewProvider {
     static var previews: some View {
-        KodoListView()
+        KodoListView(isText: .constant(true), isMove: .constant(true))
     }
 }
-
-
-
-
-//            Button(action: {
-//                isTapped = true
-//                //人間
-//                timer = Timer.scheduledTimer(withTimeInterval: 0.85, repeats: true) { _ in
-//                    Task {
-//                        let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
-//                        impactHeavy.prepare()
-//                        impactHeavy.impactOccurred()
-//                        try await Task.sleep(nanoseconds: 400_000_000)
-//                        let impactSoft = UIImpactFeedbackGenerator(style: .soft)
-//                        impactSoft.prepare()
-//                        impactSoft.impactOccurred()
-//                    }
-//                }
-//
-//            }, label: {
-//                if isTapped {
-//                    Text("人間の心臓")
-//                        .padding()
-//                        .blinkEffect(interval: 0.425)
-//                } else {
-//                    Text("人間の心臓")
-//                        .padding()
-//
-//                }
-//            })

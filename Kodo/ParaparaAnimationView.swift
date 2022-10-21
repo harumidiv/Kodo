@@ -25,6 +25,4 @@ struct ParaparaAnimationView: UIViewRepresentable {
     func updateUIView(_ uiView: UIImageView, context: Context) {
         // NOP
     }
-
-
 }
