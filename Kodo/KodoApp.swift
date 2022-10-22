@@ -23,6 +23,7 @@ struct KodoApp: App {
                             isMove.toggle()
                         }) {
                             Image(systemName: isMove ? "figure.stand" : "figure.walk")
+                                .font(Font.system(size: 25, weight: .regular))
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {

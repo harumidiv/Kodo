@@ -12,8 +12,10 @@ struct KodoListView: View {
     @Binding var isText: Bool
     @Binding var isMove: Bool
 
-    @State var timer :Timer?
-    @State var isTapped: Bool = false
+    @State private var timer :Timer?
+    @State private var isTapped: Bool = false
+    @State private var isShowDetail: Bool = false
+    @State private var selectedIndex: Int = 0
 
     let creatures: [Creature] = [
         .init(name: "人間",
@@ -74,26 +76,36 @@ struct KodoListView: View {
                 Color.black.ignoresSafeArea()
                 VStack {
                     LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], spacing: spacing) {
-                        ForEach(creatures) { creature in
+                        ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
                             if isText {
                                 CreatureTextView(isMove: $isMove,
                                                  creature: creature,
                                                  length: length)
+                                .onTapGesture{
+                                    var transaction = Transaction()
+                                    transaction.disablesAnimations = true
+                                    withTransaction(transaction) {
+                                        self.selectedIndex = index
+                                        isShowDetail.toggle()
+                                    }
+                                }
                             } else {
                                 CreatureImageView(creature: creature,
                                                   length: length,
                                                   timer: $timer,
                                                   isTapped: $isTapped,
                                                   isMove: $isMove)
-
                             }
                         }
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color.red, lineWidth: 4)
                         )
-
-
+                        .fullScreenCover(isPresented: $isShowDetail) {
+                            CreatureDetailView(creatures: creatures,
+                                               isShowDetail: $isShowDetail,
+                                               index: $selectedIndex)
+                        }
                     }
                     Spacer()
                 }
