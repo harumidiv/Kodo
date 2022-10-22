@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Creature: Identifiable {
+struct Creature: Identifiable, Hashable {
     let id: UUID = UUID()
     let name: String
     let images: [UIImage]

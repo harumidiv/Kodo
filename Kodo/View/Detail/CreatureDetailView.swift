@@ -10,8 +10,7 @@ import SwiftUI
 struct CreatureDetailView: View {
     let creatures: [Creature]
     @Binding var isShowDetail: Bool
-
-    @State private var offset: CGFloat = 0
+    @Binding var index: Int
 
     var body: some View {
         GeometryReader { geometry in
@@ -20,12 +19,13 @@ struct CreatureDetailView: View {
                 let length = min(geometry.size.width, geometry.size.height)
                 VStack {
                     closeButton
-                    ImageSliderView(creatures: creatures, offset: $offset)
+                    ImageSliderView(creatures: creatures, index: $index)
                         .frame(width: length, height: length)
                         .background(.red) // TODO 検証ようなので不要になったら削除
                 }
             }
         }
+
     }
 
     private var closeButton: some View {
@@ -45,6 +45,7 @@ struct CreatureDetailView: View {
 struct CreatureDetailView_Previews: PreviewProvider {
     static var previews: some View {
         CreatureDetailView(creatures: Creature.sampleData,
-                           isShowDetail: .constant(true))
+                           isShowDetail: .constant(true),
+                           index: .constant(0))
     }
 }

@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ImageSliderView: View {
     let creatures: [Creature]
-    
-    @State private var index: Int = 0
-    @Binding var offset: CGFloat
+    @Binding var index: Int
+
+    @State private var offset: CGFloat = 0
     
     var body: some View {
         GeometryReader { geometry in
@@ -78,6 +78,9 @@ struct ImageSliderView: View {
                 }
             }
         }
+        .onAppear{
+
+        }
     }
     
     private struct ConstantValue {
@@ -89,6 +92,6 @@ struct ImageSliderView: View {
 struct ImageSliderView_Previews: PreviewProvider {
     static var previews: some View {
         ImageSliderView(creatures: Creature.sampleData,
-                        offset: .constant(0))
+                        index: .constant(0))
     }
 }

@@ -12,9 +12,10 @@ struct KodoListView: View {
     @Binding var isText: Bool
     @Binding var isMove: Bool
 
-    @State var timer :Timer?
-    @State var isTapped: Bool = false
-    @State var isShowDetail: Bool = false
+    @State private var timer :Timer?
+    @State private var isTapped: Bool = false
+    @State private var isShowDetail: Bool = false
+    @State private var selectedIndex: Int = 0
 
     let creatures: [Creature] = [
         .init(name: "人間",
@@ -75,7 +76,7 @@ struct KodoListView: View {
                 Color.black.ignoresSafeArea()
                 VStack {
                     LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], spacing: spacing) {
-                        ForEach(creatures) { creature in
+                        ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
                             if isText {
                                 CreatureTextView(isMove: $isMove,
                                                  creature: creature,
@@ -84,6 +85,7 @@ struct KodoListView: View {
                                     var transaction = Transaction()
                                     transaction.disablesAnimations = true
                                     withTransaction(transaction) {
+                                        self.selectedIndex = index
                                         isShowDetail.toggle()
                                     }
                                 }
@@ -101,7 +103,8 @@ struct KodoListView: View {
                         )
                         .fullScreenCover(isPresented: $isShowDetail) {
                             CreatureDetailView(creatures: creatures,
-                                               isShowDetail: $isShowDetail)
+                                               isShowDetail: $isShowDetail,
+                                               index: $selectedIndex)
                         }
                     }
                     Spacer()
