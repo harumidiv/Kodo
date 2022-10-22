@@ -100,7 +100,8 @@ struct KodoListView: View {
                                 .stroke(Color.red, lineWidth: 4)
                         )
                         .fullScreenCover(isPresented: $isShowDetail) {
-                            CreatureDetailView(isShowDetail: $isShowDetail)
+                            CreatureDetailView(creatures: creatures,
+                                               isShowDetail: $isShowDetail)
                         }
                     }
                     Spacer()

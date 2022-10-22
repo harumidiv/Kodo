@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ImageSliderView: View {
-    let imageNames: [String] = ["human_1", "human_2", "human_3"]
+    let creatures: [Creature]
     
     @State private var index: Int = 0
     @Binding var offset: CGFloat
@@ -19,8 +19,8 @@ struct ImageSliderView: View {
                 let length = min(geometry.size.width, geometry.size.height)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 0) {
-                        ForEach(0..<imageNames.count) {
-                            Image(self.imageNames[$0])
+                        ForEach(creatures) { creature in
+                            Image(uiImage: creature.images.last!)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: length, height: length)
@@ -35,7 +35,7 @@ struct ImageSliderView: View {
                     .onEnded{ value in
                         let scrollThreshold = length / 2
                         if value.predictedEndTranslation.width < -scrollThreshold {
-                            self.index = min(self.index + 1, self.imageNames.endIndex - 1)
+                            self.index = min(self.index + 1, creatures.endIndex - 1)
                         } else if value.predictedEndTranslation.width > scrollThreshold {
                             self.index = max(self.index - 1, 0)
                         }
@@ -72,7 +72,7 @@ struct ImageSliderView: View {
                             .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
                             .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
                     }
-                    .opacity(index == imageNames.count - 1 ? 0.0 : 1.0)
+                    .opacity(index == creatures.count - 1 ? 0.0 : 1.0)
                     
                     Spacer() // 横幅がでかいのでSpacerで左寄せにする
                 }
@@ -88,6 +88,7 @@ struct ImageSliderView: View {
 
 struct ImageSliderView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageSliderView(offset: .constant(0))
+        ImageSliderView(creatures: Creature.sampleData,
+                        offset: .constant(0))
     }
 }
