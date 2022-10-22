@@ -104,13 +104,8 @@
 				49FCB6C3290101740076B47B /* Metal */,
 				49FCB6BC29003AE80076B47B /* Modifier */,
 				49FCB6AE290039DF0076B47B /* KodoApp.swift */,
-				49FCB6B0290039DF0076B47B /* KodoListView.swift */,
 				49FCB6CD29014D250076B47B /* Creature.swift */,
-				49FCB6CB29014C5A0076B47B /* CreatureTextView.swift */,
-				49FCB6CF29014F120076B47B /* CreatureImageView.swift */,
-				49FCB6D129028AEE0076B47B /* CreatureDetailView.swift */,
-				49FCB6D329028EDE0076B47B /* ImageSliderView.swift */,
-				49FCB6BF2900DC140076B47B /* ParaparaAnimationView.swift */,
+				49FCB6D62903942E0076B47B /* View */,
 				49FCB6B2290039E10076B47B /* Assets.xcassets */,
 				49FCB6B4290039E10076B47B /* Preview Content */,
 			);
@@ -148,6 +143,35 @@
 				49FCB6C9290124FC0076B47B /* Task+Addition.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		49FCB6D52903941A0076B47B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				49FCB6D129028AEE0076B47B /* CreatureDetailView.swift */,
+				49FCB6D329028EDE0076B47B /* ImageSliderView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		49FCB6D62903942E0076B47B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49FCB6D72903943E0076B47B /* List */,
+				49FCB6D52903941A0076B47B /* Detail */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49FCB6D72903943E0076B47B /* List */ = {
+			isa = PBXGroup;
+			children = (
+				49FCB6B0290039DF0076B47B /* KodoListView.swift */,
+				49FCB6CB29014C5A0076B47B /* CreatureTextView.swift */,
+				49FCB6CF29014F120076B47B /* CreatureImageView.swift */,
+				49FCB6BF2900DC140076B47B /* ParaparaAnimationView.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
