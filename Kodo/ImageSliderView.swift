@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ImageSliderView: View {
-    var imageNames: [String] = ["human_1", "human_2", "human_3"]
-
+    let imageNames: [String] = ["human_1", "human_2", "human_3"]
+    
     @State private var index: Int = 0
-    @State private var offset: CGFloat = 0
-
+    @Binding var offset: CGFloat
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -39,7 +39,7 @@ struct ImageSliderView: View {
                         } else if value.predictedEndTranslation.width > scrollThreshold {
                             self.index = max(self.index - 1, 0)
                         }
-
+                        
                         withAnimation {
                             self.offset = -length * CGFloat(self.index)
                         }
@@ -57,11 +57,11 @@ struct ImageSliderView: View {
                             .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
                     }
                     .opacity(index == 0 ? 0.0 : 1.0)
-
+                    
                     Rectangle()
                         .frame(width: length - ConstantValue.buttonWidth * 2)
                         .foregroundColor(.clear)
-
+                    
                     Button(action: {
                         withAnimation{
                             index += 1
@@ -73,13 +73,13 @@ struct ImageSliderView: View {
                             .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
                     }
                     .opacity(index == imageNames.count - 1 ? 0.0 : 1.0)
-
+                    
                     Spacer() // 横幅がでかいのでSpacerで左寄せにする
                 }
             }
         }
     }
-
+    
     private struct ConstantValue {
         static let buttonWidth: CGFloat = 32
         static let fontSize: CGFloat = 28
@@ -88,6 +88,6 @@ struct ImageSliderView: View {
 
 struct ImageSliderView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageSliderView()
+        ImageSliderView(offset: .constant(0))
     }
 }

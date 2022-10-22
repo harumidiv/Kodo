@@ -10,6 +10,8 @@ import SwiftUI
 struct CreatureDetailView: View {
     @Binding var isShowDetail: Bool
 
+    @State private var offset: CGFloat = 0
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -17,7 +19,7 @@ struct CreatureDetailView: View {
                 let length = min(geometry.size.width, geometry.size.height)
                 VStack {
                     closeButton
-                    ImageSliderView()
+                    ImageSliderView(offset: $offset)
                         .frame(width: length, height: length)
                         .background(.red) // TODO 検証ようなので不要になったら削除
                 }
