@@ -12,6 +12,7 @@ struct ImageSliderView: View {
     @Binding var index: Int
 
     @State private var offset: CGFloat = 0
+    @Binding var timer: Timer?
     
     var body: some View {
         GeometryReader { geometry in
@@ -78,8 +79,27 @@ struct ImageSliderView: View {
                 }
             }
         }
+        .onChange(of: index) { index in
+            setupTimer(index: index)
+        }
         .onAppear{
+            setupTimer(index: index)
+        }
+    }
 
+    private func setupTimer(index: Int) {
+        timer?.invalidate()
+        let heartbeat = creatures[index].heartbeat
+        timer = Timer.scheduledTimer(withTimeInterval: heartbeat, repeats: true) { _ in
+            Task {
+                let impactHeavy = await UIImpactFeedbackGenerator(style: .heavy)
+                await impactHeavy.prepare()
+                await impactHeavy.impactOccurred()
+                try await Task.sleep(seconds: heartbeat / 2)
+                let impactSoft = await UIImpactFeedbackGenerator(style: .soft)
+                await impactSoft.prepare()
+                await impactSoft.impactOccurred()
+            }
         }
     }
     
@@ -92,6 +112,7 @@ struct ImageSliderView: View {
 struct ImageSliderView_Previews: PreviewProvider {
     static var previews: some View {
         ImageSliderView(creatures: Creature.sampleData,
-                        index: .constant(0))
+                        index: .constant(0),
+                        timer: .constant(nil))
     }
 }

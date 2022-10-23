@@ -12,8 +12,6 @@ struct KodoListView: View {
     @Binding var isText: Bool
     @Binding var isMove: Bool
 
-    @State private var timer :Timer?
-    @State private var isTapped: Bool = false
     @State private var isShowDetail: Bool = false
     @State private var selectedIndex: Int = 0
 
@@ -85,8 +83,6 @@ struct KodoListView: View {
                                 } else {
                                     CreatureImageView(creature: creature,
                                                       length: length,
-                                                      timer: $timer,
-                                                      isTapped: $isTapped,
                                                       isMove: $isMove)
                                 }
                             }
