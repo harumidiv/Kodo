@@ -68,7 +68,7 @@ struct ImageSliderView: View {
 
     private func scrollSpacer(length: CGFloat) -> some View {
         Rectangle()
-            .frame(width: length - ConstantValue.buttonWidth * 2)
+            .frame(width: length - ConstantValue.buttonWidth * 2 - ConstantValue.buttonPadding * 4)
             .foregroundColor(.clear)
     }
 
@@ -82,6 +82,7 @@ struct ImageSliderView: View {
             Image(systemName:"chevron.left")
                 .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
                 .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
+                .padding(ConstantValue.buttonPadding)
         }
         .opacity(index == 0 ? 0.0 : 1.0)
     }
@@ -96,6 +97,7 @@ struct ImageSliderView: View {
             Image(systemName:"chevron.right")
                 .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
                 .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
+                .padding(ConstantValue.buttonPadding)
         }
         .opacity(index == creatures.count - 1 ? 0.0 : 1.0)
     }
@@ -120,6 +122,7 @@ struct ImageSliderView: View {
     
     private struct ConstantValue {
         static let buttonWidth: CGFloat = 32
+        static let buttonPadding: CGFloat = 16
         static let fontSize: CGFloat = 28
     }
 }

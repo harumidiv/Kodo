@@ -21,12 +21,17 @@ struct CreatureDetailView: View {
                 let length = min(geometry.size.width, geometry.size.height)
                 VStack {
                     closeButton
+                    Spacer()
+                }
+                VStack {
                     ImageSliderView(width: length,
                                     creatures: creatures,
                                     index: $index,
                                     timer: $timer)
-                    .frame(width: length, height: length)
+                    .frame(width: length, height: length, alignment: .center)
                     .background(.red) // TODO 検証ようなので不要になったら削除
+//                    Text("aaa")
+//                        .foregroundColor(.white)
                 }
             }
         }
