@@ -12,15 +12,21 @@ struct CreatureTextView: View {
     let creature: Creature
     let length: Double
     var body: some View {
-        if isMove {
-            Text(creature.name)
-                .foregroundColor(.red)
+        ZStack {
+            Rectangle()
                 .frame(width: length, height: length)
-                .blinkEffect(interval: creature.heartbeat / 2)
-        } else {
-            Text(creature.name)
-                .foregroundColor(.red)
-                .frame(width: length, height: length)
+                .foregroundColor(.clear)
+                .contentShape(Rectangle())
+            if isMove {
+                Text(creature.name)
+                    .foregroundColor(.red)
+                    .frame(width: length, height: length)
+                    .blinkEffect(interval: creature.heartbeat / 2)
+            } else {
+                Text(creature.name)
+                    .foregroundColor(.red)
+                    .frame(width: length, height: length)
+            }
         }
     }
 }

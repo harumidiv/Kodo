@@ -77,24 +77,26 @@ struct KodoListView: View {
                 VStack {
                     LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], spacing: spacing) {
                         ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
-                            if isText {
-                                CreatureTextView(isMove: $isMove,
-                                                 creature: creature,
-                                                 length: length)
-                                .onTapGesture{
-                                    var transaction = Transaction()
-                                    transaction.disablesAnimations = true
-                                    withTransaction(transaction) {
-                                        self.selectedIndex = index
-                                        isShowDetail.toggle()
-                                    }
+                            Group {
+                                if isText {
+                                    CreatureTextView(isMove: $isMove,
+                                                     creature: creature,
+                                                     length: length)
+                                } else {
+                                    CreatureImageView(creature: creature,
+                                                      length: length,
+                                                      timer: $timer,
+                                                      isTapped: $isTapped,
+                                                      isMove: $isMove)
                                 }
-                            } else {
-                                CreatureImageView(creature: creature,
-                                                  length: length,
-                                                  timer: $timer,
-                                                  isTapped: $isTapped,
-                                                  isMove: $isMove)
+                            }
+                            .onTapGesture{
+                                var transaction = Transaction()
+                                transaction.disablesAnimations = true
+                                withTransaction(transaction) {
+                                    self.selectedIndex = index
+                                    isShowDetail.toggle()
+                                }
                             }
                         }
                         .overlay(
