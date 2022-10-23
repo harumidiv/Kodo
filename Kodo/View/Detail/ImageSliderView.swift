@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ImageSliderView: View {
+    let width: CGFloat
     let creatures: [Creature]
     @Binding var index: Int
+    @Binding var timer: Timer?
 
     @State private var offset: CGFloat = 0
-    @Binding var timer: Timer?
     
     var body: some View {
         GeometryReader { geometry in
@@ -23,7 +24,7 @@ struct ImageSliderView: View {
                         ForEach(creatures) { creature in
                             ParaparaAnimationView(duration: creature.heartbeat,
                                                   images: creature.images)
-                                .frame(width: length, height: length)
+                            .frame(width: length, height: length)
                         }
                     }
                 }
@@ -58,6 +59,7 @@ struct ImageSliderView: View {
             setupTimer(index: index)
         }
         .onAppear{
+            offset = -width * CGFloat(self.index)
             setupTimer(index: index)
         }
     }
@@ -124,7 +126,8 @@ struct ImageSliderView: View {
 
 struct ImageSliderView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageSliderView(creatures: Creature.sampleData,
+        ImageSliderView(width: 375,
+                        creatures: Creature.sampleData,
                         index: .constant(0),
                         timer: .constant(nil))
     }

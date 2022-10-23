@@ -21,7 +21,8 @@ struct CreatureDetailView: View {
                 let length = min(geometry.size.width, geometry.size.height)
                 VStack {
                     closeButton
-                    ImageSliderView(creatures: creatures,
+                    ImageSliderView(width: length,
+                                    creatures: creatures,
                                     index: $index,
                                     timer: $timer)
                     .frame(width: length, height: length)
@@ -29,11 +30,6 @@ struct CreatureDetailView: View {
                 }
             }
         }
-        .onChange(of: index) { index in
-            // TODO 切り替わった時にタイマーを止めて表示されている動物の鼓動に変更する
-            print("index: \(index)")
-        }
-
     }
 
     private var closeButton: some View {
