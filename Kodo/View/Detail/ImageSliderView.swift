@@ -39,41 +39,17 @@ struct ImageSliderView: View {
                         } else if value.predictedEndTranslation.width > scrollThreshold {
                             self.index = max(self.index - 1, 0)
                         }
-                        
+
+                        // 閾値に到達しなかった場合
                         withAnimation {
                             self.offset = -length * CGFloat(self.index)
                         }
                     }
                 )
                 HStack(spacing: 0) {
-                    Button(action: {
-                        withAnimation{
-                            index -= 1
-                            self.offset = -length * CGFloat(self.index)
-                        }
-                    }) {
-                        Image(systemName:"chevron.left")
-                            .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
-                            .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
-                    }
-                    .opacity(index == 0 ? 0.0 : 1.0)
-                    
-                    Rectangle()
-                        .frame(width: length - ConstantValue.buttonWidth * 2)
-                        .foregroundColor(.clear)
-                    
-                    Button(action: {
-                        withAnimation{
-                            index += 1
-                            self.offset = -length * CGFloat(self.index)
-                        }
-                    }) {
-                        Image(systemName:"chevron.right")
-                            .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
-                            .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
-                    }
-                    .opacity(index == creatures.count - 1 ? 0.0 : 1.0)
-                    
+                    leftButton(length: length)
+                    scrollSpacer(length: length)
+                    rightButton(length: length)
                     Spacer() // 横幅がでかいのでSpacerで左寄せにする
                 }
             }
@@ -85,6 +61,44 @@ struct ImageSliderView: View {
             setupTimer(index: index)
         }
     }
+
+    // MARK: - View Component
+
+    private func scrollSpacer(length: CGFloat) -> some View {
+        Rectangle()
+            .frame(width: length - ConstantValue.buttonWidth * 2)
+            .foregroundColor(.clear)
+    }
+
+    private func leftButton(length: CGFloat) -> some View {
+        Button(action: {
+            withAnimation{
+                index -= 1
+                self.offset = -length * CGFloat(self.index)
+            }
+        }) {
+            Image(systemName:"chevron.left")
+                .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
+                .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
+        }
+        .opacity(index == 0 ? 0.0 : 1.0)
+    }
+
+    private func rightButton(length: CGFloat) -> some View {
+        Button(action: {
+            withAnimation{
+                index += 1
+                self.offset = -length * CGFloat(self.index)
+            }
+        }) {
+            Image(systemName:"chevron.right")
+                .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
+                .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
+        }
+        .opacity(index == creatures.count - 1 ? 0.0 : 1.0)
+    }
+
+    // MARK: - Private Method
 
     private func setupTimer(index: Int) {
         timer?.invalidate()
