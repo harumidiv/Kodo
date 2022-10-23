@@ -21,12 +21,18 @@ struct CreatureDetailView: View {
                 let length = min(geometry.size.width, geometry.size.height)
                 VStack {
                     closeButton
+                    Spacer()
+                }
+                VStack {
                     ImageSliderView(width: length,
                                     creatures: creatures,
                                     index: $index,
                                     timer: $timer)
-                    .frame(width: length, height: length)
-                    .background(.red) // TODO 検証ようなので不要になったら削除
+                    .position(x: length / 2, y: length / 2)
+                    .frame(width: length, height: length, alignment: .center)
+                    ProgressView(value: Float(index),total: Float(creatures.count - 1))
+                        .progressViewStyle(.linear)
+                        .padding()
                 }
             }
         }
