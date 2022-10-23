@@ -11,9 +11,9 @@ struct CreatureDetailView: View {
     let creatures: [Creature]
     @Binding var isShowDetail: Bool
     @Binding var index: Int
-    
+
     @State private var timer: Timer?
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -33,9 +33,9 @@ struct CreatureDetailView: View {
             // TODO 切り替わった時にタイマーを止めて表示されている動物の鼓動に変更する
             print("index: \(index)")
         }
-        
+
     }
-    
+
     private var closeButton: some View {
         HStack {
             Button(action: {

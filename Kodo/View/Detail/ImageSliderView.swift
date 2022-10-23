@@ -21,9 +21,8 @@ struct ImageSliderView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 0) {
                         ForEach(creatures) { creature in
-                            Image(uiImage: creature.images.last!)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
+                            ParaparaAnimationView(duration: creature.heartbeat,
+                                                  images: creature.images)
                                 .frame(width: length, height: length)
                         }
                     }
