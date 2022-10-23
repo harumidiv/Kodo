@@ -23,15 +23,15 @@ struct CreatureDetailView: View {
                     closeButton
                     Spacer()
                 }
-                VStack {
+                VStack(spacing: 0) {
                     ImageSliderView(width: length,
                                     creatures: creatures,
                                     index: $index,
                                     timer: $timer)
+                    .position(x: length / 2, y: length / 2)
                     .frame(width: length, height: length, alignment: .center)
-                    .background(.red) // TODO 検証ようなので不要になったら削除
-//                    Text("aaa")
-//                        .foregroundColor(.white)
+                    Text("aaa")
+                        .foregroundColor(.white)
                 }
             }
         }
