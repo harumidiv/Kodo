@@ -12,6 +12,8 @@ struct CreatureDetailView: View {
     @Binding var isShowDetail: Bool
     @Binding var index: Int
 
+    @State private var timer: Timer?
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -19,18 +21,22 @@ struct CreatureDetailView: View {
                 let length = min(geometry.size.width, geometry.size.height)
                 VStack {
                     closeButton
-                    ImageSliderView(creatures: creatures, index: $index)
-                        .frame(width: length, height: length)
-                        .background(.red) // TODO 検証ようなので不要になったら削除
+                    ImageSliderView(width: length,
+                                    creatures: creatures,
+                                    index: $index,
+                                    timer: $timer)
+                    .frame(width: length, height: length)
+                    .background(.red) // TODO 検証ようなので不要になったら削除
                 }
             }
         }
-
     }
 
     private var closeButton: some View {
         HStack {
             Button(action: {
+                timer?.invalidate()
+                timer = nil
                 isShowDetail.toggle()
             }, label: {
                 Image(systemName: "xmark")
