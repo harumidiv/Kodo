@@ -17,63 +17,51 @@ struct KodoListView: View {
 
     let creatures: [Creature] = [
         .init(name: "人間",
-              images: [UIImage(named: "human_1")!,
-                       UIImage(named: "human_2")!,
-                       UIImage(named: "human_3")!,
-                       UIImage(named: "human_4")!],
+              images: [
+                UIImage(named: "human_1")!,
+                UIImage(named: "human_2")!,
+                UIImage(named: "human_3")!,
+                UIImage(named: "human_4")!
+              ],
               heartbeat: 0.85),
-        .init(name: "人間",
-              images: [UIImage(named: "human_1")!,
-                       UIImage(named: "human_2")!,
-                       UIImage(named: "human_3")!,
-                       UIImage(named: "human_4")!],
-              heartbeat: 0.85),
-        .init(name: "人間",
-              images: [UIImage(named: "human_1")!,
-                       UIImage(named: "human_2")!,
-                       UIImage(named: "human_3")!,
-                       UIImage(named: "human_4")!],
-              heartbeat: 0.85),
-        .init(name: "人間",
-              images: [UIImage(named: "human_1")!,
-                       UIImage(named: "human_2")!,
-                       UIImage(named: "human_3")!,
-                       UIImage(named: "human_4")!],
-              heartbeat: 0.85),
-        .init(name: "人間",
-              images: [UIImage(named: "human_1")!,
-                       UIImage(named: "human_2")!,
-                       UIImage(named: "human_3")!,
-                       UIImage(named: "human_4")!],
-              heartbeat: 0.85),
-        .init(name: "人間",
-              images: [UIImage(named: "human_1")!,
-                       UIImage(named: "human_2")!,
-                       UIImage(named: "human_3")!,
-                       UIImage(named: "human_4")!],
-              heartbeat: 0.85),
-        .init(name: "人間",
-              images: [UIImage(named: "human_1")!,
-                       UIImage(named: "human_2")!,
-                       UIImage(named: "human_3")!,
-                       UIImage(named: "human_4")!],
-              heartbeat: 0.85),
-        .init(name: "人間",
-              images: [UIImage(named: "human_1")!,
-                       UIImage(named: "human_2")!,
-                       UIImage(named: "human_3")!,
-                       UIImage(named: "human_4")!],
-              heartbeat: 0.85)
+        .init(name: "すずめ",
+              images: [
+                UIImage(named: "suzume_1")!,
+                UIImage(named: "suzume_2")!,
+                UIImage(named: "suzume_3")!,
+                UIImage(named: "suzume_4")!,
+                UIImage(named: "suzume_5")!,
+                UIImage(named: "suzume_6")!,
+                UIImage(named: "suzume_7")!,
+                UIImage(named: "suzume_8")!,
+                UIImage(named: "suzume_9")!,
+                UIImage(named: "suzume_10")!
+              ],
+              heartbeat: 0.075),
+        .init(name: "ぞう",
+              images: [
+                UIImage(named: "elephant_1")!,
+                UIImage(named: "elephant_2")!,
+                UIImage(named: "elephant_3")!,
+                UIImage(named: "elephant_4")!,
+                UIImage(named: "elephant_5")!,
+                UIImage(named: "elephant_6")!,
+                UIImage(named: "elephant_7")!,
+                UIImage(named: "elephant_8")!,
+                UIImage(named: "elephant_9")!,
+                UIImage(named: "elephant_10")!
+              ],
+              heartbeat: 3)
     ]
 
     var body: some View {
         GeometryReader { geometry in
             let spacing: CGFloat = 10
-            let length = min(geometry.size.width, geometry.size.height) / 3 - spacing
+            let length = min(geometry.size.width, geometry.size.height) / 2 - spacing
             ZStack {
                 Color.black.ignoresSafeArea()
                 VStack {
-                    LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], spacing: spacing) {
+                    LazyVGrid(columns: [GridItem(), GridItem()], spacing: spacing) {
                         ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
                             Group {
                                 if isText {
@@ -95,10 +83,6 @@ struct KodoListView: View {
                                 }
                             }
                         }
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.red, lineWidth: 4)
-                        )
                         .fullScreenCover(isPresented: $isShowDetail) {
                             CreatureDetailView(creatures: creatures,
                                                isShowDetail: $isShowDetail,
