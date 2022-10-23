@@ -23,15 +23,16 @@ struct CreatureDetailView: View {
                     closeButton
                     Spacer()
                 }
-                VStack(spacing: 0) {
+                VStack {
                     ImageSliderView(width: length,
                                     creatures: creatures,
                                     index: $index,
                                     timer: $timer)
                     .position(x: length / 2, y: length / 2)
                     .frame(width: length, height: length, alignment: .center)
-                    Text("aaa")
-                        .foregroundColor(.white)
+                    ProgressView(value: Float(index),total: Float(creatures.count - 1))
+                        .progressViewStyle(.linear)
+                        .padding()
                 }
             }
         }
