@@ -20,10 +20,11 @@ struct BlinkEffect: ViewModifier {
     func body(content: Content) -> some View {
         content
             .opacity(self.isOn ? self.opacityRange.lowerBound : self.opacityRange.upperBound)
-            .animation(Animation.linear(duration: self.interval).repeatForever())
+            .animation(.linear(duration: self.interval).repeatForever(), value: isOn)
             .onAppear(perform: {
                 self.isOn = true
             })
+
     }
 }
 
