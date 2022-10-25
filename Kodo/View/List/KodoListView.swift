@@ -21,7 +21,9 @@ struct KodoListView: View {
                 UIImage(named: "human_1")!,
                 UIImage(named: "human_2")!,
                 UIImage(named: "human_3")!,
-                UIImage(named: "human_4")!
+                UIImage(named: "human_4")!,
+                UIImage(named: "human_3")!,
+                UIImage(named: "human_2")!
               ],
               heartbeat: 0.85),
         .init(name: "すずめ",
@@ -49,7 +51,10 @@ struct KodoListView: View {
                 UIImage(named: "elephant_7")!,
                 UIImage(named: "elephant_8")!,
                 UIImage(named: "elephant_9")!,
-                UIImage(named: "elephant_10")!
+                UIImage(named: "elephant_10")!,
+                UIImage(named: "elephant_11")!,
+                UIImage(named: "elephant_12")!,
+                UIImage(named: "elephant_13")!
               ],
               heartbeat: 3)
     ]
