@@ -125,36 +125,38 @@ struct KodoListView: View {
             let length = min(geometry.size.width, geometry.size.height) / 2 - spacing
             ZStack {
                 Color.black.ignoresSafeArea()
-                VStack {
-                    LazyVGrid(columns: [GridItem(), GridItem()], spacing: spacing) {
-                        ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
-                            Group {
-                                if isText {
-                                    CreatureTextView(isMove: $isMove,
-                                                     creature: creature,
-                                                     length: length)
-                                } else {
-                                    CreatureImageView(creature: creature,
-                                                      length: length,
-                                                      isMove: $isMove)
+                ScrollView {
+                    VStack {
+                        LazyVGrid(columns: [GridItem(), GridItem()], spacing: spacing) {
+                            ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
+                                Group {
+                                    if isText {
+                                        CreatureTextView(isMove: $isMove,
+                                                         creature: creature,
+                                                         length: length)
+                                    } else {
+                                        CreatureImageView(creature: creature,
+                                                          length: length,
+                                                          isMove: $isMove)
+                                    }
+                                }
+                                .onTapGesture{
+                                    var transaction = Transaction()
+                                    transaction.disablesAnimations = true
+                                    withTransaction(transaction) {
+                                        self.selectedIndex = index
+                                        isShowDetail.toggle()
+                                    }
                                 }
                             }
-                            .onTapGesture{
-                                var transaction = Transaction()
-                                transaction.disablesAnimations = true
-                                withTransaction(transaction) {
-                                    self.selectedIndex = index
-                                    isShowDetail.toggle()
-                                }
+                            .fullScreenCover(isPresented: $isShowDetail) {
+                                CreatureDetailView(creatures: creatures,
+                                                   isShowDetail: $isShowDetail,
+                                                   index: $selectedIndex)
                             }
                         }
-                        .fullScreenCover(isPresented: $isShowDetail) {
-                            CreatureDetailView(creatures: creatures,
-                                               isShowDetail: $isShowDetail,
-                                               index: $selectedIndex)
-                        }
+                        Spacer()
                     }
-                    Spacer()
                 }
             }
         }
