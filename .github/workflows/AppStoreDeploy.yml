@@ -1,0 +1,65 @@
+name: Upload to Apple Store
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  main:
+    runs-on: macos-12
+    # プルリクエストがマージされた場合、およびプルリクエスト元のブランチ名に"deploy/"の文字列がふくまれていること
+    if: github.event.pull_request.merged == true && contains(github.head_ref, 'deploy/')
+    env:
+      KEYCHAIN: '/Library/Keychains/System.keychain'
+      ASC_ISSUER_ID: ec37686f-a678-45ed-a4c7-b9c3b9ce4278
+      ASC_KEY_ID: S9B4ZL66GA
+    steps:
+      - name: Setup | Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup | Xcode 14.0.1
+        run: sudo xcode-select -s '/Applications/Xcode_14.0.1.app/Contents/Developer'
+
+      - name: Setup | App Store Connect API
+        id: asc
+        uses: yuki0n0/action-appstoreconnect-token@v1.0
+        with:
+          key id: ${{ env.ASC_KEY_ID }}
+          issuer id: ${{ env.ASC_ISSUER_ID }}
+          key: ${{ secrets.P8_APPSTORECONNECT_API }}
+      - run: echo "success!!"
+
+      # keychain
+      - name: Keychain | p12
+        run: |
+          echo "${{ secrets.P12_BASE64 }}" > ios_distribution.p12.txt
+          base64 --decode ios_distribution.p12.txt > ios_distribution.p12
+          sudo security import ios_distribution.p12 -k $KEYCHAIN -P ${{ secrets.P12_PASSWORD }} -T /usr/bin/codesign
+
+      # build
+      - name: Build | provisioning profile
+        run: |
+          JSON=`curl -sSg -H "Authorization:Bearer ${{ steps.asc.outputs.token }}" https://api.appstoreconnect.apple.com/v1/profiles?filter[name]=toyotacatalog-ver2-Release`
+          LEN=`echo $JSON | jq .data | jq length`
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          for i in `seq 0 $(($LEN - 1))`; do
+            uuid=`echo $JSON | jq -r .data[$i].attributes.uuid`
+            echo $JSON | jq -r .data[$i].attributes.profileContent > $uuid.txt
+            base64 --decode $uuid.txt > ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
+          done
+
+      # profileの確認
+      - name: Build | ProfileCheck
+        run: echo ~/Library/MobileDevice/Provisioning\ Profiles/*
+
+      - name: Build | xcodebuild archive
+        run: set -o pipefail && xcodebuild -workspace toyotacatalog-app.xcodeproj/project.xcworkspace -scheme toyotacatalog-app -configuration Release archive -archivePath ./archive | xcpretty
+
+      - name: Build | xcodebuild export
+        run: set -o pipefail && xcodebuild -exportArchive -archivePath ./archive.xcarchive -exportPath ./build -exportOptionsPlist ./.github/exportPlist/AppStoreExport.plist | xcpretty
+
+      - name: Upload | altool
+        run: |
+          mkdir ~/private_keys; echo "${{ secrets.P8_APPSTORECONNECT_API }}" > ~/private_keys/AuthKey_$ASC_KEY_ID.p8
+          xcrun altool --upload-app -f ./build/toyotacatalog-app.ipa -t ios --apiKey $ASC_KEY_ID --apiIssuer $ASC_ISSUER_ID
