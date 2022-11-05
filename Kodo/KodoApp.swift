@@ -35,6 +35,8 @@ struct KodoApp: App {
                         .padding()
                     }
                 }
+                .toolbarBackground(.black, for: .navigationBar)
+                .toolbarBackground(.black, for: .navigationBar)
             }
         }
     }
