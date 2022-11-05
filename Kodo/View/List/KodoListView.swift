@@ -62,7 +62,9 @@ struct KodoListView: View {
                 UIImage(named: "octopus_1")!,
                 UIImage(named: "octopus_2")!,
                 UIImage(named: "octopus_3")!,
-                UIImage(named: "octopus_4")!
+                UIImage(named: "octopus_4")!,
+                UIImage(named: "octopus_3")!,
+                UIImage(named: "octopus_2")!
               ],
               heartbeat: 1.7),
         .init(name: "にわとり",
@@ -80,7 +82,9 @@ struct KodoListView: View {
                 UIImage(named: "cat_1")!,
                 UIImage(named: "cat_2")!,
                 UIImage(named: "cat_3")!,
-                UIImage(named: "cat_4")!
+                UIImage(named: "cat_4")!,
+                UIImage(named: "cat_3")!,
+                UIImage(named: "cat_2")!
               ],
               heartbeat: 0.5),
     ]
