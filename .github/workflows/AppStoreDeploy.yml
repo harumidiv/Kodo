@@ -40,7 +40,7 @@ jobs:
       # build
       - name: Build | provisioning profile
         run: |
-          JSON=`curl -sSg -H "Authorization:Bearer ${{ steps.asc.outputs.token }}" https://api.appstoreconnect.apple.com/v1/profiles?filter[name]=toyotacatalog-ver2-Release`
+          JSON=`curl -sSg -H "Authorization:Bearer ${{ steps.asc.outputs.token }}" https://api.appstoreconnect.apple.com/v1/profiles?filter[name]=Kodo`
           LEN=`echo $JSON | jq .data | jq length`
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           for i in `seq 0 $(($LEN - 1))`; do
@@ -54,7 +54,7 @@ jobs:
         run: echo ~/Library/MobileDevice/Provisioning\ Profiles/*
 
       - name: Build | xcodebuild archive
-        run: set -o pipefail && xcodebuild -workspace toyotacatalog-app.xcodeproj/project.xcworkspace -scheme toyotacatalog-app -configuration Release archive -archivePath ./archive | xcpretty
+        run: set -o pipefail && xcodebuild -workspace Kodo.xcodeproj/project.xcworkspace -scheme Kodo -configuration Release archive -archivePath ./archive | xcpretty
 
       - name: Build | xcodebuild export
         run: set -o pipefail && xcodebuild -exportArchive -archivePath ./archive.xcarchive -exportPath ./build -exportOptionsPlist ./.github/exportPlist/AppStoreExport.plist | xcpretty
@@ -62,4 +62,4 @@ jobs:
       - name: Upload | altool
         run: |
           mkdir ~/private_keys; echo "${{ secrets.P8_APPSTORECONNECT_API }}" > ~/private_keys/AuthKey_$ASC_KEY_ID.p8
-          xcrun altool --upload-app -f ./build/toyotacatalog-app.ipa -t ios --apiKey $ASC_KEY_ID --apiIssuer $ASC_ISSUER_ID
+          xcrun altool --upload-app -f ./build/Kodo.ipa -t ios --apiKey $ASC_KEY_ID --apiIssuer $ASC_ISSUER_ID
