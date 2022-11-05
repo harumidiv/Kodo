@@ -76,7 +76,7 @@ struct KodoListView: View {
                 UIImage(named: "chicken_3")!,
                 UIImage(named: "chicken_2")!
               ],
-              heartbeat: 0.2),
+              heartbeat: 0.3),
         .init(name: "ねこ",
               images: [
                 UIImage(named: "cat_1")!,
@@ -87,6 +87,36 @@ struct KodoListView: View {
                 UIImage(named: "cat_2")!
               ],
               heartbeat: 0.5),
+        .init(name: "犬",
+              images: [
+                UIImage(named: "dog_1")!,
+                UIImage(named: "dog_2")!,
+                UIImage(named: "dog_3")!,
+                UIImage(named: "dog_4")!,
+                UIImage(named: "dog_3")!,
+                UIImage(named: "dog_2")!
+              ],
+              heartbeat: 1.2),
+        .init(name: "馬",
+              images: [
+                UIImage(named: "pony_1")!,
+                UIImage(named: "pony_2")!,
+                UIImage(named: "pony_3")!,
+                UIImage(named: "pony_4")!,
+                UIImage(named: "pony_3")!,
+                UIImage(named: "pony_2")!
+              ],
+              heartbeat: 1.5),
+        .init(name: "ネズミ",
+              images: [
+                UIImage(named: "mouth_1")!,
+                UIImage(named: "mouth_2")!,
+                UIImage(named: "mouth_3")!,
+                UIImage(named: "mouth_4")!,
+                UIImage(named: "mouth_3")!,
+                UIImage(named: "mouth_2")!
+              ],
+              heartbeat: 0.2),
     ]
 
     var body: some View {
