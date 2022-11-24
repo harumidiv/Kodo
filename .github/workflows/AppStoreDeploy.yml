@@ -1,7 +1,7 @@
 name: Upload to Apple Store
 on:
   pull_request:
-    types: [closed]
+    types: [closed, workflow_dispatch]
     branches:
       - main
 
