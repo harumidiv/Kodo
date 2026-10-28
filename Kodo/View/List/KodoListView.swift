@@ -14,6 +14,10 @@ struct KodoListView: View {
 
     @State private var isShowDetail: Bool = false
     @State private var selectedIndex: Int = 0
+    @StateObject private var nativeAdLoader = NativeAdLoader()
+
+    /// ネイティブ広告を何番目の生物の前に入れるか
+    private static let nativeAdPosition = 4
 
     let creatures: [Creature] = [
         .init(name: String(localized: "人間"),
@@ -164,6 +168,10 @@ struct KodoListView: View {
                                                 GridItem(.flexible(), spacing: SpecimenStyle.ruleWidth)],
                                       spacing: SpecimenStyle.ruleWidth) {
                                 ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
+                                    // 9種類だとマスが1つ余るので、一覧の中ほど（3段目の左）にネイティブ広告を置く
+                                    if index == Self.nativeAdPosition {
+                                        nativeAdCell(width: cellWidth)
+                                    }
                                     specimenCell(index: index, creature: creature, width: cellWidth)
                                         .onTapGesture { showDetail(index: index) }
                                 }
@@ -192,6 +200,19 @@ struct KodoListView: View {
     }
 
     // MARK: - View Component
+
+    @ViewBuilder
+    private func nativeAdCell(width: CGFloat) -> some View {
+        Group {
+            if let nativeAd = nativeAdLoader.nativeAd {
+                NativeAdCellView(nativeAd: nativeAd)
+            } else {
+                SpecimenStyle.background
+            }
+        }
+        .frame(width: width, height: width * 1.12)
+        .onAppear { nativeAdLoader.load() }
+    }
 
     private var header: some View {
         VStack(spacing: 0) {

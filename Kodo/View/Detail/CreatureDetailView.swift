@@ -26,11 +26,18 @@ struct CreatureDetailView: View {
     }
 
     var body: some View {
-        if isText {
-            monitorBody
-        } else {
-            specimenBody
+        GeometryReader { geometry in
+            // バナーは状態の切り替えボタンから離して、画面の一番下に置く
+            VStack(spacing: 0) {
+                if isText {
+                    monitorBody
+                } else {
+                    specimenBody
+                }
+                AnchoredBannerAd(width: geometry.size.width)
+            }
         }
+        .background(SpecimenStyle.background.ignoresSafeArea())
     }
 
     private var specimenBody: some View {
