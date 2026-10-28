@@ -9,35 +9,13 @@ import SwiftUI
 
 @main
 struct KodoApp: App {
-    @State private var isText: Bool = false
-    @State private var isMove: Bool = false
+    @State private var isText: Bool = ProcessInfo.processInfo.environment["SS_TEXT"] == "1"
+    @State private var isMove: Bool = ProcessInfo.processInfo.environment["SS_MOVE"] == "1"
 
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                KodoListView(isText: $isText, isMove: $isMove)
-                    .toolbar
-                {
-                    ToolbarItem(placement: .navigationBarLeading){
-                        Button(action: {
-                            isMove.toggle()
-                        }) {
-                            Image(systemName: isMove ? "figure.stand" : "figure.walk")
-                                .font(Font.system(size: 25, weight: .regular))
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            isText.toggle()
-                        }) {
-                            Image(systemName: isText ? "photo" : "textformat.abc.dottedunderline")
-                        }
-                        .padding()
-                    }
-                }
-                .toolbarBackground(.black, for: .navigationBar)
-                .toolbarBackground(.black, for: .navigationBar)
-            }
+            KodoListView(isText: $isText, isMove: $isMove)
+                .preferredColorScheme(.dark)
         }
     }
 }

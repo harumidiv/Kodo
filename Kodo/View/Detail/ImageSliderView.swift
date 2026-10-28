@@ -11,6 +11,7 @@ struct ImageSliderView: View {
     let width: CGFloat
     let creatures: [Creature]
     @Binding var index: Int
+    @Binding var stateIndex: Int
     @Binding var timer: Timer?
 
     @State private var offset: CGFloat = 0
@@ -21,8 +22,8 @@ struct ImageSliderView: View {
                 let length = min(geometry.size.width, geometry.size.height)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 0) {
-                        ForEach(creatures) { creature in
-                            ParaparaAnimationView(duration: creature.heartbeat,
+                        ForEach(Array(creatures.enumerated()), id: \.element) { creatureIndex, creature in
+                            ParaparaAnimationView(duration: creatureIndex == index ? heartbeat(creatureIndex: creatureIndex) : creature.heartbeat,
                                                   images: creature.images)
                             .frame(width: length, height: length)
                         }
@@ -56,11 +57,16 @@ struct ImageSliderView: View {
             }
         }
         .onChange(of: index) { index in
-            setupTimer(index: index)
+            // 生物が変わったら通常時の状態に戻す
+            stateIndex = 0
+            setupTimer(heartbeat: creatures[index].heartbeat)
+        }
+        .onChange(of: stateIndex) { _ in
+            setupTimer(heartbeat: heartbeat(creatureIndex: index))
         }
         .onAppear{
             offset = -width * CGFloat(self.index)
-            setupTimer(index: index)
+            setupTimer(heartbeat: heartbeat(creatureIndex: index))
         }
     }
 
@@ -80,7 +86,8 @@ struct ImageSliderView: View {
             }
         }) {
             Image(systemName:"chevron.left")
-                .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
+                .font(Font.system(size: ConstantValue.fontSize, weight: .light))
+                .foregroundColor(SpecimenStyle.ink)
                 .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
                 .padding(ConstantValue.buttonPadding)
         }
@@ -95,7 +102,8 @@ struct ImageSliderView: View {
             }
         }) {
             Image(systemName:"chevron.right")
-                .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
+                .font(Font.system(size: ConstantValue.fontSize, weight: .light))
+                .foregroundColor(SpecimenStyle.ink)
                 .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
                 .padding(ConstantValue.buttonPadding)
         }
@@ -104,20 +112,14 @@ struct ImageSliderView: View {
 
     // MARK: - Private Method
 
-    private func setupTimer(index: Int) {
+    private func heartbeat(creatureIndex: Int) -> Double {
+        let states = creatures[creatureIndex].states
+        return states[min(stateIndex, states.count - 1)].heartbeat
+    }
+
+    private func setupTimer(heartbeat: Double) {
         timer?.invalidate()
-        let heartbeat = creatures[index].heartbeat
-        timer = Timer.scheduledTimer(withTimeInterval: heartbeat, repeats: true) { _ in
-            Task {
-                let impactHeavy = await UIImpactFeedbackGenerator(style: .heavy)
-                await impactHeavy.prepare()
-                await impactHeavy.impactOccurred()
-                try await Task.sleep(seconds: heartbeat / 2)
-                let impactSoft = await UIImpactFeedbackGenerator(style: .soft)
-                await impactSoft.prepare()
-                await impactSoft.impactOccurred()
-            }
-        }
+        timer = HeartbeatHaptics.makeTimer(heartbeat: heartbeat)
     }
     
     private struct ConstantValue {
@@ -127,11 +129,30 @@ struct ImageSliderView: View {
     }
 }
 
+/// 心拍の間隔で「ドクン」と2回振動させる
+enum HeartbeatHaptics {
+    static func makeTimer(heartbeat: Double) -> Timer {
+        Timer.scheduledTimer(withTimeInterval: heartbeat, repeats: true) { _ in
+            Task {
+                let impactHeavy = await UIImpactFeedbackGenerator(style: .heavy)
+                await impactHeavy.prepare()
+                await impactHeavy.impactOccurred()
+                // キャンセルされた場合は2拍目を鳴らさない
+                guard (try? await Task.sleep(seconds: heartbeat / 2)) != nil else { return }
+                let impactSoft = await UIImpactFeedbackGenerator(style: .soft)
+                await impactSoft.prepare()
+                await impactSoft.impactOccurred()
+            }
+        }
+    }
+}
+
 struct ImageSliderView_Previews: PreviewProvider {
     static var previews: some View {
         ImageSliderView(width: 375,
                         creatures: Creature.sampleData,
                         index: .constant(0),
+                        stateIndex: .constant(0),
                         timer: .constant(nil))
     }
 }

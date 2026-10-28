@@ -19,10 +19,22 @@ struct ParaparaAnimationView: UIViewRepresentable {
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         let animateImage = UIImage.animatedImage(with: images, duration: duration)
         imageView.image = animateImage
+        context.coordinator.duration = duration
         return imageView
     }
 
     func updateUIView(_ uiView: UIImageView, context: Context) {
-        // NOP
+        // ドラッグ中なども呼ばれるので、心拍が変わったときだけアニメーションを作り直す
+        guard context.coordinator.duration != duration else { return }
+        uiView.image = UIImage.animatedImage(with: images, duration: duration)
+        context.coordinator.duration = duration
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+
+    final class Coordinator {
+        var duration: Double?
     }
 }
