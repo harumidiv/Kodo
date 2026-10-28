@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49FCB6C3290039E10076B4A1 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 49FCB6C4290039E10076B4A1 /* GoogleMobileAds */; };
 		490DCC982907E1EA00657A80 /* HeartbeatEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490DCC972907E1EA00657A80 /* HeartbeatEffect.swift */; };
 		49FCB6AF290039DF0076B47B /* KodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6AE290039DF0076B47B /* KodoApp.swift */; };
 		49FCB6B1290039DF0076B47B /* KodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6B0290039DF0076B47B /* KodoListView.swift */; };
@@ -21,6 +22,8 @@
 		49FCB6CC29014C5A0076B47B /* CreatureTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6CB29014C5A0076B47B /* CreatureTextView.swift */; };
 		49FCB6CE29014D250076B47B /* Creature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6CD29014D250076B47B /* Creature.swift */; };
 		49FCB6D029014F120076B47B /* CreatureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6CF29014F120076B47B /* CreatureImageView.swift */; };
+		49FCB6C7290039E10076B4A1 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6C8290039E10076B4A1 /* BannerAdView.swift */; };
+		49FCB6C9290039E10076B4A1 /* NativeAdCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6CA290039E10076B4A1 /* NativeAdCellView.swift */; };
 		49FCB6D229028AEE0076B47B /* CreatureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6D129028AEE0076B47B /* CreatureDetailView.swift */; };
 		49FCB6D429028EDE0076B47B /* ImageSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FCB6D329028EDE0076B47B /* ImageSliderView.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +62,7 @@
 		49FCB6AB290039DF0076B47B /* Kodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FCB6AE290039DF0076B47B /* KodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodoApp.swift; sourceTree = "<group>"; };
 		49FCB6B0290039DF0076B47B /* KodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodoListView.swift; sourceTree = "<group>"; };
+		49FCB6C6290039E10076B4A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49FCB6B2290039E10076B47B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49FCB6C0290039E10076B4A1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		49FCB6B5290039E10076B47B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 		49FCB6CB29014C5A0076B47B /* CreatureTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureTextView.swift; sourceTree = "<group>"; };
 		49FCB6CD29014D250076B47B /* Creature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creature.swift; sourceTree = "<group>"; };
 		49FCB6CF29014F120076B47B /* CreatureImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureImageView.swift; sourceTree = "<group>"; };
+		49FCB6C8290039E10076B4A1 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
+		49FCB6CA290039E10076B4A1 /* NativeAdCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdCellView.swift; sourceTree = "<group>"; };
 		49FCB6D129028AEE0076B47B /* CreatureDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureDetailView.swift; sourceTree = "<group>"; };
 		49FCB6D329028EDE0076B47B /* ImageSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FCB6C3290039E10076B4A1 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +118,7 @@
 				49FCB6CD29014D250076B47B /* Creature.swift */,
 				49FCB6D62903942E0076B47B /* View */,
 				49FCB6B2290039E10076B47B /* Assets.xcassets */,
+				49FCB6C6290039E10076B4A1 /* Info.plist */,
 				49FCB6C0290039E10076B4A1 /* Localizable.xcstrings */,
 				49FCB6B4290039E10076B47B /* Preview Content */,
 			);
@@ -175,6 +183,8 @@
 				49FCB6B0290039DF0076B47B /* KodoListView.swift */,
 				49FCB6CB29014C5A0076B47B /* CreatureTextView.swift */,
 				49FCB6CF29014F120076B47B /* CreatureImageView.swift */,
+				49FCB6C8290039E10076B4A1 /* BannerAdView.swift */,
+				49FCB6CA290039E10076B4A1 /* NativeAdCellView.swift */,
 				49FCB6BF2900DC140076B47B /* ParaparaAnimationView.swift */,
 			);
 			path = List;
@@ -198,6 +208,9 @@
 			dependencies = (
 			);
 			name = Kodo;
+			packageProductDependencies = (
+				49FCB6C4290039E10076B4A1 /* GoogleMobileAds */,
+			);
 			productName = Kodo;
 			productReference = 49FCB6AB290039DF0076B47B /* Kodo.app */;
 			productType = "com.apple.product-type.application";
@@ -235,6 +248,9 @@
 				"pt-BR",
 			);
 			mainGroup = 49FCB6A2290039DF0076B47B;
+			packageReferences = (
+				49FCB6C5290039E10076B4A1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = 49FCB6AC290039DF0076B47B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -274,6 +290,8 @@
 				49FCB6BE29003AFB0076B47B /* BlinkEffect.swift in Sources */,
 				49FCB6D429028EDE0076B47B /* ImageSliderView.swift in Sources */,
 				49FCB6D029014F120076B47B /* CreatureImageView.swift in Sources */,
+				49FCB6C7290039E10076B4A1 /* BannerAdView.swift in Sources */,
+				49FCB6C9290039E10076B4A1 /* NativeAdCellView.swift in Sources */,
 				49FCB6D229028AEE0076B47B /* CreatureDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +425,7 @@
 				DEVELOPMENT_TEAM = 24BSY9Z4H5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Kodo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Kodo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -444,6 +463,7 @@
 				DEVELOPMENT_TEAM = 24BSY9Z4H5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Kodo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Kodo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -491,6 +511,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		49FCB6C5290039E10076B4A1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		49FCB6C4290039E10076B4A1 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49FCB6C5290039E10076B4A1 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 49FCB6A3290039DF0076B47B /* Project object */;
 }
