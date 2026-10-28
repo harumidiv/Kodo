@@ -116,7 +116,7 @@ struct CreatureDetailView: View {
                 if value.translation.width < -50 { move(by: 1) }
                 if value.translation.width > 50 { move(by: -1) }
             })
-            .accessibilityLabel("\(creature.name)の心電図")
+            .accessibilityLabel(Text("\(creature.name)の心電図"))
     }
 
     private var monitorGrid: some View {
@@ -157,7 +157,7 @@ struct CreatureDetailView: View {
         }
     }
 
-    private func pagerButton(systemName: String, label: String, step: Int) -> some View {
+    private func pagerButton(systemName: String, label: LocalizedStringKey, step: Int) -> some View {
         Button(action: { move(by: step) }) {
             Image(systemName: systemName)
                 .font(.system(size: 15, weight: .regular))
@@ -192,7 +192,7 @@ struct CreatureDetailView: View {
                     .font(SpecimenStyle.mono(10))
                     .tracking(1.6)
                     .foregroundColor(SpecimenStyle.muted)
-                Text(String(format: "%.2f秒", heartbeat))
+                Text("\(heartbeat, specifier: "%.2f")秒")
                     .font(SpecimenStyle.mono(22))
                     .foregroundColor(SpecimenStyle.ink)
             }
@@ -282,7 +282,7 @@ struct CreatureDetailView: View {
         .padding(.horizontal, 24)
     }
 
-    private func statItem(label: String, value: String, unit: String, color: Color) -> some View {
+    private func statItem(label: LocalizedStringKey, value: String, unit: LocalizedStringKey, color: Color) -> some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(label)
                 .font(SpecimenStyle.mono(10))
