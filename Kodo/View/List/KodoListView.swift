@@ -96,7 +96,7 @@ struct KodoListView: View {
                 UIImage(named: "dog_3")!,
                 UIImage(named: "dog_2")!
               ],
-              heartbeat: 1.2),
+              heartbeat: 0.7),
         .init(name: "馬",
               images: [
                 UIImage(named: "pony_1")!,
@@ -116,7 +116,7 @@ struct KodoListView: View {
                 UIImage(named: "mouth_3")!,
                 UIImage(named: "mouth_2")!
               ],
-              heartbeat: 0.2),
+              heartbeat: 0.11),
     ]
 
     var body: some View {
