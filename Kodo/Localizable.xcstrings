@@ -1111,6 +1111,7 @@
       }
     },
     "文字" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1367,6 +1368,7 @@
       }
     },
     "画像" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
