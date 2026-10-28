@@ -149,31 +149,45 @@ struct KodoListView: View {
                 VStack(spacing: 0) {
                     header
                     ScrollView {
-                        LazyVGrid(columns: [GridItem(.flexible(), spacing: SpecimenStyle.ruleWidth),
-                                            GridItem(.flexible(), spacing: SpecimenStyle.ruleWidth)],
-                                  spacing: SpecimenStyle.ruleWidth) {
-                            ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
-                                specimenCell(index: index, creature: creature, width: cellWidth)
-                                    .onTapGesture {
-                                        var transaction = Transaction()
-                                        transaction.disablesAnimations = true
-                                        withTransaction(transaction) {
-                                            self.selectedIndex = index
-                                            isShowDetail.toggle()
-                                        }
-                                    }
-                            }
-                        }
                         // 罫線はセルの隙間から見える背景色で描く
-                        .background(SpecimenStyle.rule)
+                        if isText {
+                            LazyVStack(spacing: SpecimenStyle.ruleWidth) {
+                                ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
+                                    CreatureTextView(number: index + 1,
+                                                     creature: creature)
+                                        .onTapGesture { showDetail(index: index) }
+                                }
+                            }
+                            .background(SpecimenStyle.rule)
+                        } else {
+                            LazyVGrid(columns: [GridItem(.flexible(), spacing: SpecimenStyle.ruleWidth),
+                                                GridItem(.flexible(), spacing: SpecimenStyle.ruleWidth)],
+                                      spacing: SpecimenStyle.ruleWidth) {
+                                ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
+                                    specimenCell(index: index, creature: creature, width: cellWidth)
+                                        .onTapGesture { showDetail(index: index) }
+                                }
+                            }
+                            .background(SpecimenStyle.rule)
+                        }
                     }
                 }
             }
             .fullScreenCover(isPresented: $isShowDetail) {
                 CreatureDetailView(creatures: creatures,
+                                   isText: isText,
                                    isShowDetail: $isShowDetail,
                                    index: $selectedIndex)
             }
+        }
+    }
+
+    private func showDetail(index: Int) {
+        var transaction = Transaction()
+        transaction.disablesAnimations = true
+        withTransaction(transaction) {
+            self.selectedIndex = index
+            isShowDetail.toggle()
         }
     }
 
@@ -191,6 +205,9 @@ struct KodoListView: View {
                         .overlay(Circle().stroke(SpecimenStyle.border, lineWidth: 1))
                 }
                 .accessibilityLabel(isMove ? "動きを止める" : "動かす")
+                // 文字表示では心電図が常に動くので、動きの切り替えは隠す
+                .opacity(isText ? 0 : 1)
+                .disabled(isText)
                 Spacer()
                 Button(action: {
                     isText.toggle()
@@ -240,22 +257,15 @@ struct KodoListView: View {
             .font(SpecimenStyle.mono(11))
             .tracking(0.8)
             Spacer(minLength: 0)
-            if isText {
-                CreatureTextView(isMove: $isMove,
-                                 creature: creature,
-                                 length: imageLength)
-            } else {
-                CreatureImageView(creature: creature,
-                                  length: imageLength,
-                                  isMove: $isMove)
-            }
+            CreatureImageView(creature: creature,
+                              length: imageLength,
+                              isMove: $isMove)
             Spacer(minLength: 0)
             Text(creature.name)
                 .font(SpecimenStyle.mincho(16))
                 .tracking(1.2)
                 .foregroundColor(SpecimenStyle.ink)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .opacity(isText ? 0 : 1)
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)

@@ -119,7 +119,20 @@ struct ImageSliderView: View {
 
     private func setupTimer(heartbeat: Double) {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: heartbeat, repeats: true) { _ in
+        timer = HeartbeatHaptics.makeTimer(heartbeat: heartbeat)
+    }
+    
+    private struct ConstantValue {
+        static let buttonWidth: CGFloat = 32
+        static let buttonPadding: CGFloat = 16
+        static let fontSize: CGFloat = 28
+    }
+}
+
+/// 心拍の間隔で「ドクン」と2回振動させる
+enum HeartbeatHaptics {
+    static func makeTimer(heartbeat: Double) -> Timer {
+        Timer.scheduledTimer(withTimeInterval: heartbeat, repeats: true) { _ in
             Task {
                 let impactHeavy = await UIImpactFeedbackGenerator(style: .heavy)
                 await impactHeavy.prepare()
@@ -131,12 +144,6 @@ struct ImageSliderView: View {
                 await impactSoft.impactOccurred()
             }
         }
-    }
-    
-    private struct ConstantValue {
-        static let buttonWidth: CGFloat = 32
-        static let buttonPadding: CGFloat = 16
-        static let fontSize: CGFloat = 28
     }
 }
 
