@@ -231,7 +231,7 @@ struct KodoListView: View {
                 Button(action: {
                     isText.toggle()
                 }) {
-                    Image(systemName: isText ? "photo" : "textformat")
+                    Image(systemName: isText ? "bolt.heart" : "waveform.path.ecg.rectangle")
                         .font(.system(size: 18, weight: .regular))
                         .frame(width: 44, height: 44)
                         .overlay(Circle().stroke(SpecimenStyle.border, lineWidth: 1))
