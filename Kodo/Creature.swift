@@ -11,6 +11,27 @@ struct Creature: Identifiable, Hashable {
     let id: UUID = UUID()
     let name: String
     let images: [UIImage]
+    /// 先頭が通常時の状態。2つ以上ある場合のみ詳細画面で切り替えられる
+    let states: [HeartbeatState]
+
+    var heartbeat: Double {
+        states[0].heartbeat
+    }
+
+    init(name: String, images: [UIImage], heartbeat: Double) {
+        self.init(name: name, images: images, states: [.init(name: "安静", heartbeat: heartbeat)])
+    }
+
+    init(name: String, images: [UIImage], states: [HeartbeatState]) {
+        precondition(!states.isEmpty)
+        self.name = name
+        self.images = images
+        self.states = states
+    }
+}
+
+struct HeartbeatState: Hashable {
+    let name: String
     let heartbeat: Double
 }
 

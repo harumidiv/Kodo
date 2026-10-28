@@ -25,7 +25,11 @@ struct KodoListView: View {
                 UIImage(named: "human_3")!,
                 UIImage(named: "human_2")!
               ],
-              heartbeat: 0.85),
+              states: [
+                .init(name: "安静", heartbeat: 0.85),
+                .init(name: "運動", heartbeat: 0.4),
+                .init(name: "睡眠", heartbeat: 1.1)
+              ]),
         .init(name: "すずめ",
               images: [
                 UIImage(named: "suzume_1")!,
@@ -39,7 +43,10 @@ struct KodoListView: View {
                 UIImage(named: "suzume_9")!,
                 UIImage(named: "suzume_10")!
               ],
-              heartbeat: 0.075),
+              states: [
+                .init(name: "安静", heartbeat: 0.075),
+                .init(name: "飛行中", heartbeat: 0.06)
+              ]),
         .init(name: "ぞう",
               images: [
                 UIImage(named: "elephant_1")!,
@@ -96,7 +103,10 @@ struct KodoListView: View {
                 UIImage(named: "dog_3")!,
                 UIImage(named: "dog_2")!
               ],
-              heartbeat: 0.7),
+              states: [
+                .init(name: "安静", heartbeat: 0.7),
+                .init(name: "運動", heartbeat: 0.33)
+              ]),
         .init(name: "馬",
               images: [
                 UIImage(named: "pony_1")!,
@@ -106,7 +116,10 @@ struct KodoListView: View {
                 UIImage(named: "pony_3")!,
                 UIImage(named: "pony_2")!
               ],
-              heartbeat: 1.5),
+              states: [
+                .init(name: "安静", heartbeat: 1.5),
+                .init(name: "全力疾走", heartbeat: 0.27)
+              ]),
         .init(name: "ネズミ",
               images: [
                 UIImage(named: "mouth_1")!,

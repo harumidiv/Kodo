@@ -13,6 +13,7 @@ struct CreatureDetailView: View {
     @Binding var index: Int
 
     @State private var timer: Timer?
+    @State private var stateIndex: Int = 0
 
     var body: some View {
         GeometryReader { geometry in
@@ -27,14 +28,31 @@ struct CreatureDetailView: View {
                     ImageSliderView(width: length,
                                     creatures: creatures,
                                     index: $index,
+                                    stateIndex: $stateIndex,
                                     timer: $timer)
                     .position(x: length / 2, y: length / 2)
                     .frame(width: length, height: length, alignment: .center)
+                    statePicker
                     ProgressView(value: Float(index),total: Float(creatures.count - 1))
                         .progressViewStyle(.linear)
                         .padding()
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    private var statePicker: some View {
+        let states = creatures[index].states
+        if states.count > 1 {
+            Picker("状態", selection: $stateIndex) {
+                ForEach(Array(states.enumerated()), id: \.offset) { offset, state in
+                    Text(state.name).tag(offset)
+                }
+            }
+            .pickerStyle(.segmented)
+            .environment(\.colorScheme, .dark)
+            .padding(.horizontal)
         }
     }
 
