@@ -36,6 +36,6 @@ struct KodoApp: App {
         }
         guard !isAdsStarted else { return }
         isAdsStarted = true
-        MobileAds.shared.start()
+        MobileAds.shared.start(completionHandler: nil)
     }
 }
