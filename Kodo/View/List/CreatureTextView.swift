@@ -8,10 +8,10 @@
 import SwiftUI
 
 /// 文字表示のときの1行。名前と心電図と心拍数を心拍モニターのように並べる
-/// 心電図は動きの切り替えに関係なく常に動かす
 struct CreatureTextView: View {
     let number: Int
     let creature: Creature
+    let isMove: Bool
 
     var body: some View {
         HStack(spacing: 14) {
@@ -29,7 +29,7 @@ struct CreatureTextView: View {
             }
             .frame(width: 84, alignment: .leading)
 
-            ElectrocardiogramView(heartbeat: creature.heartbeat, isMove: true)
+            ElectrocardiogramView(heartbeat: creature.heartbeat, isMove: isMove)
                 .frame(height: 40)
 
             HStack(alignment: .firstTextBaseline, spacing: 3) {
@@ -118,6 +118,7 @@ struct ElectrocardiogramView: View {
 struct CreatureTextView_Previews: PreviewProvider {
     static var previews: some View {
         CreatureTextView(number: 1,
-                         creature: Creature.sampleData[0])
+                         creature: Creature.sampleData[0],
+                         isMove: true)
     }
 }

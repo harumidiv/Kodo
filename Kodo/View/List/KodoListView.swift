@@ -158,7 +158,8 @@ struct KodoListView: View {
                             LazyVStack(spacing: SpecimenStyle.ruleWidth) {
                                 ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
                                     CreatureTextView(number: index + 1,
-                                                     creature: creature)
+                                                     creature: creature,
+                                                     isMove: isMove)
                                         .onTapGesture { showDetail(index: index) }
                                 }
                             }
@@ -226,19 +227,14 @@ struct KodoListView: View {
                         .overlay(Circle().stroke(SpecimenStyle.border, lineWidth: 1))
                 }
                 .accessibilityLabel(isMove ? Text("動きを止める") : Text("動かす"))
-                // 文字表示では心電図が常に動くので、動きの切り替えは隠す
-                .opacity(isText ? 0 : 1)
-                .disabled(isText)
                 Spacer()
                 Button(action: {
                     isText.toggle()
                 }) {
-                    (isText ? Text("画像") : Text("文字"))
-                        .font(SpecimenStyle.mono(13))
-                        .tracking(1)
-                        .padding(.horizontal, 16)
-                        .frame(height: 44)
-                        .overlay(Capsule().stroke(SpecimenStyle.border, lineWidth: 1))
+                    Image(systemName: isText ? "bolt.heart" : "waveform.path.ecg.rectangle")
+                        .font(.system(size: 18, weight: .regular))
+                        .frame(width: 44, height: 44)
+                        .overlay(Circle().stroke(SpecimenStyle.border, lineWidth: 1))
                 }
                 .accessibilityLabel(isText ? Text("画像表示に切り替える") : Text("文字表示に切り替える"))
             }

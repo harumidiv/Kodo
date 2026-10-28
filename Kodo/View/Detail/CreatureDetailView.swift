@@ -101,12 +101,12 @@ struct CreatureDetailView: View {
         }
         .onAppear { setupTimer() }
         .onDisappear { stopTimer() }
-        .onChange(of: index) { _ in
+        .onChange(of: index) {
             // 生物が変わったら通常時の状態に戻す
             stateIndex = 0
             setupTimer()
         }
-        .onChange(of: stateIndex) { _ in setupTimer() }
+        .onChange(of: stateIndex) { setupTimer() }
     }
 
     // MARK: - View Component

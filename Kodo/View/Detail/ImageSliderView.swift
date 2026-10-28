@@ -56,12 +56,12 @@ struct ImageSliderView: View {
                 }
             }
         }
-        .onChange(of: index) { index in
+        .onChange(of: index) { _, index in
             // 生物が変わったら通常時の状態に戻す
             stateIndex = 0
             setupTimer(heartbeat: creatures[index].heartbeat)
         }
-        .onChange(of: stateIndex) { _ in
+        .onChange(of: stateIndex) {
             setupTimer(heartbeat: heartbeat(creatureIndex: index))
         }
         .onAppear{
