@@ -122,7 +122,8 @@ struct ImageSliderView: View {
                 let impactHeavy = await UIImpactFeedbackGenerator(style: .heavy)
                 await impactHeavy.prepare()
                 await impactHeavy.impactOccurred()
-                try await Task.sleep(seconds: heartbeat / 2)
+                // キャンセルされた場合は2拍目を鳴らさない
+                guard (try? await Task.sleep(seconds: heartbeat / 2)) != nil else { return }
                 let impactSoft = await UIImpactFeedbackGenerator(style: .soft)
                 await impactSoft.prepare()
                 await impactSoft.impactOccurred()
