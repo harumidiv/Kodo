@@ -21,7 +21,7 @@ struct KodoApp: App {
             KodoListView(isText: $isText, isMove: $isMove)
                 .preferredColorScheme(.dark)
         }
-        .onChange(of: scenePhase) { phase in
+        .onChange(of: scenePhase) { _, phase in
             guard phase == .active else { return }
             Task { await requestTrackingAndStartAds() }
         }
@@ -36,6 +36,6 @@ struct KodoApp: App {
         }
         guard !isAdsStarted else { return }
         isAdsStarted = true
-        MobileAds.shared.start(completionHandler: nil)
+        _ = await MobileAds.shared.start()
     }
 }
