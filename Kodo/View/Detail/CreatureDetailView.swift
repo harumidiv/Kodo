@@ -15,7 +15,7 @@ struct CreatureDetailView: View {
     @Binding var index: Int
 
     @State private var timer: Timer?
-    @State private var stateIndex: Int = Int(ProcessInfo.processInfo.environment["SS_STATE"] ?? "") ?? 0
+    @State private var stateIndex: Int = 0
 
     private var creature: Creature {
         creatures[index]

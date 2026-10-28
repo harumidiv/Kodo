@@ -12,8 +12,8 @@ struct KodoListView: View {
     @Binding var isText: Bool
     @Binding var isMove: Bool
 
-    @State private var isShowDetail: Bool = ProcessInfo.processInfo.environment["SS_DETAIL"] != nil
-    @State private var selectedIndex: Int = Int(ProcessInfo.processInfo.environment["SS_DETAIL"] ?? "") ?? 0
+    @State private var isShowDetail: Bool = false
+    @State private var selectedIndex: Int = 0
 
     let creatures: [Creature] = [
         .init(name: "人間",
