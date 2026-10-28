@@ -86,7 +86,8 @@ struct ImageSliderView: View {
             }
         }) {
             Image(systemName:"chevron.left")
-                .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
+                .font(Font.system(size: ConstantValue.fontSize, weight: .light))
+                .foregroundColor(SpecimenStyle.ink)
                 .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
                 .padding(ConstantValue.buttonPadding)
         }
@@ -101,7 +102,8 @@ struct ImageSliderView: View {
             }
         }) {
             Image(systemName:"chevron.right")
-                .font(Font.system(size: ConstantValue.fontSize, weight: .regular))
+                .font(Font.system(size: ConstantValue.fontSize, weight: .light))
+                .foregroundColor(SpecimenStyle.ink)
                 .frame(width: ConstantValue.buttonWidth, height: ConstantValue.buttonWidth)
                 .padding(ConstantValue.buttonPadding)
         }

@@ -18,16 +18,22 @@ struct CreatureTextView: View {
                 .foregroundColor(.clear)
                 .contentShape(Rectangle())
             if isMove {
-                Text(creature.name)
-                    .foregroundColor(.red)
-                    .frame(width: length, height: length)
+                nameText
                     .blinkEffect(interval: creature.heartbeat / 2)
             } else {
-                Text(creature.name)
-                    .foregroundColor(.red)
-                    .frame(width: length, height: length)
+                nameText
             }
         }
+    }
+
+    private var nameText: some View {
+        Text(creature.name)
+            .font(SpecimenStyle.mincho(length * 0.22, bold: true))
+            .tracking(length * 0.02)
+            .foregroundColor(SpecimenStyle.heart)
+            .minimumScaleFactor(0.5)
+            .lineLimit(1)
+            .frame(width: length, height: length)
     }
 }
 

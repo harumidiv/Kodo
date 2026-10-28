@@ -10,6 +10,8 @@ import SwiftUI
 struct Creature: Identifiable, Hashable {
     let id: UUID = UUID()
     let name: String
+    /// 詳細画面に表示する学名
+    let scientificName: String
     let images: [UIImage]
     /// 先頭が通常時の状態。2つ以上ある場合のみ詳細画面で切り替えられる
     let states: [HeartbeatState]
@@ -18,13 +20,14 @@ struct Creature: Identifiable, Hashable {
         states[0].heartbeat
     }
 
-    init(name: String, images: [UIImage], heartbeat: Double) {
-        self.init(name: name, images: images, states: [.init(name: "安静", heartbeat: heartbeat)])
+    init(name: String, scientificName: String, images: [UIImage], heartbeat: Double) {
+        self.init(name: name, scientificName: scientificName, images: images, states: [.init(name: "安静", heartbeat: heartbeat)])
     }
 
-    init(name: String, images: [UIImage], states: [HeartbeatState]) {
+    init(name: String, scientificName: String, images: [UIImage], states: [HeartbeatState]) {
         precondition(!states.isEmpty)
         self.name = name
+        self.scientificName = scientificName
         self.images = images
         self.states = states
     }
@@ -39,6 +42,7 @@ extension Creature {
     static let sampleData: [Creature] =
     [
         .init(name: "人間",
+              scientificName: "Homo sapiens",
               images: [UIImage(named: "human_1")!,
                        UIImage(named: "human_2")!,
                        UIImage(named: "human_3")!,
