@@ -21,7 +21,7 @@ struct Creature: Identifiable, Hashable {
     }
 
     init(name: String, scientificName: String, images: [UIImage], heartbeat: Double) {
-        self.init(name: name, scientificName: scientificName, images: images, states: [.init(name: "安静", heartbeat: heartbeat)])
+        self.init(name: name, scientificName: scientificName, images: images, states: [.init(name: String(localized: "安静"), heartbeat: heartbeat)])
     }
 
     init(name: String, scientificName: String, images: [UIImage], states: [HeartbeatState]) {
@@ -41,7 +41,7 @@ struct HeartbeatState: Hashable {
 extension Creature {
     static let sampleData: [Creature] =
     [
-        .init(name: "人間",
+        .init(name: String(localized: "人間"),
               scientificName: "Homo sapiens",
               images: [UIImage(named: "human_1")!,
                        UIImage(named: "human_2")!,

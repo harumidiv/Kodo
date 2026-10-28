@@ -12,11 +12,11 @@ struct KodoListView: View {
     @Binding var isText: Bool
     @Binding var isMove: Bool
 
-    @State private var isShowDetail: Bool = ProcessInfo.processInfo.environment["SS_DETAIL"] != nil
-    @State private var selectedIndex: Int = Int(ProcessInfo.processInfo.environment["SS_DETAIL"] ?? "") ?? 0
+    @State private var isShowDetail: Bool = false
+    @State private var selectedIndex: Int = 0
 
     let creatures: [Creature] = [
-        .init(name: "人間",
+        .init(name: String(localized: "人間"),
               scientificName: "Homo sapiens",
               images: [
                 UIImage(named: "human_1")!,
@@ -27,11 +27,11 @@ struct KodoListView: View {
                 UIImage(named: "human_2")!
               ],
               states: [
-                .init(name: "安静", heartbeat: 0.85),
-                .init(name: "運動", heartbeat: 0.4),
-                .init(name: "睡眠", heartbeat: 1.1)
+                .init(name: String(localized: "安静"), heartbeat: 0.85),
+                .init(name: String(localized: "運動"), heartbeat: 0.4),
+                .init(name: String(localized: "睡眠"), heartbeat: 1.1)
               ]),
-        .init(name: "すずめ",
+        .init(name: String(localized: "すずめ"),
               scientificName: "Passer montanus",
               images: [
                 UIImage(named: "suzume_1")!,
@@ -46,10 +46,10 @@ struct KodoListView: View {
                 UIImage(named: "suzume_10")!
               ],
               states: [
-                .init(name: "安静", heartbeat: 0.075),
-                .init(name: "飛行中", heartbeat: 0.06)
+                .init(name: String(localized: "安静"), heartbeat: 0.075),
+                .init(name: String(localized: "飛行中"), heartbeat: 0.06)
               ]),
-        .init(name: "ぞう",
+        .init(name: String(localized: "ぞう"),
               scientificName: "Elephas maximus",
               images: [
                 UIImage(named: "elephant_1")!,
@@ -67,7 +67,7 @@ struct KodoListView: View {
                 UIImage(named: "elephant_13")!
               ],
               heartbeat: 3),
-        .init(name: "たこ",
+        .init(name: String(localized: "たこ"),
               scientificName: "Octopus vulgaris",
               images: [
                 UIImage(named: "octopus_1")!,
@@ -78,7 +78,7 @@ struct KodoListView: View {
                 UIImage(named: "octopus_2")!
               ],
               heartbeat: 1.7),
-        .init(name: "にわとり",
+        .init(name: String(localized: "にわとり"),
               scientificName: "Gallus gallus domesticus",
               images: [
                 UIImage(named: "chicken_1")!,
@@ -89,7 +89,7 @@ struct KodoListView: View {
                 UIImage(named: "chicken_2")!
               ],
               heartbeat: 0.3),
-        .init(name: "ねこ",
+        .init(name: String(localized: "ねこ"),
               scientificName: "Felis catus",
               images: [
                 UIImage(named: "cat_1")!,
@@ -100,7 +100,7 @@ struct KodoListView: View {
                 UIImage(named: "cat_2")!
               ],
               heartbeat: 0.5),
-        .init(name: "犬",
+        .init(name: String(localized: "犬"),
               scientificName: "Canis familiaris",
               images: [
                 UIImage(named: "dog_1")!,
@@ -111,10 +111,10 @@ struct KodoListView: View {
                 UIImage(named: "dog_2")!
               ],
               states: [
-                .init(name: "安静", heartbeat: 0.7),
-                .init(name: "運動", heartbeat: 0.33)
+                .init(name: String(localized: "安静"), heartbeat: 0.7),
+                .init(name: String(localized: "運動"), heartbeat: 0.33)
               ]),
-        .init(name: "馬",
+        .init(name: String(localized: "馬"),
               scientificName: "Equus caballus",
               images: [
                 UIImage(named: "pony_1")!,
@@ -125,10 +125,10 @@ struct KodoListView: View {
                 UIImage(named: "pony_2")!
               ],
               states: [
-                .init(name: "安静", heartbeat: 1.5),
-                .init(name: "全力疾走", heartbeat: 0.27)
+                .init(name: String(localized: "安静"), heartbeat: 1.5),
+                .init(name: String(localized: "全力疾走"), heartbeat: 0.27)
               ]),
-        .init(name: "ネズミ",
+        .init(name: String(localized: "ネズミ"),
               scientificName: "Mus musculus",
               images: [
                 UIImage(named: "mouth_1")!,
@@ -204,7 +204,7 @@ struct KodoListView: View {
                         .frame(width: 44, height: 44)
                         .overlay(Circle().stroke(SpecimenStyle.border, lineWidth: 1))
                 }
-                .accessibilityLabel(isMove ? "動きを止める" : "動かす")
+                .accessibilityLabel(isMove ? Text("動きを止める") : Text("動かす"))
                 // 文字表示では心電図が常に動くので、動きの切り替えは隠す
                 .opacity(isText ? 0 : 1)
                 .disabled(isText)
@@ -212,14 +212,14 @@ struct KodoListView: View {
                 Button(action: {
                     isText.toggle()
                 }) {
-                    Text(isText ? "画像" : "文字")
+                    (isText ? Text("画像") : Text("文字"))
                         .font(SpecimenStyle.mono(13))
                         .tracking(1)
                         .padding(.horizontal, 16)
                         .frame(height: 44)
                         .overlay(Capsule().stroke(SpecimenStyle.border, lineWidth: 1))
                 }
-                .accessibilityLabel(isText ? "画像表示に切り替える" : "文字表示に切り替える")
+                .accessibilityLabel(isText ? Text("画像表示に切り替える") : Text("文字表示に切り替える"))
             }
             .foregroundColor(SpecimenStyle.ink)
             .padding(.horizontal, 20)
@@ -229,6 +229,8 @@ struct KodoListView: View {
                 Text("鼓動標本")
                     .font(SpecimenStyle.mincho(36, bold: true))
                     .tracking(1.5)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
                     .foregroundColor(SpecimenStyle.ink)
                 Text("KODO SPECIMENS · \(creatures.count) SPECIES · BPM")
                     .font(SpecimenStyle.mono(11))
