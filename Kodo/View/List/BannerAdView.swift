@@ -6,7 +6,21 @@
 import GoogleMobileAds
 import SwiftUI
 
-/// 一覧画面の下に固定するAdMobのアダプティブバナー
+/// 画面の下に固定するバナー。上に細い罫線を引いて標本箱のデザインになじませる
+struct AnchoredBannerAd: View {
+    let width: CGFloat
+
+    var body: some View {
+        let adSize = largeAnchoredAdaptiveBanner(width: width)
+        VStack(spacing: 0) {
+            SpecimenStyle.rule.frame(height: SpecimenStyle.ruleWidth)
+            BannerAdView(adSize: adSize)
+                .frame(width: adSize.size.width, height: adSize.size.height)
+        }
+    }
+}
+
+/// AdMobのアダプティブバナー
 struct BannerAdView: UIViewRepresentable {
     let adSize: AdSize
 

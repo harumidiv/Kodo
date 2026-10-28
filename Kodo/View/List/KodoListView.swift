@@ -5,7 +5,6 @@
 //  Created by 佐川 晴海 on 2022/10/19.
 //
 
-import GoogleMobileAds
 import SwiftUI
 import UIKit
 
@@ -16,6 +15,9 @@ struct KodoListView: View {
     @State private var isShowDetail: Bool = false
     @State private var selectedIndex: Int = 0
     @StateObject private var nativeAdLoader = NativeAdLoader()
+
+    /// ネイティブ広告を何番目の生物の前に入れるか
+    private static let nativeAdPosition = 4
 
     let creatures: [Creature] = [
         .init(name: String(localized: "人間"),
@@ -166,16 +168,17 @@ struct KodoListView: View {
                                                 GridItem(.flexible(), spacing: SpecimenStyle.ruleWidth)],
                                       spacing: SpecimenStyle.ruleWidth) {
                                 ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
+                                    // 9種類だとマスが1つ余るので、一覧の中ほど（3段目の左）にネイティブ広告を置く
+                                    if index == Self.nativeAdPosition {
+                                        nativeAdCell(width: cellWidth)
+                                    }
                                     specimenCell(index: index, creature: creature, width: cellWidth)
                                         .onTapGesture { showDetail(index: index) }
                                 }
-                                // 9種類だと最後のマスが空くので、そこにネイティブ広告を置く
-                                nativeAdCell(width: cellWidth)
                             }
                             .background(SpecimenStyle.rule)
                         }
                     }
-                    bannerAd(width: geometry.size.width)
                 }
             }
             .fullScreenCover(isPresented: $isShowDetail) {
@@ -209,15 +212,6 @@ struct KodoListView: View {
         }
         .frame(width: width, height: width * 1.12)
         .onAppear { nativeAdLoader.load() }
-    }
-
-    private func bannerAd(width: CGFloat) -> some View {
-        let adSize = largeAnchoredAdaptiveBanner(width: width)
-        return VStack(spacing: 0) {
-            SpecimenStyle.rule.frame(height: SpecimenStyle.ruleWidth)
-            BannerAdView(adSize: adSize)
-                .frame(width: adSize.size.width, height: adSize.size.height)
-        }
     }
 
     private var header: some View {
