@@ -13,6 +13,8 @@ struct CreatureTextView: View {
     let creature: Creature
     let isMove: Bool
 
+    static let height: CGFloat = 76
+
     var body: some View {
         HStack(spacing: 14) {
             VStack(alignment: .leading, spacing: 2) {
@@ -44,7 +46,7 @@ struct CreatureTextView: View {
             .frame(width: 76, alignment: .trailing)
         }
         .padding(.horizontal, 20)
-        .frame(height: 76)
+        .frame(height: Self.height)
         .background(SpecimenStyle.background)
         .contentShape(Rectangle())
     }

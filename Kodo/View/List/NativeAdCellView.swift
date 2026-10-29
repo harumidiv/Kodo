@@ -7,7 +7,7 @@ import GoogleMobileAds
 import SwiftUI
 import UIKit
 
-/// 一覧グリッドの空きマスに出すネイティブ広告を読み込む
+/// 一覧に出すネイティブ広告を読み込む
 @MainActor
 final class NativeAdLoader: NSObject, ObservableObject, NativeAdLoaderDelegate {
     @Published private(set) var nativeAd: NativeAd?
@@ -53,20 +53,8 @@ struct NativeAdCellView: UIViewRepresentable {
         let adView = NativeAdView()
         adView.backgroundColor = UIColor(SpecimenStyle.background)
 
-        let adLabel = UILabel()
-        adLabel.text = String(localized: "広告")
-        adLabel.font = .monospacedSystemFont(ofSize: 11, weight: .regular)
-        adLabel.textColor = UIColor(SpecimenStyle.muted)
-
-        var buttonConfiguration = UIButton.Configuration.plain()
-        buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 10, bottom: 3, trailing: 10)
-        buttonConfiguration.baseForegroundColor = UIColor(SpecimenStyle.ink)
-        buttonConfiguration.background.strokeColor = UIColor(SpecimenStyle.border)
-        buttonConfiguration.background.strokeWidth = 1
-        buttonConfiguration.background.cornerRadius = 11
-        let callToActionButton = UIButton(configuration: buttonConfiguration)
-        // タップはNativeAdViewが受け取るので、ボタン自身は操作を受けない
-        callToActionButton.isUserInteractionEnabled = false
+        let adLabel = NativeAdStyle.adLabel(fontSize: 11)
+        let callToActionButton = NativeAdStyle.callToActionButton()
 
         // AdMobの推奨どおり、メディアは120×120pt以上にする
         let mediaView = MediaView()
@@ -104,9 +92,96 @@ struct NativeAdCellView: UIViewRepresentable {
     }
 
     func updateUIView(_ adView: NativeAdView, context: Context) {
+        NativeAdStyle.bind(nativeAd, to: adView)
+    }
+}
+
+/// 文字表示の行と同じ高さ・並びのネイティブ広告
+/// 行の高さにメディアが収まらないので、Googleの小さいテンプレートと同じくアイコンと見出しで見せる
+struct NativeAdRowView: UIViewRepresentable {
+    let nativeAd: NativeAd
+
+    func makeUIView(context: Context) -> NativeAdView {
+        let adView = NativeAdView()
+        adView.backgroundColor = UIColor(SpecimenStyle.background)
+
+        let iconView = UIImageView()
+        iconView.contentMode = .scaleAspectFit
+        iconView.clipsToBounds = true
+        iconView.layer.cornerRadius = 6
+
+        let adLabel = NativeAdStyle.adLabel(fontSize: 10)
+
+        let headlineLabel = UILabel()
+        headlineLabel.font = UIFont(name: "HiraMinProN-W3", size: 15) ?? .systemFont(ofSize: 15)
+        headlineLabel.textColor = UIColor(SpecimenStyle.ink)
+        headlineLabel.numberOfLines = 1
+
+        let textStack = UIStackView(arrangedSubviews: [adLabel, headlineLabel])
+        textStack.axis = .vertical
+        textStack.alignment = .leading
+        textStack.spacing = 2
+
+        let callToActionButton = NativeAdStyle.callToActionButton()
+        callToActionButton.setContentHuggingPriority(.required, for: .horizontal)
+        callToActionButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+
+        let stack = UIStackView(arrangedSubviews: [iconView, textStack, callToActionButton])
+        stack.alignment = .center
+        stack.spacing = 14
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        adView.addSubview(stack)
+
+        NSLayoutConstraint.activate([
+            stack.centerYAnchor.constraint(equalTo: adView.centerYAnchor),
+            stack.leadingAnchor.constraint(equalTo: adView.leadingAnchor, constant: 20),
+            stack.trailingAnchor.constraint(equalTo: adView.trailingAnchor, constant: -20),
+            iconView.widthAnchor.constraint(equalToConstant: 44),
+            iconView.heightAnchor.constraint(equalToConstant: 44)
+        ])
+
+        adView.iconView = iconView
+        adView.headlineView = headlineLabel
+        adView.callToActionView = callToActionButton
+        return adView
+    }
+
+    func updateUIView(_ adView: NativeAdView, context: Context) {
+        NativeAdStyle.bind(nativeAd, to: adView)
+    }
+}
+
+/// マスと行で共通の、広告の部品と表示内容の設定
+private enum NativeAdStyle {
+    static func adLabel(fontSize: CGFloat) -> UILabel {
+        let label = UILabel()
+        label.text = String(localized: "広告")
+        label.font = .monospacedSystemFont(ofSize: fontSize, weight: .regular)
+        label.textColor = UIColor(SpecimenStyle.muted)
+        return label
+    }
+
+    static func callToActionButton() -> UIButton {
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 10, bottom: 3, trailing: 10)
+        configuration.baseForegroundColor = UIColor(SpecimenStyle.ink)
+        configuration.background.strokeColor = UIColor(SpecimenStyle.border)
+        configuration.background.strokeWidth = 1
+        configuration.background.cornerRadius = 11
+        let button = UIButton(configuration: configuration)
+        // タップはNativeAdViewが受け取るので、ボタン自身は操作を受けない
+        button.isUserInteractionEnabled = false
+        return button
+    }
+
+    static func bind(_ nativeAd: NativeAd, to adView: NativeAdView) {
         guard adView.nativeAd !== nativeAd else { return }
         (adView.headlineView as? UILabel)?.text = nativeAd.headline
         adView.mediaView?.mediaContent = nativeAd.mediaContent
+        if let iconView = adView.iconView as? UIImageView {
+            iconView.image = nativeAd.icon?.image
+            iconView.isHidden = nativeAd.icon == nil
+        }
         if let button = adView.callToActionView as? UIButton {
             var title = AttributedString(nativeAd.callToAction ?? "")
             title.font = UIFont.monospacedSystemFont(ofSize: 11, weight: .regular)

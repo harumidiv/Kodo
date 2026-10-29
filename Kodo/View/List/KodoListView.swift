@@ -16,8 +16,15 @@ struct KodoListView: View {
     @State private var selectedIndex: Int = 0
     @StateObject private var nativeAdLoader = NativeAdLoader()
 
-    /// ネイティブ広告を何番目の生物の前に入れるか
-    private static let nativeAdPosition = 4
+    /// ネイティブ広告を何番目の生物の前に入れるか。起動ごとにランダムに決め、表示中は動かさない
+    @State private var nativeAdPosition: Int
+
+    init(isText: Binding<Bool>, isMove: Binding<Bool>) {
+        _isText = isText
+        _isMove = isMove
+        // 一覧の先頭は生物から始めたいので、1番目の前には入れない
+        _nativeAdPosition = State(initialValue: Int.random(in: 1..<creatures.count))
+    }
 
     let creatures: [Creature] = [
         .init(name: String(localized: "人間"),
@@ -157,6 +164,9 @@ struct KodoListView: View {
                         if isText {
                             LazyVStack(spacing: SpecimenStyle.ruleWidth) {
                                 ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
+                                    if index == nativeAdPosition {
+                                        nativeAdRow
+                                    }
                                     CreatureTextView(number: index + 1,
                                                      creature: creature,
                                                      isMove: isMove)
@@ -164,13 +174,14 @@ struct KodoListView: View {
                                 }
                             }
                             .background(SpecimenStyle.rule)
+                            .onAppear { nativeAdLoader.load() }
                         } else {
                             LazyVGrid(columns: [GridItem(.flexible(), spacing: SpecimenStyle.ruleWidth),
                                                 GridItem(.flexible(), spacing: SpecimenStyle.ruleWidth)],
                                       spacing: SpecimenStyle.ruleWidth) {
                                 ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
-                                    // 9種類だとマスが1つ余るので、一覧の中ほど（3段目の左）にネイティブ広告を置く
-                                    if index == Self.nativeAdPosition {
+                                    // 9種類だとマスが1つ余るので、そこにネイティブ広告を置く
+                                    if index == nativeAdPosition {
                                         nativeAdCell(width: cellWidth)
                                     }
                                     specimenCell(index: index, creature: creature, width: cellWidth)
@@ -213,6 +224,15 @@ struct KodoListView: View {
         }
         .frame(width: width, height: width * 1.12)
         .onAppear { nativeAdLoader.load() }
+    }
+
+    /// 文字表示の行と同じ高さにする。空の行を置くと罫線が二重になるので、読み込めるまでは何も出さない
+    @ViewBuilder
+    private var nativeAdRow: some View {
+        if let nativeAd = nativeAdLoader.nativeAd {
+            NativeAdRowView(nativeAd: nativeAd)
+                .frame(height: CreatureTextView.height)
+        }
     }
 
     private var header: some View {
