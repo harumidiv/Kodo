@@ -621,7 +621,7 @@ struct KodoListView: View {
                 VStack(spacing: 0) {
                     header
                     ScrollView {
-                        // 罫線はセルの隙間から見える背景色で描く
+                        // 罫線はセルの隙間に重ねて描く。再生中はぐにゃぐにゃ揺らす
                         if isText {
                             LazyVStack(spacing: SpecimenStyle.ruleWidth) {
                                 ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
@@ -634,7 +634,11 @@ struct KodoListView: View {
                                         .onTapGesture { showDetail(index: index) }
                                 }
                             }
-                            .background(SpecimenStyle.rule)
+                            .overlay {
+                                WobblyRuleLines(isMove: isMove,
+                                                verticalLineXs: [],
+                                                rowPitch: CreatureTextView.height + SpecimenStyle.ruleWidth)
+                            }
                             .onAppear { nativeAdLoader.load() }
                         } else {
                             LazyVGrid(columns: [GridItem(.flexible(), spacing: SpecimenStyle.ruleWidth),
@@ -649,9 +653,19 @@ struct KodoListView: View {
                                         .onTapGesture { showDetail(index: index) }
                                 }
                             }
-                            .background(SpecimenStyle.rule)
+                            // 末尾までスクロールしたとき、中央の縦線が画面の下端（ホームインジケータの下）まで届くよう余白を足す
+                            .padding(.bottom, geometry.safeAreaInsets.bottom)
+                            .overlay {
+                                WobblyRuleLines(isMove: isMove,
+                                                verticalLineXs: [cellWidth + SpecimenStyle.ruleWidth / 2],
+                                                rowPitch: cellWidth * 1.12 + SpecimenStyle.ruleWidth,
+                                                // イラストのマスは大きいので、文字表示よりはっきり揺らす
+                                                amplitude: 4)
+                            }
                         }
                     }
+                    // 画像表示では下のSafeAreaまでスクロール領域を広げ、縦線を画面の下端まで伸ばす
+                    .ignoresSafeArea(.container, edges: isText ? [] : .bottom)
                 }
             }
             .fullScreenCover(isPresented: $isShowDetail) {
@@ -772,6 +786,77 @@ struct KodoListView: View {
         .frame(width: width, height: width * 1.12)
         .background(SpecimenStyle.background)
         .contentShape(Rectangle())
+    }
+}
+
+/// 一覧のセルの隙間に引く罫線。再生中は手描きのようにぐにゃぐにゃ揺れ、止めると真っ直ぐに戻る
+struct WobblyRuleLines: View {
+    let isMove: Bool
+    /// 縦線を引くx座標
+    let verticalLineXs: [CGFloat]
+    /// 横線の間隔（セルの高さ＋罫線の太さ）。セルの下端ごとに引き、一番下には引かない
+    let rowPitch: CGFloat
+    /// 揺れの大きさ（pt）
+    var amplitude: CGFloat = 1.6
+    /// 線を折れ線で近似するときの刻み
+    private static let step: CGFloat = 4
+
+    var body: some View {
+        Group {
+            if isMove {
+                TimelineView(.animation) { context in
+                    canvas(time: context.date.timeIntervalSinceReferenceDate)
+                }
+            } else {
+                canvas(time: nil)
+            }
+        }
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
+    }
+
+    private func canvas(time: TimeInterval?) -> some View {
+        Canvas { context, size in
+            var path = Path()
+            for x in verticalLineXs {
+                addLine(to: &path, length: size.height, seed: x, time: time) { along, offset in
+                    CGPoint(x: x + offset, y: along)
+                }
+            }
+            if rowPitch > 0 {
+                var y = rowPitch - SpecimenStyle.ruleWidth / 2
+                while y < size.height - rowPitch / 2 {
+                    let lineY = y
+                    addLine(to: &path, length: size.width, seed: lineY, time: time) { along, offset in
+                        CGPoint(x: along, y: lineY + offset)
+                    }
+                    y += rowPitch
+                }
+            }
+            context.stroke(path, with: .color(SpecimenStyle.rule), lineWidth: SpecimenStyle.ruleWidth)
+        }
+    }
+
+    private func addLine(to path: inout Path,
+                         length: CGFloat,
+                         seed: CGFloat,
+                         time: TimeInterval?,
+                         point: (CGFloat, CGFloat) -> CGPoint) {
+        var along: CGFloat = 0
+        path.move(to: point(0, offset(along: 0, seed: seed, time: time)))
+        while along < length {
+            along = min(along + Self.step, length)
+            path.addLine(to: point(along, offset(along: along, seed: seed, time: time)))
+        }
+    }
+
+    /// 波長と速さの違う2つの波を重ねて、規則的すぎない揺れにする。線ごとにseedで位相をずらす
+    private func offset(along: CGFloat, seed: CGFloat, time: TimeInterval?) -> CGFloat {
+        guard let time else { return 0 }
+        let t = CGFloat(time.truncatingRemainder(dividingBy: 10_000))
+        let primary = sin(along / 53 + t * 2.1 + seed * 0.37)
+        let secondary = sin(along / 23 - t * 3.3 + seed * 0.61)
+        return amplitude * (primary * 0.65 + secondary * 0.35)
     }
 }
 
