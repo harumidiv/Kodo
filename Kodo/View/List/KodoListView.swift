@@ -14,16 +14,32 @@ struct KodoListView: View {
 
     @State private var isShowDetail: Bool = false
     @State private var selectedIndex: Int = 0
-    @StateObject private var nativeAdLoader = NativeAdLoader()
+    @StateObject private var nativeAdLoader: NativeAdLoader
 
-    /// ネイティブ広告を何番目の生物の前に入れるか。起動ごとにランダムに決め、表示中は動かさない
-    @State private var nativeAdPosition: Int
+    /// 広告1つあたりの生物の数。この数ごとに区切った範囲に広告を1つずつ入れる
+    private static let creaturesPerAd = 11
+
+    /// ネイティブ広告を何番目の生物の前に入れるか（キー）と、何番目の広告枠か（値）。
+    /// 起動ごとにランダムに決め、表示中は動かさない
+    @State private var nativeAdSlots: [Int: Int]
 
     init(isText: Binding<Bool>, isMove: Binding<Bool>) {
         _isText = isText
         _isMove = isMove
-        // 一覧の先頭は生物から始めたいので、1番目の前には入れない
-        _nativeAdPosition = State(initialValue: Int.random(in: 1..<creatures.count))
+        let positions = Self.makeNativeAdPositions(creatureCount: creatures.count)
+        _nativeAdSlots = State(initialValue: Dictionary(uniqueKeysWithValues: positions.enumerated().map { ($1, $0) }))
+        _nativeAdLoader = StateObject(wrappedValue: NativeAdLoader(numberOfAds: positions.count))
+    }
+
+    /// 区切った範囲ごとにランダムな位置を1つ選ぶ。
+    /// 一覧の先頭は生物から始めたいので1番目の前には入れず、範囲の両端も避けて広告どうしが隣り合わないようにする
+    private static func makeNativeAdPositions(creatureCount: Int) -> [Int] {
+        let adCount = max(1, creatureCount / creaturesPerAd)
+        return (0..<adCount).compactMap { block in
+            let lower = max(1, block * creaturesPerAd + 1)
+            let upper = min(creatureCount, (block + 1) * creaturesPerAd - 1)
+            return lower < upper ? Int.random(in: lower..<upper) : nil
+        }
     }
 
     let creatures: [Creature] = [
@@ -150,6 +166,451 @@ struct KodoListView: View {
                 UIImage(named: "mouth_2")!
               ],
               heartbeat: 0.11),
+        .init(name: String(localized: "コウモリ"),
+              scientificName: "Pipistrellus abramus",
+              images: [
+                UIImage(named: "bat_1")!,
+                UIImage(named: "bat_2")!,
+                UIImage(named: "bat_3")!,
+                UIImage(named: "bat_4")!,
+                UIImage(named: "bat_3")!,
+                UIImage(named: "bat_2")!
+              ],
+              states: [
+                .init(name: String(localized: "安静"), heartbeat: 0.15),
+                .init(name: String(localized: "飛行中"), heartbeat: 0.07)
+              ]),
+        .init(name: String(localized: "カブトムシ"),
+              scientificName: "Trypoxylus dichotomus",
+              images: [
+                UIImage(named: "beetle_1")!,
+                UIImage(named: "beetle_2")!,
+                UIImage(named: "beetle_3")!,
+                UIImage(named: "beetle_4")!,
+                UIImage(named: "beetle_5")!,
+                UIImage(named: "beetle_6")!,
+                UIImage(named: "beetle_7")!,
+                UIImage(named: "beetle_6")!,
+                UIImage(named: "beetle_5")!,
+                UIImage(named: "beetle_4")!,
+                UIImage(named: "beetle_3")!,
+                UIImage(named: "beetle_2")!
+              ],
+              heartbeat: 0.8),
+        .init(name: String(localized: "アゲハ蝶"),
+              scientificName: "Papilio xuthus",
+              images: [
+                UIImage(named: "butterfly_1")!,
+                UIImage(named: "butterfly_2")!,
+                UIImage(named: "butterfly_3")!,
+                UIImage(named: "butterfly_4")!,
+                UIImage(named: "butterfly_5")!,
+                UIImage(named: "butterfly_6")!,
+                UIImage(named: "butterfly_7")!,
+                UIImage(named: "butterfly_6")!,
+                UIImage(named: "butterfly_5")!,
+                UIImage(named: "butterfly_4")!,
+                UIImage(named: "butterfly_3")!,
+                UIImage(named: "butterfly_2")!
+              ],
+              heartbeat: 1.2),
+        .init(name: String(localized: "ムカデ"),
+              scientificName: "Scolopendra subspinipes",
+              images: [
+                UIImage(named: "centipede_1")!,
+                UIImage(named: "centipede_2")!,
+                UIImage(named: "centipede_3")!,
+                UIImage(named: "centipede_4")!,
+                UIImage(named: "centipede_5")!,
+                UIImage(named: "centipede_6")!,
+                UIImage(named: "centipede_5")!,
+                UIImage(named: "centipede_4")!,
+                UIImage(named: "centipede_3")!,
+                UIImage(named: "centipede_2")!
+              ],
+              heartbeat: 0.75),
+        .init(name: String(localized: "カメレオン"),
+              scientificName: "Chamaeleo calyptratus",
+              images: [
+                UIImage(named: "chameleon_1")!,
+                UIImage(named: "chameleon_2")!,
+                UIImage(named: "chameleon_3")!,
+                UIImage(named: "chameleon_4")!,
+                UIImage(named: "chameleon_5")!,
+                UIImage(named: "chameleon_6")!,
+                UIImage(named: "chameleon_7")!,
+                UIImage(named: "chameleon_6")!,
+                UIImage(named: "chameleon_5")!,
+                UIImage(named: "chameleon_4")!,
+                UIImage(named: "chameleon_3")!,
+                UIImage(named: "chameleon_2")!
+              ],
+              heartbeat: 1.0),
+        .init(name: String(localized: "トンボ"),
+              scientificName: "Anax parthenope",
+              images: [
+                UIImage(named: "dragonfly_1")!,
+                UIImage(named: "dragonfly_2")!,
+                UIImage(named: "dragonfly_3")!,
+                UIImage(named: "dragonfly_4")!,
+                UIImage(named: "dragonfly_5")!,
+                UIImage(named: "dragonfly_6")!,
+                UIImage(named: "dragonfly_5")!,
+                UIImage(named: "dragonfly_4")!,
+                UIImage(named: "dragonfly_3")!,
+                UIImage(named: "dragonfly_2")!
+              ],
+              heartbeat: 0.6),
+        .init(name: String(localized: "カエル"),
+              scientificName: "Dryophytes japonicus",
+              images: [
+                UIImage(named: "frog_1")!,
+                UIImage(named: "frog_2")!,
+                UIImage(named: "frog_3")!,
+                UIImage(named: "frog_4")!,
+                UIImage(named: "frog_5")!,
+                UIImage(named: "frog_6")!,
+                UIImage(named: "frog_5")!,
+                UIImage(named: "frog_4")!,
+                UIImage(named: "frog_3")!,
+                UIImage(named: "frog_2")!
+              ],
+              heartbeat: 1.5),
+        .init(name: String(localized: "キリン"),
+              scientificName: "Giraffa camelopardalis",
+              images: [
+                UIImage(named: "giraffe_1")!,
+                UIImage(named: "giraffe_2")!,
+                UIImage(named: "giraffe_3")!,
+                UIImage(named: "giraffe_4")!,
+                UIImage(named: "giraffe_5")!,
+                UIImage(named: "giraffe_6")!,
+                UIImage(named: "giraffe_5")!,
+                UIImage(named: "giraffe_4")!,
+                UIImage(named: "giraffe_3")!,
+                UIImage(named: "giraffe_2")!
+              ],
+              heartbeat: 0.9),
+        .init(name: String(localized: "バッタ"),
+              scientificName: "Locusta migratoria",
+              images: [
+                UIImage(named: "grasshopper_1")!,
+                UIImage(named: "grasshopper_2")!,
+                UIImage(named: "grasshopper_3")!,
+                UIImage(named: "grasshopper_4")!,
+                UIImage(named: "grasshopper_5")!,
+                UIImage(named: "grasshopper_6")!,
+                UIImage(named: "grasshopper_7")!,
+                UIImage(named: "grasshopper_6")!,
+                UIImage(named: "grasshopper_5")!,
+                UIImage(named: "grasshopper_4")!,
+                UIImage(named: "grasshopper_3")!,
+                UIImage(named: "grasshopper_2")!
+              ],
+              heartbeat: 0.7),
+        .init(name: String(localized: "ハチドリ"),
+              scientificName: "Archilochus colubris",
+              images: [
+                UIImage(named: "hummingbird_1")!,
+                UIImage(named: "hummingbird_2")!,
+                UIImage(named: "hummingbird_3")!,
+                UIImage(named: "hummingbird_4")!,
+                UIImage(named: "hummingbird_3")!,
+                UIImage(named: "hummingbird_2")!
+              ],
+              states: [
+                .init(name: String(localized: "安静"), heartbeat: 0.24),
+                .init(name: String(localized: "飛行中"), heartbeat: 0.05)
+              ]),
+        // クラゲには心臓がないので心拍は0
+        .init(name: String(localized: "クラゲ"),
+              scientificName: "Aurelia aurita",
+              images: [
+                UIImage(named: "jellyfish_1")!,
+                UIImage(named: "jellyfish_2")!,
+                UIImage(named: "jellyfish_3")!,
+                UIImage(named: "jellyfish_4")!,
+                UIImage(named: "jellyfish_5")!,
+                UIImage(named: "jellyfish_6")!,
+                UIImage(named: "jellyfish_7")!,
+                UIImage(named: "jellyfish_8")!,
+                UIImage(named: "jellyfish_7")!,
+                UIImage(named: "jellyfish_6")!,
+                UIImage(named: "jellyfish_5")!,
+                UIImage(named: "jellyfish_4")!,
+                UIImage(named: "jellyfish_3")!,
+                UIImage(named: "jellyfish_2")!
+              ],
+              heartbeat: 0),
+        .init(name: String(localized: "ライオン"),
+              scientificName: "Panthera leo",
+              images: [
+                UIImage(named: "lion_1")!,
+                UIImage(named: "lion_2")!,
+                UIImage(named: "lion_3")!,
+                UIImage(named: "lion_4")!,
+                UIImage(named: "lion_5")!,
+                UIImage(named: "lion_6")!,
+                UIImage(named: "lion_7")!,
+                UIImage(named: "lion_6")!,
+                UIImage(named: "lion_5")!,
+                UIImage(named: "lion_4")!,
+                UIImage(named: "lion_3")!,
+                UIImage(named: "lion_2")!
+              ],
+              heartbeat: 1.4),
+        .init(name: String(localized: "マンモス"),
+              scientificName: "Mammuthus primigenius",
+              images: [
+                UIImage(named: "mammoth_1")!,
+                UIImage(named: "mammoth_2")!,
+                UIImage(named: "mammoth_3")!,
+                UIImage(named: "mammoth_4")!,
+                UIImage(named: "mammoth_5")!,
+                UIImage(named: "mammoth_6")!,
+                UIImage(named: "mammoth_7")!,
+                UIImage(named: "mammoth_8")!,
+                UIImage(named: "mammoth_9")!,
+                UIImage(named: "mammoth_10")!,
+                UIImage(named: "mammoth_11")!,
+                UIImage(named: "mammoth_12")!,
+                UIImage(named: "mammoth_13")!,
+                UIImage(named: "mammoth_12")!,
+                UIImage(named: "mammoth_11")!,
+                UIImage(named: "mammoth_10")!,
+                UIImage(named: "mammoth_9")!,
+                UIImage(named: "mammoth_8")!,
+                UIImage(named: "mammoth_7")!,
+                UIImage(named: "mammoth_6")!,
+                UIImage(named: "mammoth_5")!,
+                UIImage(named: "mammoth_4")!,
+                UIImage(named: "mammoth_3")!,
+                UIImage(named: "mammoth_2")!
+              ],
+              heartbeat: 2.4),
+        .init(name: String(localized: "サル"),
+              scientificName: "Macaca fuscata",
+              images: [
+                UIImage(named: "monkey_1")!,
+                UIImage(named: "monkey_2")!,
+                UIImage(named: "monkey_3")!,
+                UIImage(named: "monkey_4")!,
+                UIImage(named: "monkey_5")!,
+                UIImage(named: "monkey_4")!,
+                UIImage(named: "monkey_3")!,
+                UIImage(named: "monkey_2")!
+              ],
+              heartbeat: 0.4),
+        .init(name: String(localized: "ペンギン"),
+              scientificName: "Aptenodytes forsteri",
+              images: [
+                UIImage(named: "penguin_1")!,
+                UIImage(named: "penguin_2")!,
+                UIImage(named: "penguin_3")!,
+                UIImage(named: "penguin_4")!,
+                UIImage(named: "penguin_5")!,
+                UIImage(named: "penguin_6")!,
+                UIImage(named: "penguin_5")!,
+                UIImage(named: "penguin_4")!,
+                UIImage(named: "penguin_3")!,
+                UIImage(named: "penguin_2")!
+              ],
+              states: [
+                .init(name: String(localized: "安静"), heartbeat: 0.8),
+                .init(name: String(localized: "潜水中"), heartbeat: 3.0)
+              ]),
+        .init(name: String(localized: "ウサギ"),
+              scientificName: "Oryctolagus cuniculus",
+              images: [
+                UIImage(named: "rabbit_1")!,
+                UIImage(named: "rabbit_2")!,
+                UIImage(named: "rabbit_3")!,
+                UIImage(named: "rabbit_4")!,
+                UIImage(named: "rabbit_3")!,
+                UIImage(named: "rabbit_2")!
+              ],
+              heartbeat: 0.28),
+        .init(name: String(localized: "タツノオトシゴ"),
+              scientificName: "Hippocampus coronatus",
+              images: [
+                UIImage(named: "seahorse_1")!,
+                UIImage(named: "seahorse_2")!,
+                UIImage(named: "seahorse_3")!,
+                UIImage(named: "seahorse_4")!,
+                UIImage(named: "seahorse_3")!,
+                UIImage(named: "seahorse_2")!
+              ],
+              heartbeat: 0.8),
+        .init(name: String(localized: "サメ"),
+              scientificName: "Carcharodon carcharias",
+              images: [
+                UIImage(named: "shark_1")!,
+                UIImage(named: "shark_2")!,
+                UIImage(named: "shark_3")!,
+                UIImage(named: "shark_4")!,
+                UIImage(named: "shark_5")!,
+                UIImage(named: "shark_6")!,
+                UIImage(named: "shark_7")!,
+                UIImage(named: "shark_8")!,
+                UIImage(named: "shark_7")!,
+                UIImage(named: "shark_6")!,
+                UIImage(named: "shark_5")!,
+                UIImage(named: "shark_4")!,
+                UIImage(named: "shark_3")!,
+                UIImage(named: "shark_2")!
+              ],
+              heartbeat: 2.0),
+        .init(name: String(localized: "ヘビ"),
+              scientificName: "Elaphe climacophora",
+              images: [
+                UIImage(named: "snake_1")!,
+                UIImage(named: "snake_2")!,
+                UIImage(named: "snake_3")!,
+                UIImage(named: "snake_4")!,
+                UIImage(named: "snake_5")!,
+                UIImage(named: "snake_6")!,
+                UIImage(named: "snake_7")!,
+                UIImage(named: "snake_8")!,
+                UIImage(named: "snake_9")!,
+                UIImage(named: "snake_10")!,
+                UIImage(named: "snake_9")!,
+                UIImage(named: "snake_8")!,
+                UIImage(named: "snake_7")!,
+                UIImage(named: "snake_6")!,
+                UIImage(named: "snake_5")!,
+                UIImage(named: "snake_4")!,
+                UIImage(named: "snake_3")!,
+                UIImage(named: "snake_2")!
+              ],
+              heartbeat: 1.6),
+        .init(name: String(localized: "ティラノサウルス"),
+              scientificName: "Tyrannosaurus rex",
+              images: [
+                UIImage(named: "trex_1")!,
+                UIImage(named: "trex_2")!,
+                UIImage(named: "trex_3")!,
+                UIImage(named: "trex_4")!,
+                UIImage(named: "trex_5")!,
+                UIImage(named: "trex_6")!,
+                UIImage(named: "trex_7")!,
+                UIImage(named: "trex_8")!,
+                UIImage(named: "trex_9")!,
+                UIImage(named: "trex_10")!,
+                UIImage(named: "trex_11")!,
+                UIImage(named: "trex_12")!,
+                UIImage(named: "trex_13")!,
+                UIImage(named: "trex_12")!,
+                UIImage(named: "trex_11")!,
+                UIImage(named: "trex_10")!,
+                UIImage(named: "trex_9")!,
+                UIImage(named: "trex_8")!,
+                UIImage(named: "trex_7")!,
+                UIImage(named: "trex_6")!,
+                UIImage(named: "trex_5")!,
+                UIImage(named: "trex_4")!,
+                UIImage(named: "trex_3")!,
+                UIImage(named: "trex_2")!
+              ],
+              heartbeat: 1.8),
+        .init(name: String(localized: "マグロ"),
+              scientificName: "Thunnus orientalis",
+              images: [
+                UIImage(named: "tuna_1")!,
+                UIImage(named: "tuna_2")!,
+                UIImage(named: "tuna_3")!,
+                UIImage(named: "tuna_4")!,
+                UIImage(named: "tuna_5")!,
+                UIImage(named: "tuna_6")!,
+                UIImage(named: "tuna_7")!,
+                UIImage(named: "tuna_6")!,
+                UIImage(named: "tuna_5")!,
+                UIImage(named: "tuna_4")!,
+                UIImage(named: "tuna_3")!,
+                UIImage(named: "tuna_2")!
+              ],
+              heartbeat: 0.6),
+        .init(name: String(localized: "カメ"),
+              scientificName: "Mauremys japonica",
+              images: [
+                UIImage(named: "turtle_1")!,
+                UIImage(named: "turtle_2")!,
+                UIImage(named: "turtle_3")!,
+                UIImage(named: "turtle_4")!,
+                UIImage(named: "turtle_5")!,
+                UIImage(named: "turtle_6")!,
+                UIImage(named: "turtle_7")!,
+                UIImage(named: "turtle_8")!,
+                UIImage(named: "turtle_9")!,
+                UIImage(named: "turtle_10")!,
+                UIImage(named: "turtle_11")!,
+                UIImage(named: "turtle_12")!,
+                UIImage(named: "turtle_13")!,
+                UIImage(named: "turtle_12")!,
+                UIImage(named: "turtle_11")!,
+                UIImage(named: "turtle_10")!,
+                UIImage(named: "turtle_9")!,
+                UIImage(named: "turtle_8")!,
+                UIImage(named: "turtle_7")!,
+                UIImage(named: "turtle_6")!,
+                UIImage(named: "turtle_5")!,
+                UIImage(named: "turtle_4")!,
+                UIImage(named: "turtle_3")!,
+                UIImage(named: "turtle_2")!
+              ],
+              heartbeat: 2.6),
+        .init(name: String(localized: "クジラ"),
+              scientificName: "Balaenoptera musculus",
+              images: [
+                UIImage(named: "whale_1")!,
+                UIImage(named: "whale_2")!,
+                UIImage(named: "whale_3")!,
+                UIImage(named: "whale_4")!,
+                UIImage(named: "whale_5")!,
+                UIImage(named: "whale_6")!,
+                UIImage(named: "whale_7")!,
+                UIImage(named: "whale_8")!,
+                UIImage(named: "whale_9")!,
+                UIImage(named: "whale_10")!,
+                UIImage(named: "whale_11")!,
+                UIImage(named: "whale_12")!,
+                UIImage(named: "whale_13")!,
+                UIImage(named: "whale_14")!,
+                UIImage(named: "whale_15")!,
+                UIImage(named: "whale_16")!,
+                UIImage(named: "whale_15")!,
+                UIImage(named: "whale_14")!,
+                UIImage(named: "whale_13")!,
+                UIImage(named: "whale_12")!,
+                UIImage(named: "whale_11")!,
+                UIImage(named: "whale_10")!,
+                UIImage(named: "whale_9")!,
+                UIImage(named: "whale_8")!,
+                UIImage(named: "whale_7")!,
+                UIImage(named: "whale_6")!,
+                UIImage(named: "whale_5")!,
+                UIImage(named: "whale_4")!,
+                UIImage(named: "whale_3")!,
+                UIImage(named: "whale_2")!
+              ],
+              states: [
+                .init(name: String(localized: "安静"), heartbeat: 2.0),
+                .init(name: String(localized: "潜水中"), heartbeat: 7.5)
+              ]),
+        .init(name: String(localized: "ミミズ"),
+              scientificName: "Lumbricus terrestris",
+              images: [
+                UIImage(named: "worm_1")!,
+                UIImage(named: "worm_2")!,
+                UIImage(named: "worm_3")!,
+                UIImage(named: "worm_4")!,
+                UIImage(named: "worm_5")!,
+                UIImage(named: "worm_6")!,
+                UIImage(named: "worm_5")!,
+                UIImage(named: "worm_4")!,
+                UIImage(named: "worm_3")!,
+                UIImage(named: "worm_2")!
+              ],
+              heartbeat: 2.5),
     ]
 
     var body: some View {
@@ -164,8 +625,8 @@ struct KodoListView: View {
                         if isText {
                             LazyVStack(spacing: SpecimenStyle.ruleWidth) {
                                 ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
-                                    if index == nativeAdPosition {
-                                        nativeAdRow
+                                    if let slot = nativeAdSlots[index] {
+                                        nativeAdRow(slot: slot)
                                     }
                                     CreatureTextView(number: index + 1,
                                                      creature: creature,
@@ -180,9 +641,9 @@ struct KodoListView: View {
                                                 GridItem(.flexible(), spacing: SpecimenStyle.ruleWidth)],
                                       spacing: SpecimenStyle.ruleWidth) {
                                 ForEach(Array(creatures.enumerated()), id: \.element) { index, creature in
-                                    // 9種類だとマスが1つ余るので、そこにネイティブ広告を置く
-                                    if index == nativeAdPosition {
-                                        nativeAdCell(width: cellWidth)
+                                    // ネイティブ広告も生物と同じマスに置く
+                                    if let slot = nativeAdSlots[index] {
+                                        nativeAdCell(slot: slot, width: cellWidth)
                                     }
                                     specimenCell(index: index, creature: creature, width: cellWidth)
                                         .onTapGesture { showDetail(index: index) }
@@ -214,9 +675,9 @@ struct KodoListView: View {
     // MARK: - View Component
 
     @ViewBuilder
-    private func nativeAdCell(width: CGFloat) -> some View {
+    private func nativeAdCell(slot: Int, width: CGFloat) -> some View {
         Group {
-            if let nativeAd = nativeAdLoader.nativeAd {
+            if let nativeAd = nativeAdLoader.nativeAd(at: slot) {
                 NativeAdCellView(nativeAd: nativeAd)
             } else {
                 SpecimenStyle.background
@@ -228,8 +689,8 @@ struct KodoListView: View {
 
     /// 文字表示の行と同じ高さにする。空の行を置くと罫線が二重になるので、読み込めるまでは何も出さない
     @ViewBuilder
-    private var nativeAdRow: some View {
-        if let nativeAd = nativeAdLoader.nativeAd {
+    private func nativeAdRow(slot: Int) -> some View {
+        if let nativeAd = nativeAdLoader.nativeAd(at: slot) {
             NativeAdRowView(nativeAd: nativeAd)
                 .frame(height: CreatureTextView.height)
         }
@@ -332,8 +793,10 @@ enum SpecimenStyle {
         .system(size: size, weight: .regular, design: .monospaced)
     }
 
+    /// 心臓のない生物（心拍0）は0bpmにする
     static func bpm(_ heartbeat: Double) -> Int {
-        Int((60 / heartbeat).rounded())
+        guard heartbeat > 0 else { return 0 }
+        return Int((60 / heartbeat).rounded())
     }
 
     static func number(_ value: Int) -> String {

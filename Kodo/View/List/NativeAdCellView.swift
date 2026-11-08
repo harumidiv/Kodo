@@ -10,8 +10,19 @@ import UIKit
 /// 一覧に出すネイティブ広告を読み込む
 @MainActor
 final class NativeAdLoader: NSObject, ObservableObject, NativeAdLoaderDelegate {
-    @Published private(set) var nativeAd: NativeAd?
+    /// 届いた順に並ぶ。広告枠ごとに別の広告を出すので、枠の番号で取り出す
+    @Published private(set) var nativeAds: [NativeAd] = []
     private var adLoader: AdLoader?
+    private let numberOfAds: Int
+
+    /// - Parameter numberOfAds: 一度に読み込む広告の数。AdMobの上限は5
+    init(numberOfAds: Int) {
+        self.numberOfAds = min(max(numberOfAds, 1), 5)
+    }
+
+    func nativeAd(at slot: Int) -> NativeAd? {
+        nativeAds.indices.contains(slot) ? nativeAds[slot] : nil
+    }
 
     private var adUnitID: String {
         #if DEBUG
@@ -27,21 +38,23 @@ final class NativeAdLoader: NSObject, ObservableObject, NativeAdLoaderDelegate {
         let rootViewController = UIApplication.shared.connectedScenes
             .compactMap { ($0 as? UIWindowScene)?.keyWindow?.rootViewController }
             .first
+        let multipleAdsOptions = MultipleAdsAdLoaderOptions()
+        multipleAdsOptions.numberOfAds = numberOfAds
         let loader = AdLoader(adUnitID: adUnitID,
                               rootViewController: rootViewController,
                               adTypes: [.native],
-                              options: nil)
+                              options: [multipleAdsOptions])
         loader.delegate = self
         loader.load(Request())
         adLoader = loader
     }
 
     func adLoader(_ adLoader: AdLoader, didReceive nativeAd: NativeAd) {
-        self.nativeAd = nativeAd
+        nativeAds.append(nativeAd)
     }
 
     func adLoader(_ adLoader: AdLoader, didFailToReceiveAdWithError error: Error) {
-        // 読み込めなかったときは空きマスのままにする
+        // 読み込めなかった枠は空きマスのままにする
     }
 }
 
