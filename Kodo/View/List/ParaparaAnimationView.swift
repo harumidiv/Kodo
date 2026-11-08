@@ -13,11 +13,18 @@ struct ParaparaAnimationView: UIViewRepresentable {
     let images: [UIImage]
     typealias UIViewType = UIImageView
 
+    /// 心拍0（心臓のない生物）のときに使う、ゆっくりした1周の秒数
+    private static let heartlessDuration: Double = 2.0
+
+    private var animationDuration: Double {
+        duration > 0 ? duration : Self.heartlessDuration
+    }
+
     func makeUIView(context: Context) -> UIImageView {
         let imageView = UIImageView()
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-        let animateImage = UIImage.animatedImage(with: images, duration: duration)
+        let animateImage = UIImage.animatedImage(with: images, duration: animationDuration)
         imageView.image = animateImage
         context.coordinator.duration = duration
         return imageView
@@ -26,7 +33,7 @@ struct ParaparaAnimationView: UIViewRepresentable {
     func updateUIView(_ uiView: UIImageView, context: Context) {
         // ドラッグ中なども呼ばれるので、心拍が変わったときだけアニメーションを作り直す
         guard context.coordinator.duration != duration else { return }
-        uiView.image = UIImage.animatedImage(with: images, duration: duration)
+        uiView.image = UIImage.animatedImage(with: images, duration: animationDuration)
         context.coordinator.duration = duration
     }
 

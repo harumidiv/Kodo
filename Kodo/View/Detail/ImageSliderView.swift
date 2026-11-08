@@ -131,8 +131,10 @@ struct ImageSliderView: View {
 
 /// 心拍の間隔で「ドクン」と2回振動させる
 enum HeartbeatHaptics {
-    static func makeTimer(heartbeat: Double) -> Timer {
-        Timer.scheduledTimer(withTimeInterval: heartbeat, repeats: true) { _ in
+    /// 心臓のない生物（心拍0）は振動させないのでnilを返す
+    static func makeTimer(heartbeat: Double) -> Timer? {
+        guard heartbeat > 0 else { return nil }
+        return Timer.scheduledTimer(withTimeInterval: heartbeat, repeats: true) { _ in
             Task {
                 let impactHeavy = await UIImpactFeedbackGenerator(style: .heavy)
                 await impactHeavy.prepare()

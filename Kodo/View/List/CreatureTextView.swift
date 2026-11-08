@@ -27,7 +27,7 @@ struct CreatureTextView: View {
                     .tracking(1.2)
                     .foregroundColor(SpecimenStyle.ink)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.7)
+                    .minimumScaleFactor(0.5)
             }
             .frame(width: 84, alignment: .leading)
 
@@ -66,7 +66,9 @@ struct ElectrocardiogramView: View {
                 canvas(now: context.date.timeIntervalSinceReferenceDate)
             }
         } else {
-            canvas(now: 0)
+            // 止めているときは、時刻0の拍が画面内に入る位置で固定する。
+            // 0のままだと拍の間隔が表示幅より長い生物（ぞうやクジラなど）が平らな線になってしまう
+            canvas(now: windowSeconds * 0.4)
         }
     }
 
@@ -102,6 +104,8 @@ struct ElectrocardiogramView: View {
     /// 1拍ぶんの波形（P波・QRS・T波を簡略化したもの）を、拍の間隔で繰り返す
     private func y(at time: TimeInterval, size: CGSize) -> CGFloat {
         let baseline = size.height * 0.6
+        // 心臓のない生物は平坦な線にする
+        guard heartbeat > 0 else { return baseline }
         let amplitude = size.height * 0.55
         let spikeDuration = min(0.25, heartbeat * 0.8)
         let phase = time.truncatingRemainder(dividingBy: heartbeat)

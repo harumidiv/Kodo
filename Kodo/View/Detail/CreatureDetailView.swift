@@ -151,13 +151,15 @@ struct CreatureDetailView: View {
             pagerButton(systemName: "chevron.left", label: "前の生物", step: -1)
                 .opacity(index == 0 ? 0 : 1)
             Spacer()
-            HStack(spacing: 6) {
+            // 生物が多くても収まるよう、点ではなく幅を分け合う目盛りにする
+            HStack(spacing: 2) {
                 ForEach(creatures.indices, id: \.self) { i in
-                    Circle()
+                    Rectangle()
                         .fill(i == index ? SpecimenStyle.heart : SpecimenStyle.border)
-                        .frame(width: 5, height: 5)
+                        .frame(maxWidth: 8, minHeight: 3, maxHeight: 3)
                 }
             }
+            .padding(.horizontal, 12)
             Spacer()
             pagerButton(systemName: "chevron.right", label: "次の生物", step: 1)
                 .opacity(index == creatures.count - 1 ? 0 : 1)
@@ -199,7 +201,13 @@ struct CreatureDetailView: View {
                     .font(SpecimenStyle.mono(10))
                     .tracking(1.6)
                     .foregroundColor(SpecimenStyle.muted)
-                Text("\(heartbeat, specifier: "%.2f")秒")
+                Group {
+                    if heartbeat > 0 {
+                        Text("\(heartbeat, specifier: "%.2f")秒")
+                    } else {
+                        Text(verbatim: "—")
+                    }
+                }
                     .font(SpecimenStyle.mono(22))
                     .foregroundColor(SpecimenStyle.ink)
             }
@@ -278,7 +286,7 @@ struct CreatureDetailView: View {
                          color: SpecimenStyle.heart)
                 SpecimenStyle.rule.frame(width: SpecimenStyle.ruleWidth)
                 statItem(label: "1拍の間隔",
-                         value: String(format: "%.2f", heartbeat),
+                         value: heartbeat > 0 ? String(format: "%.2f", heartbeat) : "—",
                          unit: "秒",
                          color: SpecimenStyle.ink)
                     .padding(.leading, 16)
