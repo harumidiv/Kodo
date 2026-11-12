@@ -1,0 +1,569 @@
+{
+  "versionId": "a93e01ce-a416-4ba6-825a-f9e1f7a2a227",
+  "metadata": {
+    "de-DE": {
+      "appInfoLocalizations": "1fd51f75-cb08-4ab2-9b55-b70f7fd1b89b",
+      "appStoreVersionLocalizations": "bffd3d97-c977-4ba8-8f09-3f319ac842e6"
+    },
+    "es-ES": {
+      "appInfoLocalizations": "bdc049b8-19a6-4114-93c7-16189dfb6106",
+      "appStoreVersionLocalizations": "6995a7d8-673b-4bb5-a5de-34f0466adc0b"
+    },
+    "fr-FR": {
+      "appInfoLocalizations": "19796dae-5d85-48f2-8745-d0d0234fbc27",
+      "appStoreVersionLocalizations": "de6c49a8-b141-47b8-bb42-0211da46f917"
+    },
+    "it": {
+      "appInfoLocalizations": "a3f002f7-c3a2-4530-a7c3-54601d3f4230",
+      "appStoreVersionLocalizations": "e1746c5f-1805-4b7c-b72b-4c1d4104d91c"
+    },
+    "ko": {
+      "appInfoLocalizations": "8b95c81a-d690-42cf-878c-451a7bdd6f67",
+      "appStoreVersionLocalizations": "f7d66316-d9fd-4c77-99b1-91d71c6413cc"
+    },
+    "pt-BR": {
+      "appInfoLocalizations": "84ae64fd-add9-4328-933c-64805e4e589d",
+      "appStoreVersionLocalizations": "298cc728-13f8-46ef-b767-4cc47ec91741"
+    },
+    "zh-Hans": {
+      "appInfoLocalizations": "8b0641ca-439b-4f53-9a01-372655c82b12",
+      "appStoreVersionLocalizations": "db4a0acb-80b0-4346-ae10-bd48c0a1a865"
+    },
+    "zh-Hant": {
+      "appInfoLocalizations": "c89b2d24-4424-4a10-87dc-45441e68ae9f",
+      "appStoreVersionLocalizations": "72141f33-875f-4258-abc6-ac9f7c3ae51d"
+    }
+  },
+  "images": {
+    "de/iPhone-17-Pro/01-specimens.png": {
+      "id": "50800018-01b2-8696-800a-0b07ebe7678f",
+      "locale": "de-DE",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "de/iPhone-17-Pro/02-elephant.png": {
+      "id": "a0400018-01b2-8696-801a-efdbfae78330",
+      "locale": "de-DE",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "de/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "66c00018-01b2-8696-800b-e7fbd87a11c2",
+      "locale": "de-DE",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "de/iPhone-Duo/01-specimens.png": {
+      "id": "35000018-01b2-8696-800f-d4785e81dbbb",
+      "locale": "de-DE",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "de/iPhone-Duo/02-elephant.png": {
+      "id": "40000018-01b2-8696-8008-256326483e95",
+      "locale": "de-DE",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "de/iPhone-Duo/03-heart-monitor.png": {
+      "id": "a5800018-01b2-8696-8035-a9a355dfb9ce",
+      "locale": "de-DE",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "es/iPhone-17-Pro/01-specimens.png": {
+      "id": "4ac00018-01b2-8696-8031-d6dcb6760063",
+      "locale": "es-ES",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "es/iPhone-17-Pro/02-elephant.png": {
+      "id": "ec400018-01b2-8696-801e-2c5223185a70",
+      "locale": "es-ES",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "es/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "b8000018-01b2-8696-803e-af4a88236c1c",
+      "locale": "es-ES",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "es/iPhone-Duo/01-specimens.png": {
+      "id": "80000018-01b2-8696-8001-555a55ce9720",
+      "locale": "es-ES",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "es/iPhone-Duo/02-elephant.png": {
+      "id": "94000018-01b2-8696-803f-3e16c7d95284",
+      "locale": "es-ES",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "es/iPhone-Duo/03-heart-monitor.png": {
+      "id": "e9c00018-01b2-8696-8010-101d23296b7d",
+      "locale": "es-ES",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "fr/iPhone-17-Pro/01-specimens.png": {
+      "id": "40800018-01b2-8696-8012-7785e3ecc804",
+      "locale": "fr-FR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "fr/iPhone-17-Pro/02-elephant.png": {
+      "id": "65c00018-01b2-8696-8021-cea23e248ca2",
+      "locale": "fr-FR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "fr/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "3e000018-01b2-8696-8026-72540da7df1b",
+      "locale": "fr-FR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "fr/iPhone-Duo/01-specimens.png": {
+      "id": "2c000018-01b2-8696-8026-a1e284b91a7f",
+      "locale": "fr-FR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "fr/iPhone-Duo/02-elephant.png": {
+      "id": "fa400018-01b2-8696-8021-111d0879427c",
+      "locale": "fr-FR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "fr/iPhone-Duo/03-heart-monitor.png": {
+      "id": "c7800018-01b2-8696-801e-e0623e0a91c9",
+      "locale": "fr-FR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "it/iPhone-17-Pro/01-specimens.png": {
+      "id": "ce000018-01b2-8696-800e-726507575551",
+      "locale": "it",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "it/iPhone-17-Pro/02-elephant.png": {
+      "id": "79000018-01b2-8696-8004-609802287776",
+      "locale": "it",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "it/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "99000018-01b2-8696-8034-88199a45b9cf",
+      "locale": "it",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "it/iPhone-Duo/01-specimens.png": {
+      "id": "e4c00018-01b2-8696-8038-5f05cd236dd5",
+      "locale": "it",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "it/iPhone-Duo/02-elephant.png": {
+      "id": "b6c00018-01b2-8696-802f-6956356db9bb",
+      "locale": "it",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "it/iPhone-Duo/03-heart-monitor.png": {
+      "id": "32800018-01b2-8696-8021-41113c69703f",
+      "locale": "it",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "ko/iPhone-17-Pro/01-specimens.png": {
+      "id": "acc00018-01b2-8696-800c-6b5a98f34c2b",
+      "locale": "ko",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "ko/iPhone-17-Pro/02-elephant.png": {
+      "id": "dcc00018-01b2-8696-803d-ac1750157d9c",
+      "locale": "ko",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "ko/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "de800018-01b2-8696-801e-495ffe01d85d",
+      "locale": "ko",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "ko/iPhone-Duo/01-specimens.png": {
+      "id": "34800018-01b2-8696-8011-14e2e329fe49",
+      "locale": "ko",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "ko/iPhone-Duo/02-elephant.png": {
+      "id": "a2400018-01b2-8696-8018-03059a63ccb0",
+      "locale": "ko",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "ko/iPhone-Duo/03-heart-monitor.png": {
+      "id": "42800018-01b2-8696-8038-0fa4bdd72ed3",
+      "locale": "ko",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "pt-BR/iPhone-17-Pro/01-specimens.png": {
+      "id": "bd400018-01b2-8696-8037-e6eff84677c9",
+      "locale": "pt-BR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "pt-BR/iPhone-17-Pro/02-elephant.png": {
+      "id": "99000018-01b2-8696-8025-67a7d53c7835",
+      "locale": "pt-BR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "pt-BR/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "15000018-01b2-8696-8002-6568c32ea994",
+      "locale": "pt-BR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "pt-BR/iPhone-Duo/01-specimens.png": {
+      "id": "18c00018-01b2-8696-8033-62fceac46295",
+      "locale": "pt-BR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "pt-BR/iPhone-Duo/02-elephant.png": {
+      "id": "d7800018-01b2-8696-802f-c81daf6ae3c6",
+      "locale": "pt-BR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "pt-BR/iPhone-Duo/03-heart-monitor.png": {
+      "id": "78000018-01b2-8696-802f-dcd32dc33acc",
+      "locale": "pt-BR",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "zh-Hans/iPhone-17-Pro/01-specimens.png": {
+      "id": "00400018-01b2-8696-8000-616da2c5af04",
+      "locale": "zh-Hans",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "zh-Hans/iPhone-17-Pro/02-elephant.png": {
+      "id": "7e800018-01b2-8696-8012-7ce7bf7bb59c",
+      "locale": "zh-Hans",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "zh-Hans/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "32000018-01b2-8696-8003-d037f0f777a2",
+      "locale": "zh-Hans",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "zh-Hans/iPhone-Duo/01-specimens.png": {
+      "id": "2b000018-01b2-8696-803d-ef2b0068e775",
+      "locale": "zh-Hans",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "zh-Hans/iPhone-Duo/02-elephant.png": {
+      "id": "65c00018-01b2-8696-8032-a0fe57bd3573",
+      "locale": "zh-Hans",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "zh-Hans/iPhone-Duo/03-heart-monitor.png": {
+      "id": "79000018-01b2-8696-8037-c00ff125f57e",
+      "locale": "zh-Hans",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "zh-Hant/iPhone-17-Pro/01-specimens.png": {
+      "id": "22000018-01b2-8696-8027-5c5e9a05a4ef",
+      "locale": "zh-Hant",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "zh-Hant/iPhone-17-Pro/02-elephant.png": {
+      "id": "c1400018-01b2-8696-802b-3c9f951ab08c",
+      "locale": "zh-Hant",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "zh-Hant/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "71c00018-01b2-8696-800f-0bf06f36eb62",
+      "locale": "zh-Hant",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5a7a65df-8822-5e32-bd47-cfbc4ef99663"
+    },
+    "zh-Hant/iPhone-Duo/01-specimens.png": {
+      "id": "22400018-01b2-8696-800c-85fb7aeada46",
+      "locale": "zh-Hant",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "zh-Hant/iPhone-Duo/02-elephant.png": {
+      "id": "02c00018-01b2-8696-8027-533e00398d5f",
+      "locale": "zh-Hant",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    },
+    "zh-Hant/iPhone-Duo/03-heart-monitor.png": {
+      "id": "78000018-01b2-8696-8022-9e0b55dbc73a",
+      "locale": "zh-Hant",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "specId": "5d458eef-8339-4a1f-a484-83d53834cfec"
+    }
+  },
+  "placements": {
+    "de/iPhone-17-Pro/01-specimens.png": {
+      "id": "2a800018-01b2-8696-8f28-a150a180a2e8",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "de/iPhone-17-Pro/02-elephant.png": {
+      "id": "0c000018-01b2-8696-8f24-7deffe3877c4",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "de/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "a1000018-01b2-8696-8f29-362d4e10b68e",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "de/iPhone-Duo/01-specimens.png": {
+      "id": "40000018-01b2-8696-8f12-b0ae6a596e4a",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "de/iPhone-Duo/02-elephant.png": {
+      "id": "45400018-01b2-8696-8f2e-dca6605dd862",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "de/iPhone-Duo/03-heart-monitor.png": {
+      "id": "80c00018-01b2-8696-8f06-d00d9ecebe51",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "es/iPhone-17-Pro/01-specimens.png": {
+      "id": "5e400018-01b2-8696-8f3a-cdcdc17b9a61",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "es/iPhone-17-Pro/02-elephant.png": {
+      "id": "b1400018-01b2-8696-8f0e-b1aab4639a02",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "es/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "4c800018-01b2-8696-8f13-492fa73e415e",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "es/iPhone-Duo/01-specimens.png": {
+      "id": "58800018-01b2-8696-8f1b-c89d8db481d9",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "es/iPhone-Duo/02-elephant.png": {
+      "id": "38c00018-01b2-8696-8f3c-f7d77825e468",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "es/iPhone-Duo/03-heart-monitor.png": {
+      "id": "7dc00018-01b2-8696-8f2b-83171273ffe1",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "fr/iPhone-17-Pro/01-specimens.png": {
+      "id": "d9c00018-01b2-8696-8f1a-0e3f308b61ad",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "fr/iPhone-17-Pro/02-elephant.png": {
+      "id": "85400018-01b2-8696-8f23-13a7470eb6cb",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "fr/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "ba400018-01b2-8696-8f04-0b621c1af0cc",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "fr/iPhone-Duo/01-specimens.png": {
+      "id": "83800018-01b2-8696-8f3c-2050a3265f5e",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "fr/iPhone-Duo/02-elephant.png": {
+      "id": "23400018-01b2-8696-8f22-b5aa7b743ba0",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "fr/iPhone-Duo/03-heart-monitor.png": {
+      "id": "58000018-01b2-8696-8f11-3f410e2da2fd",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "it/iPhone-17-Pro/01-specimens.png": {
+      "id": "9fc00018-01b2-8696-8f3b-7dad41057544",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "it/iPhone-17-Pro/02-elephant.png": {
+      "id": "69000018-01b2-8696-8f39-ab3427c59b7a",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "it/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "e0400018-01b2-8696-8f21-6a3628c5f46d",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "it/iPhone-Duo/01-specimens.png": {
+      "id": "b4c00018-01b2-8696-8f31-482cdb67c995",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "it/iPhone-Duo/02-elephant.png": {
+      "id": "cc800018-01b2-8696-8f04-665ea27a8716",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "it/iPhone-Duo/03-heart-monitor.png": {
+      "id": "74000018-01b2-8696-8f1a-418492dd43d5",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "ko/iPhone-17-Pro/01-specimens.png": {
+      "id": "39c00018-01b2-8696-8f33-3245640bb905",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "ko/iPhone-17-Pro/02-elephant.png": {
+      "id": "64400018-01b2-8696-8f2c-2069064db6dc",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "ko/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "38400018-01b2-8696-8f2f-080f0cf85020",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "ko/iPhone-Duo/01-specimens.png": {
+      "id": "01400018-01b2-8696-8f1d-4eb2cff14929",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "ko/iPhone-Duo/02-elephant.png": {
+      "id": "10800018-01b2-8696-8f3f-deb1d5bd4d99",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "ko/iPhone-Duo/03-heart-monitor.png": {
+      "id": "53000018-01b2-8696-8f13-dfb0a434ae68",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "pt-BR/iPhone-17-Pro/01-specimens.png": {
+      "id": "dd000018-01b2-8696-8f2a-bafa35038eda",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "pt-BR/iPhone-17-Pro/02-elephant.png": {
+      "id": "c6c00018-01b2-8696-8f0e-6645286725fa",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "pt-BR/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "17000018-01b2-8696-8f0d-32dc9ff89754",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "pt-BR/iPhone-Duo/01-specimens.png": {
+      "id": "7e400018-01b2-8696-8f22-8b39252caebf",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "pt-BR/iPhone-Duo/02-elephant.png": {
+      "id": "06000018-01b2-8696-8f1a-bdacc341f4d5",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "pt-BR/iPhone-Duo/03-heart-monitor.png": {
+      "id": "2dc00018-01b2-8696-8f19-21a1cdff38ca",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hans/iPhone-17-Pro/01-specimens.png": {
+      "id": "42000018-01b2-8696-8f10-bdb826eace91",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hans/iPhone-17-Pro/02-elephant.png": {
+      "id": "67000018-01b2-8696-8f00-bdb81f6780f8",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hans/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "46400018-01b2-8696-8f1a-4414f12f47f1",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hans/iPhone-Duo/01-specimens.png": {
+      "id": "c1800018-01b2-8696-8f29-34fa60887b0d",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hans/iPhone-Duo/02-elephant.png": {
+      "id": "81c00018-01b2-8696-8f33-6614a80405a0",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hans/iPhone-Duo/03-heart-monitor.png": {
+      "id": "84000018-01b2-8696-8f0a-1a33329a9a86",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hant/iPhone-17-Pro/01-specimens.png": {
+      "id": "d0800018-01b2-8696-8f13-ecd4616eb1f4",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hant/iPhone-17-Pro/02-elephant.png": {
+      "id": "ec000018-01b2-8696-8f08-7528bcb56ab3",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hant/iPhone-17-Pro/03-heart-monitor.png": {
+      "id": "73800018-01b2-8696-8f07-8bdb620e4e08",
+      "group": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hant/iPhone-Duo/01-specimens.png": {
+      "id": "48800018-01b2-8696-8f23-71ad95f85dd7",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hant/iPhone-Duo/02-elephant.png": {
+      "id": "37800018-01b2-8696-8f0b-1cbdfa3626c4",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    },
+    "zh-Hant/iPhone-Duo/03-heart-monitor.png": {
+      "id": "67000018-01b2-8696-8f38-1ba891bbfedb",
+      "group": "IPHONE_DUO_PROFILE",
+      "state": "ACTIVE"
+    }
+  }
+}

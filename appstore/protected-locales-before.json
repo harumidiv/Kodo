@@ -1,0 +1,542 @@
+{
+  "version": {
+    "en-US": {
+      "type": "appStoreVersionLocalizations",
+      "id": "76eff643-e1b8-43b8-8d49-d4e2311cd571",
+      "attributes": {
+        "description": "Kodo lets you feel the heartbeats of different animals through your iPhone's vibrations and animation.\n\nA human heart beats about 70 times a minute. A sparrow's beats around 800 times, and an elephant's only about 20. Numbers like these are hard to imagine, but in the palm of your hand the difference is unmistakable.\n\n- A collection of heartbeats\nNine animals are laid out like specimens in a display case: human, sparrow, elephant, octopus, chicken, cat, dog, horse and mouse. Inside each outline, a red heart beats at its real pace.\n\n- Feel it through vibration\nChoose an animal and your iPhone pulses at its heart rate. Small animals beat fast, large ones slowly. Close your eyes and compare.\n\n- Heart rates that change\nSwitch a human between rest, exercise and sleep, or a horse between rest and full gallop, and the heart rate changes with it.\n\n- Heart monitor view\nSwitch to text view to see every animal's heartbeat at once as a moving ECG trace, like a hospital monitor.\n\nHeart rates are approximate.",
+        "locale": "en-US",
+        "keywords": "heart,rate,pulse,bpm,ECG,monitor,vibration,haptic,biology,science,elephant,sparrow,horse,mouse",
+        "marketingUrl": "https://harumidiv.github.io/AppleStoreDevelopprSite/detail/kodo.html",
+        "promotionalText": "Feel the heartbeat of a living creature in the palm of your hand.",
+        "supportUrl": "https://harumidiv.github.io/AppleStoreDevelopprSite/",
+        "whatsNew": "Added support for multiple languages."
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/76eff643-e1b8-43b8-8d49-d4e2311cd571/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/76eff643-e1b8-43b8-8d49-d4e2311cd571/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/76eff643-e1b8-43b8-8d49-d4e2311cd571/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/76eff643-e1b8-43b8-8d49-d4e2311cd571/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/76eff643-e1b8-43b8-8d49-d4e2311cd571/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/76eff643-e1b8-43b8-8d49-d4e2311cd571/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/76eff643-e1b8-43b8-8d49-d4e2311cd571/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/76eff643-e1b8-43b8-8d49-d4e2311cd571/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/76eff643-e1b8-43b8-8d49-d4e2311cd571"
+      }
+    },
+    "ja": {
+      "type": "appStoreVersionLocalizations",
+      "id": "38feb67e-64ea-4bcc-8d2e-a95bd8477066",
+      "attributes": {
+        "description": "Kodo は、いろいろな生き物の心臓の鼓動を、iPhone の振動とアニメーションで体感できるアプリです。\n\n人間の心臓は1分間に約70回。すずめは約800回、ぞうはわずか20回ほど。数字で聞くとピンとこない違いも、手のひらで感じると驚くほどはっきり伝わります。\n\n■ 鼓動標本\n人間、すずめ、ぞう、たこ、にわとり、ねこ、犬、馬、ネズミの9種類を、標本箱のような一覧で並べました。それぞれの輪郭の中で赤い心臓が、本当の速さで脈打ちます。\n\n■ 振動で感じる\n生き物を選ぶと、その心拍の間隔で iPhone が「ドクン」と振動します。小さな生き物ほど速く、大きな生き物ほどゆっくり。目を閉じて比べてみてください。\n\n■ 状態で変わる心拍\n人間は安静・運動・睡眠、馬は安静・全力疾走など、状態を切り替えると心拍の速さも変わります。\n\n■ 心拍モニター表示\n文字表示に切り替えると、病院のモニターのような心電図で、すべての生き物の鼓動を一度に見比べられます。\n\n心拍数はおおよその目安です。",
+        "locale": "ja",
+        "keywords": "心臓,心拍数,脈拍,心音,心電図,動物,生物,振動,バイブ,ハプティクス,体感,図鑑,標本,比較,理科,科学,自由研究,すずめ,ぞう,ねこ,犬,馬,ネズミ,たこ,にわとり,アート",
+        "marketingUrl": "https://harumidiv.github.io/AppleStoreDevelopprSite/detail/kodo.html",
+        "promotionalText": "あなたの手のひらの中で生き物の鼓動を感じてみて",
+        "supportUrl": "https://harumidiv.github.io/AppleStoreDevelopprSite/",
+        "whatsNew": "複数の言語にローカライズ対応を行いました"
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/38feb67e-64ea-4bcc-8d2e-a95bd8477066/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/38feb67e-64ea-4bcc-8d2e-a95bd8477066/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/38feb67e-64ea-4bcc-8d2e-a95bd8477066/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/38feb67e-64ea-4bcc-8d2e-a95bd8477066/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/38feb67e-64ea-4bcc-8d2e-a95bd8477066/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/38feb67e-64ea-4bcc-8d2e-a95bd8477066/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/38feb67e-64ea-4bcc-8d2e-a95bd8477066/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/38feb67e-64ea-4bcc-8d2e-a95bd8477066/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/38feb67e-64ea-4bcc-8d2e-a95bd8477066"
+      }
+    }
+  },
+  "info": {
+    "en-US": {
+      "type": "appInfoLocalizations",
+      "id": "bdfeadcd-a70c-4c0d-94ff-79c4ff3d54b4",
+      "attributes": {
+        "locale": "en-US",
+        "name": "Kodo-Heart Museum",
+        "subtitle": "Feel animal heartbeats",
+        "privacyPolicyUrl": "https://harumidiv.github.io/AppleStoreDevelopprSite/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/bdfeadcd-a70c-4c0d-94ff-79c4ff3d54b4"
+      }
+    },
+    "ja": {
+      "type": "appInfoLocalizations",
+      "id": "3639b753-e680-4288-9d63-5e89cedabe02",
+      "attributes": {
+        "locale": "ja",
+        "name": "Kodo-心臓博物館",
+        "subtitle": "生き物の鼓動を、手のひらで感じる",
+        "privacyPolicyUrl": "https://harumidiv.github.io/AppleStoreDevelopprSite/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/3639b753-e680-4288-9d63-5e89cedabe02"
+      }
+    }
+  },
+  "placements": {
+    "en-US": [
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "bb400018-01b2-8696-8f1d-fcc85df5c90d",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DUO_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/bb400018-01b2-8696-8f1d-fcc85df5c90d"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "92000018-01b2-8696-8f1c-239648e37178",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DUO_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/92000018-01b2-8696-8f1c-239648e37178"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "3dc00018-01b2-8696-8f28-03bdfb79fc60",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DUO_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/3dc00018-01b2-8696-8f28-03bdfb79fc60"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "b5800018-01b2-8696-8f35-a7244ec2ea1e",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DUO_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/b5800018-01b2-8696-8f35-a7244ec2ea1e"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "9e800018-01b2-8696-8f00-9299c7d96dad",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DUO_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/9e800018-01b2-8696-8f00-9299c7d96dad"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "cbc00018-01b2-8696-8f27-af55b10b85cd",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/cbc00018-01b2-8696-8f27-af55b10b85cd"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "35c00018-01b2-8696-8f24-761ae3e20efb",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/35c00018-01b2-8696-8f24-761ae3e20efb"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "65c00018-01b2-8696-8f0f-5ad159a9184e",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/65c00018-01b2-8696-8f0f-5ad159a9184e"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "cd800018-01b2-8696-8f23-0cb98448f603",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/cd800018-01b2-8696-8f23-0cb98448f603"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "00c00018-01b2-8696-8f1d-266662bb43cf",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/00c00018-01b2-8696-8f1d-266662bb43cf"
+        }
+      }
+    ],
+    "ja": [
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "16000018-01b2-8696-8f37-ffbd4c3f3e9f",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DUO_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/16000018-01b2-8696-8f37-ffbd4c3f3e9f"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "c4800018-01b2-8696-8f1c-dfd09ad396ea",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DUO_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/c4800018-01b2-8696-8f1c-dfd09ad396ea"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "a5c00018-01b2-8696-8f01-4eafd3d635c3",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DUO_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/a5c00018-01b2-8696-8f01-4eafd3d635c3"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "4b000018-01b2-8696-8f35-becf5355a291",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DUO_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/4b000018-01b2-8696-8f35-becf5355a291"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "3b800018-01b2-8696-8f34-a9782b68cc69",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DUO_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/3b800018-01b2-8696-8f34-a9782b68cc69"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "93400018-01b2-8696-8f15-f9e9f05fa040",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_HOME_BUTTON_LARGE_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/93400018-01b2-8696-8f15-f9e9f05fa040"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "a3400018-01b2-8696-8f3c-da7b1075842d",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_HOME_BUTTON_LARGE_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/a3400018-01b2-8696-8f3c-da7b1075842d"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "55400018-01b2-8696-8f3c-81221bd4af29",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_HOME_BUTTON_LARGE_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/55400018-01b2-8696-8f3c-81221bd4af29"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "91000018-01b2-8696-8f21-7d86dc27488a",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/91000018-01b2-8696-8f21-7d86dc27488a"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "a9c00018-01b2-8696-8f1e-ba35c34f300d",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/a9c00018-01b2-8696-8f1e-ba35c34f300d"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "60000018-01b2-8696-8f1e-ebfd21e96da0",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/60000018-01b2-8696-8f1e-ebfd21e96da0"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "edc00018-01b2-8696-8f35-6cb05b80cec3",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/edc00018-01b2-8696-8f35-6cb05b80cec3"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "21c00018-01b2-8696-8f39-69b8d82f2433",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_DYNAMIC_ISLAND_MEDIUM_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/21c00018-01b2-8696-8f39-69b8d82f2433"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "35400018-01b2-8696-8f31-53540f5f8f66",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_FACE_ID_LARGE_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/35400018-01b2-8696-8f31-53540f5f8f66"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "dd800018-01b2-8696-8f2b-0d0d21180cab",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_FACE_ID_LARGE_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/dd800018-01b2-8696-8f2b-0d0d21180cab"
+        }
+      },
+      {
+        "type": "appAssetLibraryPlacements",
+        "id": "3dc00018-01b2-8696-8f20-4dba5e49fe45",
+        "attributes": {
+          "mediaType": "IMAGE",
+          "placementType": "APP_SCREENSHOT",
+          "placementGroup": "IPHONE_FACE_ID_LARGE_PROFILE",
+          "createdDate": "2026-11-12T05:34:15.583902Z",
+          "lastModifiedDate": "2026-11-12T05:34:15.583902Z",
+          "state": "ACTIVE",
+          "stateDetails": null
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appAssetLibraryPlacements/3dc00018-01b2-8696-8f20-4dba5e49fe45"
+        }
+      }
+    ]
+  }
+}
