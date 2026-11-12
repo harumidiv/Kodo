@@ -1,0 +1,84 @@
+{
+  "bundleId": "harumidiv.Kodo.add",
+  "version": "1.2.1",
+  "preserveLocales": ["ja", "en-US", "en-GB", "en-AU", "en-CA"],
+  "sharedUrls": {
+    "supportUrl": "https://harumidiv.github.io/AppleStoreDevelopprSite/",
+    "marketingUrl": "https://harumidiv.github.io/AppleStoreDevelopprSite/detail/kodo.html",
+    "privacyPolicyUrl": "https://harumidiv.github.io/AppleStoreDevelopprSite/privacy.html"
+  },
+  "localizations": {
+    "de-DE": {
+      "screenshotLanguage": "de",
+      "name": "Kodo - Herzmuseum",
+      "subtitle": "Tierherzschläge spüren",
+      "description": "Mit Kodo erlebst du die Herzschläge verschiedener Lebewesen durch die Vibrationen deines iPhones und durch Animationen.\n\nEin menschliches Herz schlägt etwa 70-mal pro Minute. Bei einem Spatz sind es rund 800 Schläge, bei einem Elefanten nur etwa 20. Als Zahlen sind diese Unterschiede schwer vorstellbar. In deiner Hand werden sie deutlich spürbar.\n\n■ Eine Sammlung von Herzschlägen\n33 Lebewesen sind wie in einem Schaukasten angeordnet, darunter Mensch, Spatz, Elefant, Krake, Huhn, Katze, Hund, Pferd und Maus. In jeder Silhouette schlägt ein rotes Herz im jeweiligen Rhythmus.\n\n■ Vibrationen fühlen\nWähle ein Lebewesen aus, und dein iPhone pulsiert im Takt seines Herzschlags. Kleine Tiere haben meist einen schnelleren, große einen langsameren Herzschlag. Schließe die Augen und vergleiche.\n\n■ Ein Herzschlag, der sich verändert\nWechsle beim Menschen zwischen Ruhe, Bewegung und Schlaf oder beim Pferd zwischen Ruhe und vollem Galopp. Der Herzschlag passt sich dem gewählten Zustand an.\n\n■ Herzmonitor-Ansicht\nWechsle zur Textansicht, um die Herzschläge aller Lebewesen gleichzeitig als bewegte EKG-Kurven zu vergleichen, ähnlich wie auf einem Krankenhausmonitor.\n\nDie angegebenen Herzfrequenzen sind ungefähre Richtwerte.",
+      "keywords": "Herz,Puls,EKG,bpm,Tiere,Vibration,Haptik,Biologie,Wissenschaft,Elefant,Spatz,Pferd,Vergleich",
+      "promotionalText": "Spüre die Herzschläge verschiedener Lebewesen in deiner Hand.",
+      "whatsNew": "Unterstützung für mehrere Sprachen hinzugefügt."
+    },
+    "es-ES": {
+      "screenshotLanguage": "es",
+      "name": "Kodo - Museo del Corazón",
+      "subtitle": "Siente los latidos animales",
+      "description": "Kodo te permite sentir los latidos de distintos seres vivos mediante las vibraciones de tu iPhone y animaciones.\n\nEl corazón humano late unas 70 veces por minuto. El de un gorrión, unas 800, y el de un elefante, solo unas 20. Es difícil imaginar estas diferencias con números, pero en la palma de tu mano se perciben con claridad.\n\n■ Una colección de latidos\n33 seres vivos se presentan como especímenes en una vitrina, entre ellos el ser humano, el gorrión, el elefante, el pulpo, la gallina, el gato, el perro, el caballo y el ratón. Dentro de cada silueta, un corazón rojo late a su propio ritmo.\n\n■ Siéntelos con vibraciones\nElige un ser vivo y tu iPhone vibrará al ritmo de su corazón. Los animales pequeños suelen tener un pulso más rápido y los grandes, más lento. Cierra los ojos y compáralos.\n\n■ Un pulso que cambia\nAlterna entre reposo, ejercicio y sueño en el ser humano, o entre reposo y galope en el caballo. Los latidos cambian según el estado que elijas.\n\n■ Vista de monitor cardíaco\nCambia a la vista de texto para comparar a la vez los latidos de todos los seres vivos mediante trazados de ECG en movimiento, como en un monitor de hospital.\n\nLas frecuencias cardíacas son valores aproximados.",
+      "keywords": "latidos,pulso,ECG,bpm,animales,vibración,háptica,biología,ciencia,elefante,gorrión,caballo",
+      "promotionalText": "Siente los latidos de distintos seres vivos en la palma de tu mano.",
+      "whatsNew": "Se ha añadido compatibilidad con varios idiomas."
+    },
+    "fr-FR": {
+      "screenshotLanguage": "fr",
+      "name": "Kodo - Musée du cœur",
+      "subtitle": "Ressentez le cœur des animaux",
+      "description": "Kodo vous fait ressentir les battements de cœur de différents êtres vivants grâce aux vibrations de votre iPhone et à des animations.\n\nLe cœur humain bat environ 70 fois par minute. Celui d'un moineau, près de 800 fois, et celui d'un éléphant, seulement une vingtaine de fois. Ces différences sont difficiles à imaginer avec de simples chiffres, mais deviennent évidentes au creux de votre main.\n\n■ Une collection de battements\n33 êtres vivants sont présentés comme des spécimens dans une vitrine : humain, moineau, éléphant, pieuvre, poule, chat, chien, cheval, souris et bien d'autres. Dans chaque silhouette, un cœur rouge bat au rythme correspondant.\n\n■ Ressentez les vibrations\nChoisissez un être vivant et votre iPhone vibre au rythme de son cœur. Les petits animaux ont généralement un cœur plus rapide, les grands un cœur plus lent. Fermez les yeux et comparez.\n\n■ Un rythme qui varie\nPassez du repos à l'effort ou au sommeil chez l'humain, ou du repos au grand galop chez le cheval. Le rythme cardiaque change selon l'état choisi.\n\n■ Vue moniteur cardiaque\nPassez à l'affichage texte pour comparer simultanément les battements de tous les êtres vivants sous forme de tracés ECG animés, comme sur un moniteur d'hôpital.\n\nLes fréquences cardiaques sont des valeurs approximatives.",
+      "keywords": "battements,pouls,ECG,bpm,animaux,vibration,haptique,biologie,science,éléphant,moineau,cheval",
+      "promotionalText": "Ressentez les battements de cœur de différents êtres vivants au creux de votre main.",
+      "whatsNew": "Ajout de la prise en charge de plusieurs langues."
+    },
+    "it": {
+      "screenshotLanguage": "it",
+      "name": "Kodo - Museo del Cuore",
+      "subtitle": "Senti i battiti degli animali",
+      "description": "Kodo ti fa sentire i battiti del cuore di diversi esseri viventi attraverso le vibrazioni del tuo iPhone e le animazioni.\n\nIl cuore umano batte circa 70 volte al minuto. Quello di un passero circa 800, quello di un elefante solo una ventina. Differenze difficili da immaginare con i soli numeri diventano subito chiare nel palmo della tua mano.\n\n■ Una collezione di battiti\n33 esseri viventi sono disposti come esemplari in una teca, tra cui essere umano, passero, elefante, polpo, gallina, gatto, cane, cavallo e topo. All'interno di ogni sagoma, un cuore rosso pulsa al ritmo corrispondente.\n\n■ Senti le vibrazioni\nScegli un essere vivente e il tuo iPhone vibrerà al ritmo del suo cuore. Gli animali piccoli hanno in genere un battito più rapido, quelli grandi più lento. Chiudi gli occhi e confrontali.\n\n■ Un battito che cambia\nPassa da riposo ad attività fisica o sonno per l'essere umano, oppure da riposo a galoppo per il cavallo. La frequenza cardiaca cambia in base allo stato selezionato.\n\n■ Vista monitor cardiaco\nPassa alla vista testuale per confrontare contemporaneamente i battiti di tutti gli esseri viventi sotto forma di tracciati ECG animati, come su un monitor ospedaliero.\n\nLe frequenze cardiache sono valori approssimativi.",
+      "keywords": "battito,pulsazioni,ECG,bpm,animali,vibrazione,aptica,biologia,scienza,elefante,passero,cavallo",
+      "promotionalText": "Senti i battiti del cuore di diversi esseri viventi nel palmo della tua mano.",
+      "whatsNew": "Aggiunto il supporto per più lingue."
+    },
+    "ko": {
+      "screenshotLanguage": "ko",
+      "name": "Kodo - 심장 박물관",
+      "subtitle": "손안에서 느끼는 동물의 심장 박동",
+      "description": "Kodo는 다양한 생물의 심장 박동을 iPhone의 진동과 애니메이션으로 체감할 수 있는 앱입니다.\n\n사람의 심장은 1분에 약 70번, 참새는 약 800번, 코끼리는 약 20번 뜁니다. 숫자만으로는 와닿지 않는 차이도 손바닥으로 느끼면 놀라울 만큼 선명하게 전해집니다.\n\n■ 심장 박동 표본\n사람, 참새, 코끼리, 문어, 닭, 고양이, 개, 말, 쥐를 비롯한 33종의 생물을 표본 상자처럼 모았습니다. 각 생물의 윤곽 안에서 빨간 심장이 저마다의 속도로 뜁니다.\n\n■ 진동으로 느끼기\n생물을 선택하면 그 심장 박동 간격에 맞춰 iPhone이 두근거리듯 진동합니다. 보통 작은 동물일수록 빠르고 큰 동물일수록 느립니다. 눈을 감고 비교해 보세요.\n\n■ 상태에 따라 달라지는 박동\n사람은 안정·운동·수면, 말은 안정·전력 질주 등으로 상태를 바꾸면 심장 박동 속도도 달라집니다.\n\n■ 심박 모니터 보기\n문자 보기로 전환하면 병원 모니터처럼 움직이는 심전도 파형으로 모든 생물의 심장 박동을 한눈에 비교할 수 있습니다.\n\n심박수는 대략적인 참고 수치입니다.",
+      "keywords": "심장,심박수,맥박,심전도,동물,진동,햅틱,생물,과학,코끼리,참새",
+      "promotionalText": "손바닥 안에서 다양한 생물의 심장 박동을 느껴 보세요.",
+      "whatsNew": "여러 언어를 지원하도록 현지화했습니다."
+    },
+    "pt-BR": {
+      "screenshotLanguage": "pt-BR",
+      "name": "Kodo - Museu do Coração",
+      "subtitle": "Sinta o coração dos animais",
+      "description": "Com o Kodo, você sente os batimentos cardíacos de diferentes seres vivos por meio das vibrações do iPhone e de animações.\n\nO coração humano bate cerca de 70 vezes por minuto. O de um pardal, cerca de 800, e o de um elefante, apenas umas 20. Essas diferenças são difíceis de imaginar só com números, mas ficam muito claras na palma da sua mão.\n\n■ Uma coleção de batimentos\n33 seres vivos aparecem como exemplares em uma vitrine, incluindo ser humano, pardal, elefante, polvo, galinha, gato, cachorro, cavalo e rato. Dentro de cada silhueta, um coração vermelho pulsa no ritmo correspondente.\n\n■ Sinta as vibrações\nEscolha um ser vivo e o iPhone vibrará no ritmo do coração dele. Animais pequenos costumam ter batimentos mais rápidos, e os grandes, mais lentos. Feche os olhos e compare.\n\n■ Batimentos que mudam\nAlterne entre repouso, exercício e sono para o ser humano, ou entre repouso e galope para o cavalo. O ritmo cardíaco muda conforme o estado escolhido.\n\n■ Visualização de monitor cardíaco\nMude para a visualização em texto para comparar os batimentos de todos os seres vivos ao mesmo tempo, com traçados de ECG em movimento, como em um monitor hospitalar.\n\nAs frequências cardíacas são valores aproximados.",
+      "keywords": "batimentos,pulso,ECG,bpm,animais,vibração,háptica,biologia,ciência,elefante,pardal,cavalo",
+      "promotionalText": "Sinta os batimentos cardíacos de diferentes seres vivos na palma da sua mão.",
+      "whatsNew": "Adicionado suporte a vários idiomas."
+    },
+    "zh-Hans": {
+      "screenshotLanguage": "zh-Hans",
+      "name": "Kodo-心脏博物馆",
+      "subtitle": "在掌心感受动物的心跳",
+      "description": "Kodo 通过 iPhone 的振动和动画，让你亲身感受不同生物的心跳。\n\n人的心脏每分钟大约跳动 70 次，麻雀约 800 次，而大象只有约 20 次。单看数字难以想象的差异，放在掌心感受，就会变得格外鲜明。\n\n■ 心跳标本\n33 种生物像标本一样陈列在展示格中，包括人类、麻雀、大象、章鱼、鸡、猫、狗、马和老鼠等。每个轮廓中的红色心脏，都以相应的节奏跳动。\n\n■ 用振动感受心跳\n选择一种生物，iPhone 就会按照它的心跳间隔振动。通常，体型小的动物心跳更快，体型大的动物心跳更慢。闭上眼睛，感受它们的不同吧。\n\n■ 随状态变化的心跳\n人类可以切换静息、运动和睡眠，马可以切换静息和全速奔跑等状态。状态改变，心跳速度也会随之变化。\n\n■ 心率监视器视图\n切换到文字视图，即可通过动态心电图波形，同时比较所有生物的心跳，就像查看医院的监视器一样。\n\n心率数值为近似参考值。",
+      "keywords": "心跳,心率,脉搏,心电图,动物,振动,触觉,生物,科学,大象,麻雀",
+      "promotionalText": "在掌心感受不同生物的心跳。",
+      "whatsNew": "新增多语言本地化支持。"
+    },
+    "zh-Hant": {
+      "screenshotLanguage": "zh-Hant",
+      "name": "Kodo-心臟博物館",
+      "subtitle": "在掌心感受動物的心跳",
+      "description": "Kodo 透過 iPhone 的震動與動畫，讓你親身感受不同生物的心跳。\n\n人的心臟每分鐘大約跳動 70 次，麻雀約 800 次，而大象只有約 20 次。單看數字難以想像的差異，放在掌心感受，就會變得格外鮮明。\n\n■ 心跳標本\n33 種生物像標本一樣陳列在展示格中，包括人類、麻雀、大象、章魚、雞、貓、狗、馬和老鼠等。每個輪廓中的紅色心臟，都以相應的節奏跳動。\n\n■ 用震動感受心跳\n選擇一種生物，iPhone 就會按照牠的心跳間隔震動。通常，體型小的動物心跳較快，體型大的動物心跳較慢。閉上眼睛，感受牠們的不同吧。\n\n■ 隨狀態變化的心跳\n人類可以切換靜息、運動與睡眠，馬可以切換靜息與全速奔跑等狀態。狀態改變，心跳速度也會隨之變化。\n\n■ 心率監視器檢視\n切換到文字檢視，即可透過動態心電圖波形，同時比較所有生物的心跳，就像查看醫院的監視器一樣。\n\n心率數值為概略參考值。",
+      "keywords": "心跳,心率,脈搏,心電圖,動物,震動,觸覺,生物,科學,大象,麻雀",
+      "promotionalText": "在掌心感受不同生物的心跳。",
+      "whatsNew": "新增多語言在地化支援。"
+    }
+  }
+}
